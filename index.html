@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATAVA Islamic Digital Library</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
+        body { background: #0b1329; color: #f8fafc; padding: 20px; }
+        
+        /* Header Block */
+        header { text-align: center; padding: 30px 10px; background: linear-gradient(135deg, #111d4a, #0b1329); border-radius: 16px; border: 1px solid #1c2541; margin-bottom: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.4); }
+        header h1 { color: #00b653; font-size: 2rem; margin-bottom: 8px; font-weight: 800; letter-spacing: 1px; }
+        header p { color: #94a3b8; font-size: 0.95rem; font-weight: 500; }
+        .emerald-line { width: 80px; height: 4px; background: #00b653; margin: 12px auto 0; border-radius: 2px; }
+
+        /* Search Section */
+        .search-container { max-width: 600px; margin: 0 auto 30px; position: relative; }
+        .search-container input { width: 100%; padding: 15px 20px; padding-left: 50px; background: #1c2541; border: 2px solid #3a506b; border-radius: 30px; color: white; font-size: 1rem; font-weight: 600; transition: 0.3s; }
+        .search-container input:focus { border-color: #00b653; outline: none; box-shadow: 0 0 15px rgba(0,182,83,0.3); }
+        .search-container i { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: #64748b; font-size: 1.2rem; }
+
+        /* Categories Bar */
+        .category-tabs { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 30px; }
+        .tab-btn { padding: 8px 18px; background: #1c2541; border: 1px solid #3a506b; border-radius: 20px; color: #94a3b8; font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: 0.2s; }
+        .tab-btn.active, .tab-btn:hover { background: #00b653; color: white; border-color: #00b653; }
+
+        /* Document Shelf/Grid */
+        .library-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
+        .kitab-card { background: #111c44; border-radius: 12px; border: 1px solid #1c2541; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; transition: 0.3s; }
+        .kitab-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.5); border-color: #3a506b; }
+        
+        .badge { align-self: flex-start; padding: 4px 10px; border-radius: 6px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; }
+        .badge.ratheeb { background: rgba(0, 182, 83, 0.2); color: #00b653; }
+        .badge.blog { background: rgba(245, 158, 11, 0.2); color: #f59e0b; }
+
+        .kitab-title { font-size: 1.2rem; font-weight: 800; color: #ffffff; margin-bottom: 8px; line-height: 1.4; }
+        .kitab-desc { font-size: 0.85rem; color: #94a3b8; line-height: 1.5; margin-bottom: 20px; }
+
+        .action-btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 10px; background: #00b653; color: white; border: none; border-radius: 8px; font-weight: 700; text-decoration: none; cursor: pointer; font-size: 0.9rem; transition: 0.2s; }
+        .action-btn:hover { background: #009643; }
+        .action-btn.ext-link { background: #3a506b; }
+        .action-btn.ext-link:hover { background: #2a3b52; }
+
+        /* Text Viewer Modal for Ratheeb */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 100; justify-content: center; align-items: center; padding: 15px; }
+        .modal-content { background: #ffffff; color: #0f172a; width: 100%; max-width: 650px; border-radius: 16px; padding: 25px; max-height: 85vh; overflow-y: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.5); position: relative; }
+        .close-btn { position: absolute; right: 20px; top: 20px; font-size: 1.5rem; cursor: pointer; color: #64748b; }
+        .arabic-text-area { font-size: 1.4rem; line-height: 2.2; text-align: right; direction: rtl; padding: 15px 0; font-family: 'Traditional Arabic', Georgia, serif; }
+        .modal h2 { font-size: 1.3rem; margin-bottom: 15px; color: #111d4a; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>ഇസ്‌ലാമിക് ഡിജിറ്റൽ ലൈബ്രറി</h1>
+        <p>ഉസ്താദുമാർക്കും മുത്തഅല്ലിമീങ്ങൾക്കും വേണ്ടിയുള്ള കിതാബുകളും ഔറാദുകളും</p>
+        <div class="emerald-line"></div>
+    </header>
+
+    <!-- Master Search Engine -->
+    <div class="search-container">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="librarySearch" placeholder="കിതാബുകളുടെയോ വിഷയങ്ങളുടെയോ പേര് തിരയുക..." oninput="filterLibrary()">
+    </div>
+
+    <!-- Filter Category Tabs -->
+    <div class="category-tabs">
+        <button class="tab-btn active" onclick="filterCategory('all', this)">എല്ലാം (All)</button>
+        <button class="tab-btn" onclick="filterCategory('ratheeb', this)">റാത്തീബ് / ഔറാദ്</button>
+        <button class="tab-btn" onclick="filterCategory('aadarsham', this)">സുന്നി ആദർശം</button>
+    </div>
+
+    <!-- Books Shelf Shelf -->
+    <div class="library-grid" id="libraryGrid">
+        
+        <!-- CARD 1: RIFAE RATHEEB (Text Popup Option) -->
+        <div class="kitab-card" data-cat="ratheeb" data-title="രിഫാഈ റാത്തീബ് rifai ratheeb dikr">
+            <div>
+                <span class="badge ratheeb">റാത്തീബ് / ഔറാദ്</span>
+                <div class="kitab-title">രിഫാഈ റാത്തീബ് (Rifai Ratheeb)</div>
+                <div class="kitab-desc">സുൽത്വാനുൽ ഔലിയാ അഹ്മദുൽ കബീറുൽ രിഫാഈ (റ) തങ്ങളുടെ പേരിലുള്ള റാത്തീബും ദുആയും തത്സമയം വായിക്കാം.</div>
+            </div>
+            <button class="action-btn" onclick="openRatheeb()"><i class="fa-solid fa-book-open"></i> ലൈവ് ആയി വായിക്കുക</button>
+        </div>
+
+        <!-- CARD 2: SUNNI KNOWLEDGE BLOG (External Merge Option) -->
+        <div class="kitab-card" data-cat="aadarsham" data-title="സുന്നി ആദർശം അറിവുകൾ sunni knowledge blog">
+            <div>
+                <span class="badge blog">ബാഹ്യ ലിങ്ക് / Blog</span>
+                <div class="kitab-title">സുന്നി നോളഡ്ജ് ബ്ലോഗ് അറിവുകൾ</div>
+                <div class="kitab-desc">സുന്നി ആദർശങ്ങളും പ്രമാണങ്ങളും കിതാബ് ലിങ്കുകളും അടങ്ങിയ വലിയ അറിവുകളുടെ ശേഖരം സന്ദർശിക്കുക.</div>
+            </div>
+            <a href="https://sunniknowledge.blogspot.com/?m=0" target="_blank" class="action-btn ext-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> ബ്ലോഗ് സന്ദർശിക്കുക</a>
+        </div>
+
+    </div>
+
+    <!-- ARABIC TEXT MODAL VIEWER FOR RATHEEB -->
+    <div class="modal" id="ratheebModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeRatheeb()">&times;</span>
+            <h2>രിഫാഈ റാത്തീബ് (Rifai Ratheeb Text)</h2>
+            <div class="arabic-text-area">
+                بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيمِ<br>
+                إِلَى حَضْرَةِ النَّبِيِّ سَيِّدِنَا مُحَمَّدٍ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ، اَلْفَاتِحَة...<br>
+                قُطْبِ الْأَقْطَابِ سُلْطَانِ الْأَوْلِيَاءِ سَيِّدِي أَحْمَدَ الْكَبِيرِ الرِّفَاعِيِّ رَضِيَ اللهُ عَنْهُ وَنَفَعَنَا اللهُ بِبَرَكَاتِهِ، اَلْفَاتِحَة...<br><br>
+                لَا إِلٰهَ إِلَّا اللهُ، اَللهُ هُوَ يَا هُوَ اللهُ هُوَ هُوَ اللهُ هُوَ هُوَ هُوَ اللهُ<br>
+                بِذِكْرِ اللهِ تَقَرَّبِ الْبَصَائِرُ وَالْقُلُوبُ...<br><br>
+                (ثُمَّ يَقُولُونَ قَاعِدِينَ بِالْحَاضِرِ)<br>
+                يَا نَاظِرُ يَا شَاهِدُ يَا مُعِينُ يَا حَيُّ يَا قَيُّومُ أَنْتَ اللهُ، رَحْمٰنُ يَا رَحِيمُ يَا اَللهُ بِالْحَنَّانِ وَالْمَنَّانِ...<br><br>
+                (ثُمَّ يَقْرَؤُونَ سُورَةَ الْإِخْلَاصِ وَالْمُعَوِّذَتَيْنِ ثَلَاثًا ثُمَّ يَدْعُونَ بِهٰذَا الدُّعَاءِ)<br>
+                اَللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ، اَللَّهُمَّ عَافِنَا مِنْ كُلِّ بَلَاءِ الدُّنْيَا وَمُصِيبَاتِهَا وَفِتْنَتِهَا وَعَذَابِ الْآخِرَةِ... اٰمِينَ يَا رَبَّ الْعَالَمِينَ.
+            </div>
+        </div>
+    </div>
+
+    <!-- ENGINE JAVASCRIPT LOGIC -->
+    <script>
+        let currentCat = 'all';
+
+        function filterLibrary() {
+            let searchVal = document.getElementById('librarySearch').value.toLowerCase();
+            let cards = document.querySelectorAll('.kitab-card');
+
+            cards.forEach(card => {
+                let titleData = card.getAttribute('data-title');
+                let catData = card.getAttribute('data-cat');
+                
+                let matchesSearch = titleData.includes(searchVal);
+                let matchesCat = (currentCat === 'all' || catData === currentCat);
+
+                if(matchesSearch && matchesCat) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function filterCategory(category, element) {
+            currentCat = category;
+            
+            // Toggle active tabs
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            element.classList.add('active');
+            
+            filterLibrary();
+        }
+
+        function openRatheeb() { document.getElementById('ratheebModal').style.display = 'flex'; }
+        function closeRatheeb() { document.getElementById('ratheebModal').style.display = 'none'; }
+    </script>
+</body>
+</html>
