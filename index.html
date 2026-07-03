@@ -48,6 +48,7 @@
         .badge.ratheeb { background: #d1e7dd; color: #0f5132; }
         .badge.pdf-kitab { background: #f8d7da; color: #842029; }
         .badge.kids { background: #fff3cd; color: #664d03; }
+        .badge.blog { background: #e0f2fe; color: #0369a1; }
 
         .kitab-title { font-size: 1.25rem; font-weight: 800; color: #0f5132; margin-bottom: 10px; line-height: 1.4; }
         .kitab-desc { font-size: 0.9rem; color: #64748b; line-height: 1.6; margin-bottom: 20px; }
@@ -58,6 +59,8 @@
         .action-btn.pdf-btn:hover { background: #bb2d3b; }
         .action-btn.kids-btn { background: #fd7e14; }
         .action-btn.kids-btn:hover { background: #e66c0e; }
+        .action-btn.blog-btn { background: #0284c7; }
+        .action-btn.blog-btn:hover { background: #0369a1; }
 
         /* Handwriting Blackboard Section */
         .canvas-section { max-width: 1200px; margin: 0 auto 50px; background: #1a2522; border-radius: 16px; padding: 25px; color: white; box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
@@ -65,14 +68,7 @@
         .canvas-header h3 { font-size: 1.2rem; color: #ffc107; font-weight: 800; }
         .clear-btn { background: #dc3545; color: white; border: none; padding: 8px 16px; border-radius: 6px; font-weight: 700; cursor: pointer; transition: 0.2s; }
         .clear-btn:hover { background: #bb2d3b; }
-        #canvasBoard { background: #111817; border: 3px dashed #344a45; width: 100%; height: 300px; border-radius: 8px; cursor: crosshair; touch-action: none; }
-
-        /* Modal Settings */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 100; justify-content: center; align-items: center; padding: 15px; }
-        .modal-content { background: #ffffff; color: #0f172a; width: 100%; max-width: 650px; border-radius: 16px; padding: 25px; max-height: 85vh; overflow-y: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.3); position: relative; }
-        .close-btn { position: absolute; right: 20px; top: 20px; font-size: 1.5rem; cursor: pointer; color: #64748b; }
-        .arabic-text-area { font-size: 1.5rem; line-height: 2.3; text-align: right; direction: rtl; padding: 15px 0; font-family: 'Traditional Arabic', Georgia, serif; color: #0f5132; }
-        .modal h2 { font-size: 1.3rem; margin-bottom: 15px; color: #0f5132; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; }
+        #canvasBoard { background: #111817; border: 3px dashed #344a45; width: 100%; height: 320px; border-radius: 8px; cursor: crosshair; touch-action: none; }
     </style>
 </head>
 <body>
@@ -88,10 +84,11 @@
     <div class="index-box">
         <div class="index-title"><i class="fa-solid fa-list-ol"></i> ലൈബ്രറി ഉള്ളടക്കം (Library Index)</div>
         <div class="index-grid">
-            <div class="index-item"><i class="fa-solid fa-circle-check" style="color:#0f5132"></i> റാത്തീബുകൾ & ഔറാദുകൾ</div>
+            <div class="index-item"><i class="fa-solid fa-circle-check" style="color:#0f5132"></i> റാത്തീബുകൾ & ഔറാദുകൾ (PDF)</div>
             <div class="index-item"><i class="fa-solid fa-circle-check" style="color:#0f5132"></i> മൂല കിതാബുകൾ (Original PDF)</div>
             <div class="index-item"><i class="fa-solid fa-circle-check" style="color:#0f5132"></i> മദ്രസ കുട്ടികളുടെ പഠനമുറി</div>
             <div class="index-item"><i class="fa-solid fa-circle-check" style="color:#0f5132"></i> അഹ്‌ലുസ്സുന്ന AI സംശയനിവാരണം</div>
+            <div class="index-item"><i class="fa-solid fa-circle-check" style="color:#0f5132"></i> സുന്നി നോളഡ്ജ് ബ്ലോഗ് അറിവുകൾ</div>
         </div>
     </div>
 
@@ -121,24 +118,23 @@
     <!-- Books Shelf Grid -->
     <div class="library-grid" id="libraryGrid">
         
-        <!-- CARD 1: RIFAE RATHEEB -->
-        <div class="kitab-card" data-cat="ratheeb" data-title="രിഫാഈ റാത്തീബ് rifai ratheeb dikr">
+        <!-- CARD 1: RIFAE RATHEEB (NOW DIRECT PDF OPEN) -->
+        <div class="kitab-card" data-cat="ratheeb" data-title="രിഫാഈ റാത്തീബ് rifai ratheeb dikr pdf">
             <div>
-                <span class="badge ratheeb">റാത്തീബ് / ഔറാദ്</span>
+                <span class="badge pdf-kitab">ഔറാദ് PDF</span>
                 <div class="kitab-title">രിഫാഈ റാത്തീബ് (Rifai Ratheeb)</div>
-                <div class="kitab-desc">സുൽത്വാനുൽ ഔലിയാ അഹ്മദുൽ കബീറുൽ രിഫാഈ (റ) തങ്ങളുടെ പേരിലുള്ള റാത്തീബും ദുആയും തത്സമയം സ്ക്രീനിൽ വായിക്കാം.</div>
+                <div class="kitab-desc">സുൽത്വാനുൽ ഔലിയാ അഹ്മదుൽ കബീറുൽ രിഫാഈ (റ) തങ്ങളുടെ പേരിലുള്ള റാത്തീബും ദുആയും അടങ്ങിയ അസ്സൽ PDF ഫയൽ വായിക്കാം.</div>
             </div>
-            <button class="action-btn" onclick="openRatheeb()"><i class="fa-solid fa-book-open"></i> ലൈവ് ആയി വായിക്കുക</button>
+            <a href="kitabs/rifai-ratheeb.pdf" target="_blank" class="action-btn pdf-btn"><i class="fa-solid fa-file-pdf"></i> കിതാബ് ഓപ്പൺ ചെയ്യുക (PDF)</a>
         </div>
 
-        <!-- CARD 2: ORIGINAL PDF KITAB (Structured) -->
+        <!-- CARD 2: ORIGINAL PDF KITAB -->
         <div class="kitab-card" data-cat="pdf-kitab" data-title="ഫത്ഹുൽ മുഈൻ ശറഹ് fathul mueen kithab pdf">
             <div>
                 <span class="badge pdf-kitab">കിതാബ് PDF</span>
                 <div class="kitab-title">ഫത്ഹുൽ മുഈൻ (Fathul Mueen)</div>
                 <div class="kitab-desc">കിതാബിന്റെ യഥാർത്ഥ ഘടനയും പേജുകളും ഒട്ടും മാറാതെ വ്യക്തതയോടെ വായിക്കാനും ഡൗൺലോഡ് ചെയ്യാനുമുള്ള PDF രൂപം.</div>
             </div>
-            <!-- ശ്രദ്ധിക്കുക: നിങ്ങളുടെ github-ൽ 'kitabs' എന്ന ഫോൾഡറിൽ ഫയൽ ഇട്ട ശേഷം ഈ ലിങ്ക് മാറ്റാം -->
             <a href="kitabs/sharh-fathul-mueen.pdf" target="_blank" class="action-btn pdf-btn"><i class="fa-solid fa-file-pdf"></i> കിതാബ് ഓപ്പൺ ചെയ്യുക (PDF)</a>
         </div>
 
@@ -152,34 +148,25 @@
             <a href="kitabs/kids-worksheets.pdf" target="_blank" class="action-btn kids-btn"><i class="fa-solid fa-print"></i> പ്രിന്റ് നോട്ട് ഡൗൺലോഡ്</a>
         </div>
 
+        <!-- CARD 4: SUNNI KNOWLEDGE BLOG (RETURNED BACK) -->
+        <div class="kitab-card" data-cat="all" data-title="സുന്നി ആദർശം അറിവുകൾ sunni knowledge blog">
+            <div>
+                <span class="badge blog">ബാഹ്യ ലിങ്ക് / Blog</span>
+                <div class="kitab-title">സുന്നി നോളഡ്ജ് ബ്ലോഗ് അറിവുകൾ</div>
+                <div class="kitab-desc">സുന്നി ആദർശങ്ങളും പ്രമാണങ്ങളും കിതാബ് ലിങ്കുകളും അടങ്ങിയ വലിയ അറിവുകളുടെ ശേഖരം സന്ദർശിക്കുക.</div>
+            </div>
+            <a href="https://sunniknowledge.blogspot.com/?m=0" target="_blank" class="action-btn blog-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> ബ്ലോഗ് സന്ദർശിക്കുക</a>
+        </div>
+
     </div>
 
-    <!-- WRITING SCREEN FOR KIDS (സ്ക്രീനിൽ എഴുതി പഠിക്കാൻ) -->
+    <!-- WRITING SCREEN FOR KIDS (FIXED CURSOR LOGIC) -->
     <div class="canvas-section">
         <div class="canvas-header">
             <h3><i class="fa-solid fa-chalkboard"></i> കുട്ടികൾക്ക് സ്ക്രീനിൽ എഴുതി പഠിക്കാം (Magic Board)</h3>
             <button class="clear-btn" onclick="clearBoard()"><i class="fa-solid fa-trash"></i> മായ്ച്ചു കളയുക</button>
         </div>
         <canvas id="canvasBoard"></canvas>
-    </div>
-
-    <!-- ARABIC TEXT MODAL VIEWER FOR RATHEEB -->
-    <div class="modal" id="ratheebModal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeRatheeb()">&times;</span>
-            <h2>രിഫാഈ റാത്തീബ് (Rifai Ratheeb Text)</h2>
-            <div class="arabic-text-area">
-                بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيمِ<br>
-                إِلَى حَضْرَةِ النَّبِيِّ സَيِّدِنَا مُحَمَّدٍ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ، اَلْفَاتِحَة...<br>
-                قُطْبِ الْأَقْطَابِ سُلْطَانِ الْأَوْلِيَاءِ سَيِّدِي أَحْمَدَ الْكَبِيرِ الرِّفَاعِيِّ رَضِيَ اللهُ عَنْهُ وَنَفَعَنَا اللهُ بِبَرَكَاتِهِ، اَلْفَاتِحَة...<br><br>
-                لَا إِلٰهَ إِلَّا اللهُ، اَللهُ هُوَ يَا هُوَ اللهُ هُوَ هُوَ اللهُ هُوَ هُوَ هُوَ اللهُ<br>
-                بِذِكْرِ اللهِ تَقَرَّبِ الْبَصَائِرُ وَالْقُلُوبُ...<br><br>
-                (ثُمَّ يَقُولُونَ قَاعِدِينَ بِالْحَاضِرِ)<br>
-                يَا نَاظِرُ يَا شَاهِدُ يَا مُعِينُ يَا حَيُّ يَا قَيُّومُ أَنْتَ اللهُ، رَحْمٰنُ يَا رَحِيمُ يَا اَللهُ بِالْحَنَّانِ وَالْمَنَّانِ...<br><br>
-                (ثُمَّ يَقْرَؤُونَ سُورَةَ الْإِخْلَاصِ وَالْمُعَوِّذَتَيْنِ ثَلَاثًا ثُمَّ يَدْعُونَ بِهٰذَا الدُّعَاءِ)<br>
-                اَللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ، اَللَّهُمَّ عَافِنَا مِنْ كُلِّ بَلَاءِ الدُّنْيَا وَمُصِيبَاتِهَا وَفِتْنَتِهَا وَعَذَابِ الْآخِرَةِ... اٰمِينَ يَا رَبَّ الْعَالَمِينَ.
-            </div>
-        </div>
     </div>
 
     <!-- ENGINE JAVASCRIPT LOGIC -->
@@ -212,23 +199,27 @@
             filterLibrary();
         }
 
-        function openRatheeb() { document.getElementById('ratheebModal').style.display = 'flex'; }
-        function closeRatheeb() { document.getElementById('ratheebModal').style.display = 'none'; }
-
-        // --- SCREEN SCREEN WRITING LOGIC FOR KIDS ---
+        // --- FIXED MAGIC BOARD WRITING LOGIC ---
         const canvas = document.getElementById('canvasBoard');
         const ctx = canvas.getContext('2d');
         let drawing = false;
 
         function resizeCanvas() {
+            const currentData = ctx.getImageData(0, 0, canvas.width, canvas.height);
             canvas.width = canvas.parentElement.clientWidth - 50;
+            ctx.putImageData(currentData, 0, 0);
+            setupContext();
         }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
 
-        ctx.strokeStyle = '#ffc107'; // Golden ink
-        ctx.lineWidth = 3;
-        ctx.lineCap = 'round';
+        function setupContext() {
+            ctx.strokeStyle = '#ffc107'; 
+            ctx.lineWidth = 4;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        setTimeout(resizeCanvas, 100);
 
         function startPosition(e) {
             drawing = true;
@@ -242,12 +233,14 @@
             if (!drawing) return;
             e.preventDefault();
             
-            let clientX = e.clientX || e.touches[0].clientX;
-            let clientY = e.clientY || e.touches[0].clientY;
+            let clientX = e.clientX || (e.touches && e.touches[0].clientX);
+            let clientY = e.clientY || (e.touches && e.touches[0].clientY);
             
             let rect = canvas.getBoundingClientRect();
-            let x = clientX - rect.left;
-            let y = clientY - rect.top;
+            
+            // Exact coordinates matching current zoom and scroll
+            let x = (clientX - rect.left) * (canvas.width / rect.width);
+            let y = (clientY - rect.top) * (canvas.height / rect.height);
 
             ctx.lineTo(x, y);
             ctx.stroke();
