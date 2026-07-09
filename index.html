@@ -3,273 +3,262 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ATAVA Islamic Digital Library - Specialized Hub</title>
+    <title>ATAVA Islamic Digital Library</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --primary-green: #064e3b;
-            --light-green: #f0fdf4;
-            --accent-gold: #b45309;
-            --text-dark: #1f2937;
-        }
-        body { font-family: 'Arial', sans-serif; background-color: #f3f4f6; color: var(--text-dark); margin: 0; padding: 20px; }
-        .library-container { max-width: 1100px; margin: 0 auto; background: #ffffff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 25px; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
+        body { background: #f8fafc; color: #1e293b; padding: 20px; line-height: 1.6; }
         
-        .main-title { text-align: center; color: var(--primary-green); font-size: 1.8rem; font-weight: bold; margin-bottom: 25px; border-bottom: 3px solid var(--primary-green); padding-bottom: 10px; }
+        /* Header Block */
+        header { text-align: center; padding: 40px 10px 30px; background: linear-gradient(135deg, #0f5132, #146c43); border-radius: 16px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); color: white; }
+        header h1 { color: #ffffff; font-size: 2.2rem; margin-bottom: 8px; font-weight: 800; letter-spacing: 1px; }
+        header p { color: #d1e7dd; font-size: 1rem; font-weight: 500; }
+        .gold-line { width: 100px; height: 4px; background: #ffc107; margin: 15px auto 0; border-radius: 2px; }
+
+        /* Quick Index / ഉള്ളടക്കം */
+        .index-box { background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; max-width: 1200px; margin: 0 auto 30px; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
+        .index-title { font-weight: 800; font-size: 1.1rem; color: #0f5132; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+        .index-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+        .index-item { font-size: 0.9rem; color: #475569; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+
+        /* Search Section */
+        .search-container { max-width: 600px; margin: 0 auto 30px; position: relative; }
+        .search-container input { width: 100%; padding: 15px 20px; padding-left: 50px; background: white; border: 2px solid #cbd5e1; border-radius: 30px; color: #1e293b; font-size: 1rem; font-weight: 600; transition: 0.3s; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
+        .search-container input:focus { border-color: #0f5132; outline: none; box-shadow: 0 0 15px rgba(15,81,50,0.15); }
+        .search-container i { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: #64748b; font-size: 1.2rem; }
+
+        /* Categories Bar */
+        .category-tabs { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 30px; }
+        .tab-btn { padding: 10px 20px; background: white; border: 1px solid #cbd5e1; border-radius: 20px; color: #64748b; font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: 0.2s; }
+        .tab-btn.active, .tab-btn:hover { background: #0f5132; color: white; border-color: #0f5132; box-shadow: 0 4px 10px rgba(15,81,50,0.2); }
+
+        /* AI Feature Banner */
+        .ai-banner { max-width: 1200px; margin: 0 auto 30px; background: linear-gradient(135deg, #1e3a8a, #3b82f6); color: white; padding: 25px; border-radius: 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; box-shadow: 0 10px 20px rgba(59,130,246,0.2); }
+        .ai-text h3 { font-size: 1.4rem; margin-bottom: 5px; font-weight: 800; display: flex; align-items: center; gap: 8px; }
+        .ai-text p { color: #dbeafe; font-size: 0.95rem; }
+        .ai-btn { background: #ffc107; color: #1e293b; padding: 12px 25px; border-radius: 30px; font-weight: 800; text-decoration: none; display: flex; align-items: center; gap: 8px; transition: 0.2s; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .ai-btn:hover { background: #ffffff; transform: translateY(-2px); }
+
+        /* Document Grid */
+        .library-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto 40px; }
+        .kitab-card { background: white; border-radius: 12px; border: 1px solid #e2e8f0; padding: 25px; display: flex; flex-direction: column; justify-content: space-between; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        .kitab-card:hover { transform: translateY(-5px); box-shadow: 0 12px 20px rgba(0,0,0,0.08); border-color: #0f5132; }
         
-        /* BOARD BUTTONS STYLE */
-        .board-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-bottom: 30px; }
-        .board-btn { background: var(--light-green); border: 2px solid var(--primary-green); color: var(--primary-green); padding: 15px 10px; border-radius: 8px; font-size: 1rem; font-weight: bold; cursor: pointer; text-align: center; transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; }
-        .board-btn:hover, .board-btn.active { background: var(--primary-green); color: #ffffff; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(6, 78, 59, 0.2); }
-        .board-btn span { font-size: 0.8rem; font-weight: normal; opacity: 0.9; }
+        .badge { align-self: flex-start; padding: 5px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; margin-bottom: 15px; }
+        .badge.ratheeb { background: #d1e7dd; color: #0f5132; }
+        .badge.pdf-kitab { background: #f8d7da; color: #842029; }
+        .badge.kids { background: #fff3cd; color: #664d03; }
+        .badge.blog { background: #e0f2fe; color: #0369a1; }
 
-        /* CONTENT BOARDS */
-        .content-board { display: none; background: #fafafa; border: 1px solid #e5e7eb; border-radius: 8px; padding: 20px; animation: fadeIn 0.4s ease; }
-        .content-board.active { display: block; }
+        .kitab-title { font-size: 1.25rem; font-weight: 800; color: #0f5132; margin-bottom: 10px; line-height: 1.4; }
+        .kitab-desc { font-size: 0.9rem; color: #64748b; line-height: 1.6; margin-bottom: 20px; }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        .action-btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 12px; background: #0f5132; color: white; border: none; border-radius: 8px; font-weight: 700; text-decoration: none; cursor: pointer; font-size: 0.95rem; transition: 0.2s; }
+        .action-btn:hover { background: #146c43; }
+        .action-btn.pdf-btn { background: #dc3545; }
+        .action-btn.pdf-btn:hover { background: #bb2d3b; }
+        .action-btn.kids-btn { background: #fd7e14; }
+        .action-btn.kids-btn:hover { background: #e66c0e; }
+        .action-btn.blog-btn { background: #0284c7; }
+        .action-btn.blog-btn:hover { background: #0369a1; }
 
-        .board-title { color: var(--accent-gold); font-size: 1.3rem; font-weight: bold; margin-top: 0; margin-bottom: 15px; border-bottom: 1px dashed #cbd5e1; padding-bottom: 8px; }
-        .board-desc { font-size: 0.95rem; color: #4b5563; line-height: 1.5; margin-bottom: 20px; background: #ffffff; padding: 12px; border-left: 4px solid var(--accent-gold); border-radius: 4px; }
-
-        /* LINKS DISPLAY GRID */
-        .links-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
-        .link-card { background: #ffffff; border: 1px solid #e5e7eb; border-radius: 6px; padding: 12px 15px; display: flex; justify-content: space-between; align-items: center; transition: all 0.2s ease; text-decoration: none; color: inherit; }
-        .link-card:hover { border-color: var(--primary-green); background: var(--light-green); transform: translateX(3px); }
-        .link-name { font-size: 0.95rem; font-weight: bold; color: #111827; }
-        .link-icon { background: #2563eb; color: white; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; }
-        .link-icon.telegram { background: #229ED9; }
-        .link-icon.audio { background: #10b981; }
-
-        /* QURAN GRID SPECIFIC */
-        .quran-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; }
-        .quran-card { background: #ffffff; border: 1px solid #d1d5db; border-radius: 6px; padding: 12px; text-align: center; text-decoration: none; color: var(--primary-green); font-weight: bold; font-size: 0.95rem; transition: all 0.2s ease; }
-        .quran-card:hover { background: var(--primary-green); color: white; border-color: var(--primary-green); transform: scale(1.03); }
-        .quran-card span { display: block; font-size: 0.7rem; color: #6b7280; margin-top: 3px; }
-        .quran-card:hover span { color: #f0fdf4; }
+        /* Handwriting Blackboard Section */
+        .canvas-section { max-width: 1200px; margin: 0 auto 50px; background: #1a2522; border-radius: 16px; padding: 25px; color: white; box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+        .canvas-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px; }
+        .canvas-header h3 { font-size: 1.2rem; color: #ffc107; font-weight: 800; }
+        .clear-btn { background: #dc3545; color: white; border: none; padding: 8px 16px; border-radius: 6px; font-weight: 700; cursor: pointer; transition: 0.2s; }
+        .clear-btn:hover { background: #bb2d3b; }
+        #canvasBoard { background: #111817; border: 3px dashed #344a45; width: 100%; height: 320px; border-radius: 8px; cursor: crosshair; touch-action: none; }
     </style>
 </head>
 <body>
 
-<div class="library-container">
-    <div class="main-title">ATAVA ഇസ്‌ലാമിക് ഡിജിറ്റൽ സ്റ്റഡി ബോർഡുകൾ</div>
+    <!-- Header Section -->
+    <header>
+        <h1>ഇസ്‌ലാമിക് ഡിജിറ്റൽ ലൈബ്രറി</h1>
+        <p>ഉസ്താദുമാർക്കും മുത്തഅല്ലിമീങ്ങൾക്കും വേണ്ടിയുള്ള കിതാബുകളും ഔറാദുകളും</p>
+        <div class="gold-line"></div>
+    </header>
 
-    <!-- NAVIGATION BOARDS BUTTONS -->
-    <div class="board-grid">
-        <button class="board-btn active" onclick="openBoard(event, 'meelad-board')">
-            🎵 മീലാദ് ഗാനങ്ങൾ 
-            <span>പ്രോഗ്രാംസ് ഗോഡൗൺ</span>
-        </button>
-        <button class="board-btn" onclick="openBoard(event, 'fathhul-board')">
-            📖 ഫത്‌ഹുൽ മുഈൻ
-            <span>ഓഡിയോ ക്ലാസുകൾ</span>
-        </button>
-        <button class="board-btn" onclick="openBoard(event, 'kithab-board')">
-            📚 കിതാബുകൾ & അൽഫിയ്യ
-            <span>ഗ്രന്ഥശേഖരങ്ങൾ</span>
-        </button>
-        <button class="board-btn" onclick="openBoard(event, 'quran-board')">
-            🕌 വിശുദ്ധ ഖുർആൻ
-            <span>30 ജുസ്ഹ് ഓഡിയോ</span>
-        </button>
+    <!-- QUICK INDEX SECTION (ഉള്ളടക്കം) -->
+    <div class="index-box">
+        <div class="index-title"><i class="fa-solid fa-list-ol"></i> ലൈബ്രറി ഉള്ളടക്കം (Library Index)</div>
+        <div class="index-grid">
+            <div class="index-item"><i class="fa-solid fa-circle-check" style="color:#0f5132"></i> റാത്തീബുകൾ & ഔറാദുകൾ (PDF)</div>
+            <div class="index-item"><i class="fa-solid fa-circle-check" style="color:#0f5132"></i> മൂല കിതാബുകൾ (Original PDF)</div>
+            <div class="index-item"><i class="fa-solid fa-circle-check" style="color:#0f5132"></i> മദ്രസ കുട്ടികളുടെ പഠനമുറി</div>
+            <div class="index-item"><i class="fa-solid fa-circle-check" style="color:#0f5132"></i> അഹ്‌ലുസ്സുന്ന AI സംശയനിവാരണം</div>
+            <div class="index-item"><i class="fa-solid fa-circle-check" style="color:#0f5132"></i> സുന്നി നോളഡ്ജ് ബ്ലോഗ് അറിവുകൾ</div>
+        </div>
     </div>
 
-    <!-- BOARD 1: MEELAD -->
-    <div id="meelad-board" class="content-board active">
-        <div class="board-title">🌹 മീലാദ് ഗാനങ്ങൾ വാട്സാപ്പ് ഗ്രൂപ്പിന്റെ ഗോഡൗൺ</div>
-        <div class="board-desc">നിങ്ങൾക്ക് ആവശ്യമുള്ള എല്ലാ പ്രോഗ്രാമുകളും ഓരോന്നായി താഴെ നിന്നും തിരഞ്ഞെടുക്കാം. നിങ്ങളുടെ ഫോണിൽ നിന്നും നഷ്ടപ്പെട്ടാലും ഈ ഡിജിറ്റൽ ലൈബ്രറിയിൽ ഇത് സുരക്ഷിതമായിരിക്കും. പരമാവധി ഉപയോഗപ്പെടുത്തുക!</div>
+    <!-- AHLUS-SUNNAH AI CHATBOT INTEGRATION -->
+    <div class="ai-banner">
+        <div class="ai-text">
+            <h3><i class="fa-solid fa-robot"></i> അഹ്‌ലുസ്സുന്ന AI ചാറ്റ് ബോട്ട്</h3>
+            <p>സുന്നത്തി ജമാഅത്തുമായി ബന്ധപ്പെട്ട നിങ്ങളുടെ എല്ലാ സംശയങ്ങൾക്കും പ്രമാണബദ്ധമായ മറുപടികൾ ഇവിടെ ചോദിക്കാം.</p>
+        </div>
+        <a href="https://ahlus-sunnah-ai.lovable.app" target="_blank" class="ai-btn">സംശയങ്ങൾ ചോദിക്കുക <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+
+    <!-- Master Search Engine -->
+    <div class="search-container">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="librarySearch" placeholder="കിതാബുകളുടെയോ വിഷയങ്ങളുടെയോ പേര് തിരയുക..." oninput="filterLibrary()">
+    </div>
+
+    <!-- Filter Category Tabs -->
+    <div class="category-tabs">
+        <button class="tab-btn active" onclick="filterCategory('all', this)">എല്ലാം (All)</button>
+        <button class="tab-btn" onclick="filterCategory('ratheeb', this)">റാത്തീബ് / ഔറാദ്</button>
+        <button class="tab-btn" onclick="filterCategory('pdf-kitab', this)">മൂല കിതാബുകൾ (PDF)</button>
+        <button class="tab-btn" onclick="filterCategory('kids', this)">മദ്രസ / കുട്ടികൾ</button>
+    </div>
+
+    <!-- Books Shelf Grid -->
+    <div class="library-grid" id="libraryGrid">
         
-        <div class="links-grid">
-            <a href="https://t.me/meladganangal/4159" target="_blank" class="link-card"><span class="link-name">ഇംഗ്ലീഷ് സംഭാഷണം</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/4099" target="_blank" class="link-card"><span class="link-name">ഇംഗ്ലീഷ് മദ്ഹ് ഗാനങ്ങൾ</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/4056" target="_blank" class="link-card"><span class="link-name">പടപ്പാട്ടുകൾ (പാർട്ട് 1)</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/3680" target="_blank" class="link-card"><span class="link-name">പടപ്പാട്ടുകൾ (പാർട്ട് 2)</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/4296" target="_blank" class="link-card"><span class="link-name">അനൗൺസ്‌മെന്റുകൾ</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/4344" target="_blank" class="link-card"><span class="link-name">കഥാപ്രസംഗം (വേർഷൻ 1)</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/3693" target="_blank" class="link-card"><span class="link-name">കഥാപ്രസംഗം (വേർഷൻ 2)</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/12070?സിംഗിൾ" target="_blank" class="link-card"><span class="link-name">കഥപ്രസംഗം സിംഗിൾ ലിങ്ക് 1</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/12059?സിംഗ" target="_blank" class="link-card"><span class="link-name">കഥപ്രസംഗം സിംഗിൾ ലിങ്ക് 2</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/4212" target="_blank" class="link-card"><span class="link-name">ഗ്രൂപ്പുകൾക്കുള്ള പേരുകൾ</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/4024" target="_blank" class="link-card"><span class="link-name">ഇംഗ്ലീഷ് പ്രസംഗം</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/4013" target="_blank" class="link-card"><span class="link-name">പ്രോഗ്രാം പോസ്റ്ററുകൾ 1</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/3903" target="_blank" class="link-card"><span class="link-name">പ്രോഗ്രാം പോസ്റ്ററുകൾ 2</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/3972" target="_blank" class="link-card"><span class="link-name">അറബിക് ഗാനങ്ങൾ</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/3954" target="_blank" class="link-card"><span class="link-name">സംഘഗാനം / Group Song</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/3920" target="_blank" class="link-card"><span class="link-name">മലയാളം സംഭാഷണം (Conversations)</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/3883" target="_blank" class="link-card"><span class="link-name">മലയാള പ്രസംഗങ്ങൾ (വിഷയധിഷ്ഠിതം)</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/3865" target="_blank" class="link-card"><span class="link-name">നൂറുകണക്കിന് മദ്ഹ് ഗാനങ്ങൾ 1</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/51" target="_blank" class="link-card"><span class="link-name">നൂറുകണക്കിന് മദ്ഹ് ഗാനങ്ങൾ 2</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/3855" target="_blank" class="link-card"><span class="link-name">ദഫ് ഗാനങ്ങൾ ഓഡിയോ</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/12049?single" target="_blank" class="link-card"><span class="link-name">ദഫ് ഗാനങ്ങൾ സ്പെഷ്യൽ സിംഗിൾ</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/12034?single" target="_blank" class="link-card"><span class="link-name">ദഫ് പ്രാർത്ഥന ഗാനങ്ങൾ</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/3842" target="_blank" class="link-card"><span class="link-name">കുട്ടിപ്പാട്ടുകൾ ഓഡിയോ 1</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/3738" target="_blank" class="link-card"><span class="link-name">കുട്ടിപ്പാട്ടുകൾ ഓഡിയോ 2</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/2431" target="_blank" class="link-card"><span class="link-name">തമിഴ് ഇസ്‌ലാമിക് ഗാനങ്ങൾ</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/1440" target="_blank" class="link-card"><span class="link-name">ഗാനങ്ങളുടെ ലിറിക്സ് വരികൾ</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/3833" target="_blank" class="link-card"><span class="link-name">അറബന മുട്ട് ഗാനങ്ങൾ</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/3774" target="_blank" class="link-card"><span class="link-name">വിവിധ തരം PDF ഫയലുകൾ 1</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/3746" target="_blank" class="link-card"><span class="link-name">വിവിധ തരം PDF ഫയലുകൾ 2</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/3564" target="_blank" class="link-card"><span class="link-name">വിവിധ തരം PDF ഫയലുകൾ 3</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/3711" target="_blank" class="link-card"><span class="link-name">ഇസ്‌ലാമിക് റിങ്‌ടോണുകൾ</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/3702" target="_blank" class="link-card"><span class="link-name">ദഫ് മുട്ട് വീഡിയോകൾ</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/3671" target="_blank" class="link-card"><span class="link-name">കന്നഡ ഇസ്‌ലാമിക് ഗാനങ്ങൾ</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/4937" target="_blank" class="link-card"><span class="link-name">മലയാളം സംഭാഷണങ്ങൾ 2</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/4919" target="_blank" class="link-card"><span class="link-name">ഗ്രൂപ്പ് സംഘഗാനം 1</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/4901" target="_blank" class="link-card"><span class="link-name">ഗ്രൂപ്പ് സംഘഗാനം 2</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/4704" target="_blank" class="link-card"><span class="link-name">ഗ്രൂപ്പ് സംഘഗാനം 3</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/4882" target="_blank" class="link-card"><span class="link-name">കഥാപ്രസംഗ ശേഖരം 3</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/4743" target="_blank" class="link-card"><span class="link-name">കഥാപ്രസംഗ ശേഖരം 4</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/4872" target="_blank" class="link-card"><span class="link-name">അറബിക് സോങ്സ് സ്പെഷ്യൽ</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/4866" target="_blank" class="link-card"><span class="link-name">ബുർദ മദ്ഹ് ഈണങ്ങൾ</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/4813" target="_blank" class="link-card"><span class="link-name">ഉറുദു നാഥ് (Urdu Naat)</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/4774" target="_blank" class="link-card"><span class="link-name">അറബിക് നശീദകൾ</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/4733" target="_blank" class="link-card"><span class="link-name">സ്കൗട്ട് ആൻഡ് ദഫ് ഗാനങ്ങൾ</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/4664" target="_blank" class="link-card"><span class="link-name">അറബി ഗാനങ്ങൾ (No Music)</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/4628" target="_blank" class="link-card"><span class="link-name">പ്രസംഗങ്ങൾ (Text രൂപത്തിൽ)</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/5819" target="_blank" class="link-card"><span class="link-name">🌹 ഫ്ലവർ ഷോയ്ക്കുള്ള ഗാനങ്ങൾ</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/5781" target="_blank" class="link-card"><span class="link-name">🌹 മദ്ഹ് ഗാനങ്ങൾ വീഡിയോ</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/5651" target="_blank" class="link-card"><span class="link-name">🌹 ദഫ് ഗാനങ്ങൾ സ്പെഷ്യൽ</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/5638" target="_blank" class="link-card"><span class="link-name">🌹 ബുർദഃയുടെ വ്യത്യസ്ത രീതികൾ</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/5584" target="_blank" class="link-card"><span class="link-name">🌹 മാലപ്പാട്ടുകൾ, മജ്‌ലിസുന്നൂർ</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/5514" target="_blank" class="link-card"><span class="link-name">🌹 പടപ്പാട്ട് / മാപ്പിളപ്പാട്ട് ലിറിക്‌സ്</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/5416" target="_blank" class="link-card"><span class="link-name">🌹 സ്വാഗത ഗാനങ്ങൾ (Welcome Songs)</span><span class="link-icon telegram">Telegram</span></a>
+        <!-- CARD 1: RIFAE RATHEEB (NOW DIRECT PDF OPEN) -->
+        <div class="kitab-card" data-cat="ratheeb" data-title="രിഫാഈ റാത്തീബ് rifai ratheeb dikr pdf">
+            <div>
+                <span class="badge pdf-kitab">ഔറാദ് PDF</span>
+                <div class="kitab-title">രിഫാഈ റാത്തീബ് (Rifai Ratheeb)</div>
+                <div class="kitab-desc">സുൽത്വാനുൽ ഔലിയാ അഹ്മదుൽ കബീറുൽ രിഫാഈ (റ) തങ്ങളുടെ പേരിലുള്ള റാത്തീബും ദുആയും അടങ്ങിയ അസ്സൽ PDF ഫയൽ വായിക്കാം.</div>
+            </div>
+            <a href="kitabs/rifai-ratheeb.pdf" target="_blank" class="action-btn pdf-btn"><i class="fa-solid fa-file-pdf"></i> കിതാബ് ഓപ്പൺ ചെയ്യുക (PDF)</a>
         </div>
+
+        <!-- CARD 2: ORIGINAL PDF KITAB -->
+        <div class="kitab-card" data-cat="pdf-kitab" data-title="ഫത്ഹുൽ മുഈൻ ശറഹ് fathul mueen kithab pdf">
+            <div>
+                <span class="badge pdf-kitab">കിതാബ് PDF</span>
+                <div class="kitab-title">ഫത്ഹുൽ മുഈൻ (Fathul Mueen)</div>
+                <div class="kitab-desc">കിതാബിന്റെ യഥാർത്ഥ ഘടനയും പേജുകളും ഒട്ടും മാറാതെ വ്യക്തതയോടെ വായിക്കാനും ഡൗൺലോഡ് ചെയ്യാനുമുള്ള PDF രൂപം.</div>
+            </div>
+            <a href="kitabs/sharh-fathul-mueen.pdf" target="_blank" class="action-btn pdf-btn"><i class="fa-solid fa-file-pdf"></i> കിതാബ് ഓപ്പൺ ചെയ്യുക (PDF)</a>
+        </div>
+
+        <!-- CARD 3: KIDS MADRASA WRITING NOTES -->
+        <div class="kitab-card" data-cat="kids" data-title="കുട്ടികളുടെ പഠന സഹായി മദ്രസ നോട്ട് print note">
+            <div>
+                <span class="badge kids">മദ്രസ സോൺ</span>
+                <div class="kitab-title">എഴുതി പഠിക്കാൻ പറ്റിയ വർക്ക് ഷീറ്റുകൾ</div>
+                <div class="kitab-desc">ചെറിയ കുട്ടികൾക്ക് പ്രിന്റ് എടുത്ത് അക്ഷരങ്ങളും ദുആകളും എഴുതി പഠിക്കാൻ സഹായിക്കുന്ന പിഡിഎഫ് പാഠങ്ങൾ.</div>
+            </div>
+            <a href="kitabs/kids-worksheets.pdf" target="_blank" class="action-btn kids-btn"><i class="fa-solid fa-print"></i> പ്രിന്റ് നോട്ട് ഡൗൺലോഡ്</a>
+        </div>
+
+        <!-- CARD 4: SUNNI KNOWLEDGE BLOG (RETURNED BACK) -->
+        <div class="kitab-card" data-cat="all" data-title="സുന്നി ആദർശം അറിവുകൾ sunni knowledge blog">
+            <div>
+                <span class="badge blog">ബാഹ്യ ലിങ്ക് / Blog</span>
+                <div class="kitab-title">സുന്നി നോളഡ്ജ് ബ്ലോഗ് അറിവുകൾ</div>
+                <div class="kitab-desc">സുന്നി ആദർശങ്ങളും പ്രമാണങ്ങളും കിതാബ് ലിങ്കുകളും അടങ്ങിയ വലിയ അറിവുകളുടെ ശേഖരം സന്ദർശിക്കുക.</div>
+            </div>
+            <a href="https://sunniknowledge.blogspot.com/?m=0" target="_blank" class="action-btn blog-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> ബ്ലോഗ് സന്ദർശിക്കുക</a>
+        </div>
+
     </div>
 
-    <!-- BOARD 2: FATHHUL MUEEN -->
-    <div id="fathhul-board" class="content-board">
-        <div class="board-title">📖 ഫത്‌ഹുൽ മുഈൻ മുഴുവൻ ക്ലാസുകൾ</div>
-        <div class="board-desc"><b>അവതരണം: അബൂശാക്കിർ സുലൈമാൻ ഫൈസി കിഴിശ്ശേരി.</b> ഫത്‌ഹുൽ മുഈൻ കിതാബിലെ മുആമലാത്ത്, മുനാകഹാത്ത്, ജിനായാത്ത് എന്നിവയുമായി ബന്ധപ്പെട്ട എല്ലാ ക്ലാസുകളും താഴെ നൽകിയിരിക്കുന്ന ഒഫീഷ്യൽ ഗ്രൂപ്പുകളിൽ ലഭ്യമാണ്.</div>
-        
-        <div class="links-grid">
-            <a href="https://t.me/+Sy7XKphvdvux8-dm" target="_blank" class="link-card"><span class="link-name">🛒 മുആമലാത്ത് (Mu'amalath) ക്ലാസുകൾ</span><span class="link-icon telegram">Join Group</span></a>
-            <a href="https://t.me/+UaviHo2aSnkmpmR6" target="_blank" class="link-card"><span class="link-name">💍 മുനാകഹാത്ത് (Munakahath) ക്ലാസുകൾ</span><span class="link-icon telegram">Join Group</span></a>
-            <a href="https://t.me/+4HQuN8HkFYY2Yzdl" target="_blank" class="link-card"><span class="link-name">⚖️ ജിനായാത്ത് (Jinayath) ക്ലാസുകൾ</span><span class="link-icon telegram">Join Group</span></a>
+    <!-- WRITING SCREEN FOR KIDS (FIXED CURSOR LOGIC) -->
+    <div class="canvas-section">
+        <div class="canvas-header">
+            <h3><i class="fa-solid fa-chalkboard"></i> കുട്ടികൾക്ക് സ്ക്രീനിൽ എഴുതി പഠിക്കാം (Magic Board)</h3>
+            <button class="clear-btn" onclick="clearBoard()"><i class="fa-solid fa-trash"></i> മായ്ച്ചു കളയുക</button>
         </div>
+        <canvas id="canvasBoard"></canvas>
     </div>
 
-    <!-- BOARD 3: KITHAB & ALFIYYA -->
-    <div id="kithab-board" class="content-board">
-        <div class="board-title">📚 പ്രമുഖ കിതാബുകൾ & അൽഫിയ്യ പഠന ഗ്രന്ഥശേഖരം</div>
-        <div class="board-desc">മുതഅല്ലിമീങ്ങൾക്കും ഉസ്താദുമാർക്കും ഒരുപോലെ ഉപകാരപ്പെടുന്ന കിതാബുകളുടെ ഓഡിയോ ക്ലാസ് ലിങ്കുകളും, അൽഫിയ്യതുബ്നി മാലികുമായി ബന്ധപ്പെട്ട വിപുലമായ PDF ഗ്രന്ഥങ്ങളും ഇവിടെ ക്രോഡീകരിച്ചിരിക്കുന്നു.</div>
-        
-        <h4 style="color:var(--primary-green); margin-top:5px; margin-bottom:10px;">🎙️ ദർസ് ക്ലാസുകൾ (നൗഫൽ അഹ്സനി അൽ അഫ്സലി ഈർപ്പോണ)</h4>
-        <div class="links-grid" style="margin-bottom: 25px;">
-            <a href="https://t.me/joinchat/AAAAAEyxwW3kQLkTl3BhIg" target="_blank" class="link-card"><span class="link-name">✨ പ്രധാന ചാനൽ ലിങ്ക്</span><span class="link-icon telegram">Channel</span></a>
-            <a href="https://t.me/joinchat/AAAAAElkMRYMBPOw_uuSPw" target="_blank" class="link-card"><span class="link-name">1. ഹിദായത്തുൽ അദ്കിയാ</span><span class="link-icon telegram">Listen</span></a>
-            <a href="https://t.me/joinchat/AAAAAFfIcS484Uzmf0Nr3Q" target="_blank" class="link-card"><span class="link-name">2. മുരിഖാത്തുൽ ഖുലൂബ്</span><span class="link-icon telegram">Listen</span></a>
-            <a href="https://t.me/joinchat/AAAAAE8SFBTiAfFqwhttig" target="_blank" class="link-card"><span class="link-name">3. റസാനത്ത്</span><span class="link-icon telegram">Listen</span></a>
-            <a href="https://t.me/joinchat/AAAAAFC2hG_wCmbwlQTK1A" target="_blank" class="link-card"><span class="link-name">4. ഖസ്വീദത്തുൽ ബുർദ</span><span class="link-icon telegram">Listen</span></a>
-            <a href="https://t.me/joinchat/AAAAAFDmWkXbKu6fFVT_Xw" target="_blank" class="link-card"><span class="link-name">5. ഖുലാസ്വത്തുൽ ഫിഖ്ഹിൽ ഇസ്ലാമീ (ഭാഗം 1)</span><span class="link-icon telegram">Listen</span></a>
-            <a href="https://t.me/joinchat/AAAAAFLVToILUMfPs7dM9g" target="_blank" class="link-card"><span class="link-name">6. ഖുലാസ്വത്തുൽ ഫിഖ്ഹിൽ ഇസ്ലാമീ (ഭാഗം 2)</span><span class="link-icon telegram">Listen</span></a>
-            <a href="https://t.me/joinchat/AAAAAE6th4piYFsZ_ikAmQ" target="_blank" class="link-card"><span class="link-name">7. ഖുലാസ്വത്തുൽ ഫിഖ്ഹിൽ ഇസ്ലാമീ (ഭാഗം 3)</span><span class="link-icon telegram">Listen</span></a>
-            <a href="https://t.me/joinchat/AAAAAE8oWTG1ZJmAQyd5AQ" target="_blank" class="link-card"><span class="link-name">8. പ്രത്യേക ഇസ്‌ലാമിക് പഠന ക്ലാസ്</span><span class="link-icon telegram">Listen</span></a>
-            <a href="https://t.me/joinchat/AAAAAFGPM636jjfIwJwSEg" target="_blank" class="link-card"><span class="link-name">9. 📖 രിയാളുസ്സ്വാലിഹീൻ (رياض الصالحين)</span><span class="link-icon telegram">Listen</span></a>
-            <a href="https://t.me/joinchat/AAAAAFh05t4_DhzQQHsjgg" target="_blank" class="link-card"><span class="link-name">10. ശൈഖ് അബ്ദുൽ അസീസ് മഖ്ദൂം ക്ലാസുകൾ</span><span class="link-icon telegram">Listen</span></a>
-        </div>
+    <!-- ENGINE JAVASCRIPT LOGIC -->
+    <script>
+        let currentCat = 'all';
 
-        <h4 style="color:var(--primary-green); margin-bottom:10px;">📕 അൽഫിയ്യതുബ്നി മാലിക് (Alfiyya) ഗ്രന്ഥശേഖരം</h4>
-        <div class="links-grid">
-            <a href="https://t.me/almakthabathulihsaniyya/4859" target="_blank" class="link-card"><span class="link-name">متن ألفية ابن مالك</span><span class="link-icon telegram">PDF</span></a>
-            <a href="https://t.me/almakthabathulihsaniyya/3603" target="_blank" class="link-card"><span class="link-name">المكودي على ألفية ابن مالك</span><span class="link-icon telegram">PDF</span></a>
-            <a href="https://t.me/almakthabathulihsaniyya/2871" target="_blank" class="link-card"><span class="link-name">شرح ألفية ابن مالك لابن الهانئ</span><span class="link-icon telegram">PDF</span></a>
-            <a href="https://t.me/almakthabathulihsaniyya/1718" target="_blank" class="link-card"><span class="link-name">اوضح المسالك شرح الألفية لابن هشام</span><span class="link-icon telegram">PDF</span></a>
-            <a href="https://t.me/almakthabathulihsaniyya/1716" target="_blank" class="link-card"><span class="link-name">حاشية الخضري</span><span class="link-icon telegram">PDF</span></a>
-            <a href="https://t.me/almakthabathulihsaniyya/1723" target="_blank" class="link-card"><span class="link-name">حاشية يس على الألفية</span><span class="link-icon telegram">PDF</span></a>
-            <a href="https://t.me/almakthabathulihsaniyya/1726" target="_blank" class="link-card"><span class="link-name">شرح المكودي على الألفية</span><span class="link-icon telegram">PDF</span></a>
-            <a href="https://t.me/almakthabathulihsaniyya/1728" target="_blank" class="link-card"><span class="link-name">حاشية ابن الحاج على المكودي</span><span class="link-icon telegram">PDF</span></a>
-            <a href="https://t.me/almakthabathulihsaniyya/1731" target="_blank" class="link-card"><span class="link-name">شرح السيوطي على الألفية</span><span class="link-icon telegram">PDF</span></a>
-            <a href="https://t.me/almakthabathulihsaniyya/1732" target="_blank" class="link-card"><span class="link-name">منهج السالك لابن حيان النحوي</span><span class="link-icon telegram">PDF</span></a>
-            <a href="https://t.me/almakthabathulihsaniyya/1735" target="_blank" class="link-card"><span class="link-name">توضيح المقاصد</span><span class="link-icon telegram">PDF</span></a>
-            <a href="https://t.me/almakthabathulihsaniyya/1736" target="_blank" class="link-card"><span class="link-name">حاشية الصبان على الألفية</span><span class="link-icon telegram">PDF</span></a>
-            <a href="https://t.me/almakthabathulihsaniyya/1741" target="_blank" class="link-card"><span class="link-name">إتحاف ذوي الاستحقاق شرح الألفية</span><span class="link-icon telegram">PDF</span></a>
-            <a href="https://t.me/almakthabathulihsaniyya/1742" target="_blank" class="link-card"><span class="link-name">دليل السالك إلى ألفية ابن مالك</span><span class="link-icon telegram">PDF</span></a>
-            <a href="https://t.me/almakthabathulihsaniyya/1743" target="_blank" class="link-card"><span class="link-name">شرح أبي فارس الدحداح على الألفية</span><span class="link-icon telegram">PDF</span></a>
-            <a href="https://t.me/almakthabathulihsaniyya/1745" target="_blank" class="link-card"><span class="link-name">منهج السالك على الألفية</span><span class="link-icon telegram">PDF</span></a>
-            <a href="https://t.me/almakthabathulihsaniyya/1746" target="_blank" class="link-card"><span class="link-name">شرح ابن الناظم على الألفية</span><span class="link-icon telegram">PDF</span></a>
-            <a href="https://t.me/almakthabathulihsaniyya/1747" target="_blank" class="link-card"><span class="link-name">توضيح المقاصظ على الألفية</span><span class="link-icon telegram">PDF</span></a>
-            <a href="https://t.me/almakthabathulihsaniyya/1748" target="_blank" class="link-card"><span class="link-name">الكواكب الدرية على الألفية</span><span class="link-icon telegram">PDF</span></a>
-            <a href="https://t.me/almakthabathulihsaniyya/1749" target="_blank" class="link-card"><span class="link-name">شرح سري الدين على الألفية</span><span class="link-icon telegram">PDF</span></a>
-            <a href="https://t.me/almakthabathulihsaniyya/1750" target="_blank" class="link-card"><span class="link-name">البهجة المرضية على الألفية شرح السيوطي</span><span class="link-icon telegram">PDF</span></a>
-            <a href="https://t.me/almakthabathulihsaniyya/1751" target="_blank" class="link-card"><span class="link-name">شرح ابن طولون على الألفية</span><span class="link-icon telegram">PDF</span></a>
-            <a href="https://t.me/almakthabathulihsaniyya/1752" target="_blank" class="link-card"><span class="link-name">أرشاد السالك إلى حل ألفاظ ألفية</span><span class="link-icon telegram">PDF</span></a>
-            <a href="https://t.me/almakthabathulihsaniyya/1753" target="_blank" class="link-card"><span class="link-name">حاشية السجائي على الألفية</span><span class="link-icon telegram">PDF</span></a>
-            <a href="https://t.me/almakthabathulihsaniyya/1754" target="_blank" class="link-card"><span class="link-name">الشرح الميسر على الألفية</span><span class="link-icon telegram">PDF</span></a>
-            <a href="https://t.me/almakthabathulihsaniyya/1755" target="_blank" class="link-card"><span class="link-name">الألفية مع احمرار ابن بونا</span><span class="link-icon telegram">PDF</span></a>
-            <a href="https://t.me/almakthabathulihsaniyya/1757" target="_blank" class="link-card"><span class="link-name">المقاصد النحوية في الشواهد الألفية</span><span class="link-icon telegram">PDF</span></a>
-            <a href="https://t.me/almakthabathulihsaniyya/1759" target="_blank" class="link-card"><span class="link-name">شرح الأشموني على الألفية</span><span class="link-icon telegram">PDF</span></a>
-            <a href="https://t.me/almakthabathulihsaniyya/1760" target="_blank" class="link-card"><span class="link-name">اختلاف آراء ابن مالك الخ</span><span class="link-icon telegram">PDF</span></a>
-            <a href="https://t.me/almakthabathulihsaniyya/1761" target="_blank" class="link-card"><span class="link-name">آراء الكسائي عند شراح ألفية</span><span class="link-icon telegram">PDF</span></a>
-            <a href="https://t.me/almakthabathulihsaniyya/1762" target="_blank" class="link-card"><span class="link-name">أشعار شواهد ابن عقيل</span><span class="link-icon telegram">PDF</span></a>
-            <a href="https://t.me/almakthabathulihsaniyya/1763" target="_blank" class="link-card"><span class="link-name">توضيح المقاصد للمرادي</span><span class="link-icon telegram">PDF</span></a>
-            <a href="https://t.me/almakthabathulihsaniyya/1764" target="_blank" class="link-card"><span class="link-name">دراسة مقارنة الخ</span><span class="link-icon telegram">PDF</span></a>
-            <a href="https://t.me/almakthabathulihsaniyya/1765" target="_blank" class="link-card"><span class="link-name">شروح الألفية مناهجها الخ</span><span class="link-icon telegram">PDF</span></a>
-            <a href="https://t.me/almakthabathulihsaniyya/1766" target="_blank" class="link-card"><span class="link-name">السجع في نظم الألفية</span><span class="link-icon telegram">PDF</span></a>
-            <a href="https://t.me/almakthabathulihsaniyya/1769" target="_blank" class="link-card"><span class="link-name">الألفية تحليل ونقد</span><span class="link-icon telegram">PDF</span></a>
-            <a href="https://t.me/almakthabathulihsaniyya/1773" target="_blank" class="link-card"><span class="link-name">الألفية شرح معاصر</span><span class="link-icon telegram">PDF</span></a>
-            <a href="https://t.me/almakthabathulihsaniyya/1776" target="_blank" class="link-card"><span class="link-name">الأجوبة الجلية على الألفية</span><span class="link-icon telegram">PDF</span></a>
-        </div>
-    </div>
+        function filterLibrary() {
+            let searchVal = document.getElementById('librarySearch').value.toLowerCase();
+            let cards = document.querySelectorAll('.kitab-card');
 
-    <!-- BOARD 4: QURAN 30 JUZ -->
-    <div id="quran-board" class="content-board">
-        <div class="board-title">🕌 വിശുദ്ധ ഖുർആൻ 30 ജുസ്ഹ് (ഡൗൺലോഡ് ചെയ്യാതെ കേൾക്കാം)</div>
-        <div class="board-desc">ആവശ്യമായ ജുസ്ഹ് തിരഞ്ഞെടുത്ത് വിരൽ കൊണ്ട് തൊട്ടാൽ നിങ്ങൾക്ക് നേരിട്ട് ഓഡിയോ കേൾക്കാവുന്നതാണ്. സ്റ്റാർട്ട് ചെയ്യാൻ മാത്രം ഇന്റർനെറ്റ് മതിയാകും. നിങ്ങളുടെ ദുആയിൽ ഉൾപ്പെടുത്തുക 🤲</div>
-        
-        <div class="quran-grid">
-            <!-- Automatically injecting the 30 Juz items with shorter links -->
-            <a href="http://j.mp/2b8SiNO" target="_blank" class="quran-card">ജുസ്ഹ് 1 <span>Juz 1</span></a>
-            <a href="http://j.mp/2b8RJmQ" target="_blank" class="quran-card">ജുസ്ഹ് 2 <span>Juz 2</span></a>
-            <a href="http://j.mp/2bFSrtF" target="_blank" class="quran-card">ജുസ്ഹ് 3 <span>Juz 3</span></a>
-            <a href="http://j.mp/2b8SXi3" target="_blank" class="quran-card">ജുസ്ഹ് 4 <span>Juz 4</span></a>
-            <a href="http://j.mp/2b8RZm3" target="_blank" class="quran-card">ജുസ്ഹ് 5 <span>Juz 5</span></a>
-            <a href="http://j.mp/28MBohs" target="_blank" class="quran-card">ജുസ്ഹ് 6 <span>Juz 6</span></a>
-            <a href="http://j.mp/2bFRIZC" target="_blank" class="quran-card">ജുസ്ഹ് 7 <span>Juz 7</span></a>
-            <a href="http://j.mp/2bufF7o" target="_blank" class="quran-card">ജുസ്ഹ് 8 <span>Juz 8</span></a>
-            <a href="http://j.mp/2byr1bu" target="_blank" class="quran-card">ജുസ്ഹ് 9 <span>Juz 9</span></a>
-            <a href="http://j.mp/2bHfyUH" target="_blank" class="quran-card">ജുസ്ഹ് 10 <span>Juz 10</span></a>
-            <a href="http://j.mp/2bHf80y" target="_blank" class="quran-card">ജുസ്ഹ് 11 <span>Juz 11</span></a>
-            <a href="http://j.mp/2bWnTby" target="_blank" class="quran-card">ജുസ്ഹ് 12 <span>Juz 12</span></a>
-            <a href="http://j.mp/2bFTiKQ" target="_blank" class="quran-card">ജുസ്ഹ് 13 <span>Juz 13</span></a>
-            <a href="http://j.mp/2b8SUTA" target="_blank" class="quran-card">ജുസ്ഹ് 14 <span>Juz 14</span></a>
-            <a href="http://j.mp/2bFRQIM" target="_blank" class="quran-card">ജുസ്ഹ് 15 <span>Juz 15</span></a>
-            <a href="http://j.mp/2b8SegG" target="_blank" class="quran-card">ജുസ്ഹ് 16 <span>Juz 16</span></a>
-            <a href="http://j.mp/2brHsFz" target="_blank" class="quran-card">ജുസ്ഹ് 17 <span>Juz 17</span></a>
-            <a href="http://j.mp/2b8SCfc" target="_blank" class="quran-card">ജുസ്ഹ് 18 <span>Juz 18</span></a>
-            <a href="http://j.mp/2bFSq95" target="_blank" class="quran-card">ജുസ്ഹ് 19 <span>Juz 19</span></a>
-            <a href="http://j.mp/2brI1zc" target="_blank" class="quran-card">ജുസ്ഹ് 20 <span>Juz 20</span></a>
-            <a href="http://j.mp/2b8VcBO" target="_blank" class="quran-card">ജുസ്ഹ് 21 <span>Juz 21</span></a>
-            <a href="http://j.mp/2bFRxNP" target="_blank" class="quran-card">ജുസ്ഹ് 22 <span>Juz 22</span></a>
-            <a href="http://j.mp/2brItxm" target="_blank" class="quran-card">ജുസ്ഹ് 23 <span>Juz 23</span></a>
-            <a href="http://j.mp/2brHKw5" target="_blank" class="quran-card">ജുസ്ഹ് 24 <span>Juz 24</span></a>
-            <a href="http://j.mp/2brImlf" target="_blank" class="quran-card">ജുസ്ഹ് 25 <span>Juz 25</span></a>
-            <a href="http://j.mp/2bFRHF2" target="_blank" class="quran-card">ജുസ്ഹ് 26 <span>Juz 26</span></a>
-            <a href="http://j.mp/2bFRXno" target="_blank" class="quran-card">ജുസ്ഹ് 27 <span>Juz 27</span></a>
-            <a href="http://j.mp/2brI3ai" target="_blank" class="quran-card">ജുസ്ഹ് 28 <span>Juz 28</span></a>
-            <a href="http://j.mp/2bFRyBF" target="_blank" class="quran-card">ജുസ്ഹ് 29 <span>Juz 29</span></a>
-            <a href="http://j.mp/2bFREcc" target="_blank" class="quran-card">ജുസ്ഹ് 30 <span>Juz 30</span></a>
-        </div>
-    </div>
-</div>
+            cards.forEach(card => {
+                let titleData = card.getAttribute('data-title');
+                let catData = card.getAttribute('data-cat');
+                
+                let matchesSearch = titleData.includes(searchVal);
+                let matchesCat = (currentCat === 'all' || catData === currentCat);
 
-<script>
-    function openBoard(evt, boardId) {
-        // Hide all content boards
-        const contentBoards = document.getElementsByClassName("content-board");
-        for (let i = 0; i < contentBoards.length; i++) {
-            contentBoards[i].classList.remove("active");
+                if(matchesSearch && matchesCat) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
         }
 
-        // Remove active class from all buttons
-        const boardBtns = document.getElementsByClassName("board-btn");
-        for (let i = 0; i < boardBtns.length; i++) {
-            boardBtns[i].classList.remove("active");
+        function filterCategory(category, element) {
+            currentCat = category;
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            element.classList.add('active');
+            filterLibrary();
         }
 
-        // Show current board and mark button as active
-        document.getElementById(boardId).classList.add("active");
-        evt.currentTarget.classList.add("active");
-    }
-</script>
+        // --- FIXED MAGIC BOARD WRITING LOGIC ---
+        const canvas = document.getElementById('canvasBoard');
+        const ctx = canvas.getContext('2d');
+        let drawing = false;
 
+        function resizeCanvas() {
+            const currentData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            canvas.width = canvas.parentElement.clientWidth - 50;
+            ctx.putImageData(currentData, 0, 0);
+            setupContext();
+        }
+
+        function setupContext() {
+            ctx.strokeStyle = '#ffc107'; 
+            ctx.lineWidth = 4;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        setTimeout(resizeCanvas, 100);
+
+        function startPosition(e) {
+            drawing = true;
+            draw(e);
+        }
+        function endPosition() {
+            drawing = false;
+            ctx.beginPath();
+        }
+        function draw(e) {
+            if (!drawing) return;
+            e.preventDefault();
+            
+            let clientX = e.clientX || (e.touches && e.touches[0].clientX);
+            let clientY = e.clientY || (e.touches && e.touches[0].clientY);
+            
+            let rect = canvas.getBoundingClientRect();
+            
+            // Exact coordinates matching current zoom and scroll
+            let x = (clientX - rect.left) * (canvas.width / rect.width);
+            let y = (clientY - rect.top) * (canvas.height / rect.height);
+
+            ctx.lineTo(x, y);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+        }
+
+        canvas.addEventListener('mousedown', startPosition);
+        canvas.addEventListener('mouseup', endPosition);
+        canvas.addEventListener('mousemove', draw);
+
+        canvas.addEventListener('touchstart', startPosition);
+        canvas.addEventListener('touchend', endPosition);
+        canvas.addEventListener('touchmove', draw);
+
+        function clearBoard() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+    </script>
 </body>
 </html>
