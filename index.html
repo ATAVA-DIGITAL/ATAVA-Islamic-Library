@@ -13,55 +13,144 @@
             --text-dark: #1f2937;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
-        body { background-color: #f3f4f6; color: var(--text-dark); padding: 20px; line-height: 1.6; }
         
-        .library-container { max-width: 1200px; margin: 0 auto; background: #ffffff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 25px; }
+        /* ബോർഡർ സ്പേസ് കിട്ടാൻ പാഡിംഗ് നൽകി, ബാക്ക്ഗ്രൗണ്ട് ഭംഗിയാക്കി */
+        body { 
+            background-color: #e5e7eb; 
+            color: var(--text-dark); 
+            padding: 40px 20px; 
+            line-height: 1.7; 
+        }
+        
+        /* സ്ക്രീൻ മുഴുവനായി വരാൻ മാക്സിമം വിഡ്ത്ത് 1400px ആക്കി */
+        .library-container { 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            background: #ffffff; 
+            border-radius: 16px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+            padding: 40px; 
+        }
 
-        /* Header Block */
-        header { text-align: center; padding: 40px 10px 30px; background: linear-gradient(135deg, #064e3b, #0f5132); border-radius: 16px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); color: white; }
-        header h1 { color: #ffffff; font-size: 2.2rem; margin-bottom: 8px; font-weight: 800; letter-spacing: 1px; }
-        header p { color: #d1e7dd; font-size: 1rem; font-weight: 500; }
-        .gold-line { width: 100px; height: 4px; background: #ffc107; margin: 15px auto 0; border-radius: 2px; }
+        /* ഹെഡർ അക്ഷരങ്ങൾ വലുതാക്കി */
+        header { 
+            text-align: center; 
+            padding: 50px 20px; 
+            background: linear-gradient(135deg, #064e3b, #0f5132); 
+            border-radius: 20px; 
+            margin-bottom: 35px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+            color: white; 
+        }
+        header h1 { font-size: 3rem; margin-bottom: 12px; font-weight: 800; letter-spacing: 1px; }
+        header p { font-size: 1.4rem; font-weight: 500; color: #d1e7dd; }
+        .gold-line { width: 150px; height: 5px; background: #ffc107; margin: 20px auto 0; border-radius: 3px; }
 
-        /* AI Feature Banner */
-        .ai-banner { margin-bottom: 30px; background: linear-gradient(135deg, #1e3a8a, #3b82f6); color: white; padding: 25px; border-radius: 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; box-shadow: 0 10px 20px rgba(59,130,246,0.2); }
-        .ai-text h3 { font-size: 1.4rem; margin-bottom: 5px; font-weight: 800; display: flex; align-items: center; gap: 8px; }
-        .ai-text p { color: #dbeafe; font-size: 0.95rem; }
-        .ai-btn { background: #ffc107; color: #1e293b; padding: 12px 25px; border-radius: 30px; font-weight: 800; text-decoration: none; display: flex; align-items: center; gap: 8px; transition: 0.2s; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        /* AI ബാനർ സൈസ് കൂട്ടി */
+        .ai-banner { 
+            margin-bottom: 35px; 
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6); 
+            color: white; 
+            padding: 35px; 
+            border-radius: 20px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            flex-wrap: wrap; 
+            gap: 25px; 
+            box-shadow: 0 10px 20px rgba(59,130,246,0.2); 
+        }
+        .ai-text h3 { font-size: 1.8rem; margin-bottom: 8px; font-weight: 800; display: flex; align-items: center; gap: 10px; }
+        .ai-text p { color: #dbeafe; font-size: 1.2rem; }
+        .ai-btn { background: #ffc107; color: #1e293b; padding: 15px 35px; border-radius: 30px; font-size: 1.2rem; font-weight: 800; text-decoration: none; display: flex; align-items: center; gap: 10px; transition: 0.2s; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
         .ai-btn:hover { background: #ffffff; transform: translateY(-2px); }
         
-        /* BOARD BUTTONS STYLE */
-        .board-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 30px; }
-        .board-btn { background: var(--light-green); border: 2px solid var(--primary-green); color: var(--primary-green); padding: 15px 10px; border-radius: 8px; font-size: 1rem; font-weight: bold; cursor: pointer; text-align: center; transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; }
-        .board-btn:hover, .board-btn.active { background: var(--primary-green); color: #ffffff; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(6, 78, 59, 0.2); }
-        .board-btn span { font-size: 0.8rem; font-weight: normal; opacity: 0.9; }
+        /* മെയിൻ ബോർഡ് ബട്ടണുകൾ വലുതാക്കി */
+        .board-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 40px; }
+        .board-btn { background: var(--light-green); border: 3px solid var(--primary-green); color: var(--primary-green); padding: 22px 15px; border-radius: 12px; font-size: 1.3rem; font-weight: bold; cursor: pointer; text-align: center; transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+        .board-btn:hover, .board-btn.active { background: var(--primary-green); color: #ffffff; transform: translateY(-3px); box-shadow: 0 6px 15px rgba(6, 78, 59, 0.2); }
+        .board-btn span { font-size: 1rem; font-weight: normal; opacity: 0.9; }
 
-        /* CONTENT BOARDS */
-        .content-board { display: none; background: #fafafa; border: 1px solid #e5e7eb; border-radius: 8px; padding: 20px; animation: fadeIn 0.4s ease; }
+        /* കണ്ടന്റ് ബോർഡുകൾ */
+        .content-board { display: none; background: #fafafa; border: 1px solid #e5e7eb; border-radius: 12px; padding: 30px; animation: fadeIn 0.4s ease; }
         .content-board.active { display: block; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 
-        .board-title { color: var(--accent-gold); font-size: 1.3rem; font-weight: bold; margin-top: 0; margin-bottom: 15px; border-bottom: 1px dashed #cbd5e1; padding-bottom: 8px; }
-        .board-desc { font-size: 0.95rem; color: #4b5563; line-height: 1.5; margin-bottom: 20px; background: #ffffff; padding: 12px; border-left: 4px solid var(--accent-gold); border-radius: 4px; }
+        .board-title { color: var(--accent-gold); font-size: 1.8rem; font-weight: bold; margin-top: 0; margin-bottom: 20px; border-bottom: 2px dashed #cbd5e1; padding-bottom: 12px; }
+        .board-desc { font-size: 1.2rem; color: #4b5563; margin-bottom: 30px; background: #ffffff; padding: 18px; border-left: 5px solid var(--accent-gold); border-radius: 6px; }
 
-        /* LINKS DISPLAY GRID */
-        .links-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
-        .link-card { background: #ffffff; border: 1px solid #e5e7eb; border-radius: 6px; padding: 12px 15px; display: flex; justify-content: space-between; align-items: center; transition: all 0.2s ease; text-decoration: none; color: inherit; }
-        .link-card:hover { border-color: var(--primary-green); background: var(--light-green); transform: translateX(3px); }
-        .link-name { font-size: 0.95rem; font-weight: bold; color: #111827; }
+        /* ലിങ്ക് കാർഡുകൾ വലുതാക്കി */
+        .links-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 15px; }
+        .link-card { background: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 18px 20px; display: flex; justify-content: space-between; align-items: center; transition: all 0.2s ease; text-decoration: none; color: inherit; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
+        .link-card:hover { border-color: var(--primary-green); background: var(--light-green); transform: translateX(5px); }
+        .link-name { font-size: 1.15rem; font-weight: bold; color: #111827; }
         
-        .link-icon { background: #2563eb; color: white; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; }
+        .link-icon { color: white; padding: 8px 15px; border-radius: 6px; font-size: 0.9rem; font-weight: bold; text-align: center; }
         .link-icon.telegram { background: #229ED9; }
         .link-icon.pdf-btn { background: #dc3545; }
         .link-icon.blog-btn { background: #0284c7; }
 
-        /* QURAN GRID SPECIFIC */
-        .quran-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; }
-        .quran-card { background: #ffffff; border: 1px solid #d1d5db; border-radius: 6px; padding: 12px; text-align: center; text-decoration: none; color: var(--primary-green); font-weight: bold; font-size: 0.95rem; transition: all 0.2s ease; }
-        .quran-card:hover { background: var(--primary-green); color: white; border-color: var(--primary-green); transform: scale(1.03); }
-        .quran-card span { display: block; font-size: 0.7rem; color: #6b7280; margin-top: 3px; }
+        /* സുന്നി ബ്ലോഗ് സ്പെഷ്യൽ ഹൈലൈറ്റ് സ്റ്റൈൽ */
+        .highlight-blog-card {
+            grid-column: 1 / -1; /* ഫുൾ വീതിയിൽ വരാൻ */
+            background: linear-gradient(135deg, #fffbeb, #fef3c7);
+            border: 2px solid #d97706 !important;
+            padding: 25px !important;
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+        .highlight-blog-card:hover {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+        }
+        .blog-header-group { display: flex; justify-content: space-between; width: 100%; align-items: center; flex-wrap: wrap; gap: 10px; }
+        .blog-notice-text { font-size: 1.25rem; color: #b45309; font-weight: bold; line-height: 1.6; }
+
+        /* ഖുർആൻ കാർഡുകൾ */
+        .quran-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+        .quran-card { background: #ffffff; border: 1px solid #d1d5db; border-radius: 8px; padding: 18px; text-align: center; text-decoration: none; color: var(--primary-green); font-weight: bold; font-size: 1.2rem; transition: all 0.2s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+        .quran-card:hover { background: var(--primary-green); color: white; border-color: var(--primary-green); transform: scale(1.05); }
+        .quran-card span { display: block; font-size: 0.85rem; color: #6b7280; margin-top: 5px; }
         .quran-card:hover span { color: #f0fdf4; }
+
+        /* കമ്പനി ഫൂട്ടർ സെക്ഷൻ (Powered by) */
+        footer {
+            margin-top: 50px;
+            padding: 30px 20px;
+            background: #1f2937;
+            color: #f3f4f6;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.05);
+        }
+        .footer-powered { font-size: 1.1rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-company { font-size: 1.8rem; color: #ffc107; font-weight: 800; margin: 5px 0 10px; }
+        .footer-services { font-size: 1.15rem; color: #d1d5db; max-width: 800px; margin: 0 auto 20px; font-weight: 500; }
+        .footer-line { width: 80px; height: 2px; background: #4b5563; margin: 15px auto; }
+        .footer-owner { font-size: 1.3rem; font-weight: bold; color: #ffffff; margin-bottom: 12px; }
+        
+        .whatsapp-contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #25d366;
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(37,211,102,0.3);
+        }
+        .whatsapp-contact-btn:hover {
+            background: #20ba5a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(37,211,102,0.4);
+        }
     </style>
 </head>
 <body>
@@ -75,16 +164,16 @@
         <div class="gold-line"></div>
     </header>
 
-    <!-- AHLUS-SUNNAH AI CHATBOT INTEGRATION -->
+    <!-- AI CHATBOT -->
     <div class="ai-banner">
         <div class="ai-text">
-            <h3><i class="fa-solid fa-robot"></i> അഹ്ലുസ്സുന്ന AI ചാറ്റ് ബോട്ട്</h3>
-            <p>സുന്നത്ത് ജമാഅത്തുമായി ബന്ധപ്പെട്ട നിങ്ങളുടെ എല്ലാ സംശയങ്ങൾക്കും പ്രമാണബദ്ധമായ മറുപടികൾ ഇവിടെ ചോദിക്കാം.ആവശ്യമെങ്കിൽ ഉസ്താദുമാരോട് ചോദിച്ചു ഉറപ്പ് വരുത്താം</p>
+            <h3><i class="fa-solid fa-robot"></i> അഹ്‌لوസ്സുന്ന AI ചാറ്റ് ബോട്ട്</h3>
+            <p>സുന്നത്തി ജമാഅത്തുമായി ബന്ധപ്പെട്ട നിങ്ങളുടെ എല്ലാ സംശയങ്ങൾക്കും പ്രമാണബദ്ധമായ മറുപടികൾ ഇവിടെ ചോദിക്കാം.</p>
         </div>
         <a href="https://ahlus-sunnah-ai.lovable.app" target="_blank" class="ai-btn">സംശയങ്ങൾ ചോദിക്കുക <i class="fa-solid fa-arrow-right"></i></a>
     </div>
 
-    <!-- NAVIGATION BOARDS BUTTONS -->
+    <!-- BOARDS NAVIGATION -->
     <div class="board-grid">
         <button class="board-btn active" onclick="openBoard(event, 'meelad-board')">
             🎵 മീലാദ് ഗാനങ്ങൾ 
@@ -164,7 +253,7 @@
             <a href="https://t.me/meladganangal/5781" target="_blank" class="link-card"><span class="link-name">🌹 മദ്ഹ് ഗാനങ്ങൾ വീഡിയോ</span><span class="link-icon telegram">Telegram</span></a>
             <a href="https://t.me/meladganangal/5651" target="_blank" class="link-card"><span class="link-name">🌹 ദഫ് ഗാനങ്ങൾ സ്പെഷ്യൽ</span><span class="link-icon telegram">Telegram</span></a>
             <a href="https://t.me/meladganangal/5638" target="_blank" class="link-card"><span class="link-name">🌹 ബുർദഃയുടെ വ്യത്യസ്ത രീതികൾ</span><span class="link-icon telegram">Telegram</span></a>
-            <a href="https://t.me/meladganangal/5584" target="_blank" class="link-card"><span class="link-name">🌹 മാലപ്പാട്ടുകൾ, മജ്‌ലിസുന്നൂർ</span><span class="link-icon telegram">Telegram</span></a>
+            <a href="https://t.me/meladganangal/5584" target="_blank" class="link-card"><span class="link-name">🌹 മාලപ്പാട്ടുകൾ, മജ്‌ലിസുന്നൂർ</span><span class="link-icon telegram">Telegram</span></a>
             <a href="https://t.me/meladganangal/5514" target="_blank" class="link-card"><span class="link-name">🌹 പടപ്പാട്ട് / മാപ്പിളപ്പാട്ട് ലിറിക്‌സ്</span><span class="link-icon telegram">Telegram</span></a>
             <a href="https://t.me/meladganangal/5416" target="_blank" class="link-card"><span class="link-name">🌹 സ്വാഗത ഗാനങ്ങൾ (Welcome Songs)</span><span class="link-icon telegram">Telegram</span></a>
         </div>
@@ -187,10 +276,10 @@
         <div class="board-title">📚 പ്രമുഖ കിതാബുകൾ & അൽഫിയ്യ പഠന ഗ്രന്ഥശേഖരം</div>
         <div class="board-desc">മുതഅല്ലിമീങ്ങൾക്കും ഉസ്താദുമാർക്കും ഒരുപോലെ ഉപകാരപ്പെടുന്ന കിതാബുകളുടെ ഓഡിയോ ക്ലാസ് ലിങ്കുകളും, അൽഫിയ്യതുബ്നി മാലികുമായി ബന്ധപ്പെട്ട വിപുലമായ PDF ഗ്രന്ഥങ്ങളും ഇവിടെ ക്രോഡീകരിച്ചിരിക്കുന്നു.</div>
         
-        <h4 style="color:var(--primary-green); margin-top:5px; margin-bottom:10px;">🎙️ ദർസ് ക്ലാസുകൾ (നൗഫൽ അഹ്സനി അൽ അഫ്സലി ഈർപ്പോണ)</h4>
-        <div class="links-grid" style="margin-bottom: 25px;">
+        <h4 style="color:var(--primary-green); font-size:1.4rem; margin-top:5px; margin-bottom:15px;">🎙️ ദർസ് ക്ലാസുകൾ (നൗഫൽ അഹ്സനി അൽ അഫ്സലി ഈർപ്പോണ)</h4>
+        <div class="links-grid" style="margin-bottom: 30px;">
             <a href="https://t.me/joinchat/AAAAAEyxwW3kQLkTl3BhIg" target="_blank" class="link-card"><span class="link-name">✨ പ്രധാന ചാനൽ ലിങ്ക്</span><span class="link-icon telegram">Channel</span></a>
-            <a href="https://t.me/joinchat/AAAAAElkMRYMBPOw_uuSPw" target="_blank" class="link-card"><span class="link-name">1. ഹിദായത്തുൽ അദ്kിയാ</span><span class="link-icon telegram">Listen</span></a>
+            <a href="https://t.me/joinchat/AAAAAElkMRYMBPOw_uuSPw" target="_blank" class="link-card"><span class="link-name">1. Хиദായത്തുൽ അദ്kിയാ</span><span class="link-icon telegram">Listen</span></a>
             <a href="https://t.me/joinchat/AAAAAFfIcS484Uzmf0Nr3Q" target="_blank" class="link-card"><span class="link-name">2. മുരിഖാത്തുൽ ഖുലൂബ്</span><span class="link-icon telegram">Listen</span></a>
             <a href="https://t.me/joinchat/AAAAAE8SFBTiAfFqwhttig" target="_blank" class="link-card"><span class="link-name">3. റസാനത്ത്</span><span class="link-icon telegram">Listen</span></a>
             <a href="https://t.me/joinchat/AAAAAFC2hG_wCmbwlQTK1A" target="_blank" class="link-card"><span class="link-name">4. ഖസ്വീദത്തുൽ ബുർദ</span><span class="link-icon telegram">Listen</span></a>
@@ -202,13 +291,13 @@
             <a href="https://t.me/joinchat/AAAAAFh05t4_DhzQQHsjgg" target="_blank" class="link-card"><span class="link-name">10. ശൈഖ് അബ്ദുൽ അസീസ് മഖ്ദൂം ക്ലാസുകൾ</span><span class="link-icon telegram">Listen</span></a>
         </div>
 
-        <h4 style="color:var(--primary-green); margin-bottom:10px;">📕 അൽഫിയ്യതുബ്നി മാലിക് (Alfiyya) ഗ്രന്ഥശേഖരം</h4>
+        <h4 style="color:var(--primary-green); font-size:1.4rem; margin-bottom:15px;">📕 അൽഫിയ്യതുബ്നി മാലിക് (Alfiyya) ഗ്രന്ഥശേഖരം</h4>
         <div class="links-grid">
             <a href="https://t.me/almakthabathulihsaniyya/4859" target="_blank" class="link-card"><span class="link-name">متن ألفية ابن مالك</span><span class="link-icon telegram">PDF</span></a>
             <a href="https://t.me/almakthabathulihsaniyya/3603" target="_blank" class="link-card"><span class="link-name">المكودي على ألفية ابن مالك</span><span class="link-icon telegram">PDF</span></a>
             <a href="https://t.me/almakthabathulihsaniyya/2871" target="_blank" class="link-card"><span class="link-name">شرح ألفية ابن مالك لابن الهانئ</span><span class="link-icon telegram">PDF</span></a>
             <a href="https://t.me/almakthabathulihsaniyya/1718" target="_blank" class="link-card"><span class="link-name">اوضح المسالك شرح الألفية لابن هشام</span><span class="link-icon telegram">PDF</span></a>
-            <a href="https://t.me/almakthabathulihsaniyya/1716" target="_blank" class="link-card"><span class="link-name">حاشية الخضри</span><span class="link-icon telegram">PDF</span></a>
+            <a href="https://t.me/almakthabathulihsaniyya/1716" target="_blank" class="link-card"><span class="link-name">حاشية الخضري</span><span class="link-icon telegram">PDF</span></a>
             <a href="https://t.me/almakthabathulihsaniyya/1723" target="_blank" class="link-card"><span class="link-name">حاشية يس على الألفية</span><span class="link-icon telegram">PDF</span></a>
             <a href="https://t.me/almakthabathulihsaniyya/1726" target="_blank" class="link-card"><span class="link-name">شرح المكودي على الألفية</span><span class="link-icon telegram">PDF</span></a>
             <a href="https://t.me/almakthabathulihsaniyya/1728" target="_blank" class="link-card"><span class="link-name">حاشية ابن الحاج على المكودي</span><span class="link-icon telegram">PDF</span></a>
@@ -237,7 +326,7 @@
             <a href="https://t.me/almakthabathulihsaniyya/1762" target="_blank" class="link-card"><span class="link-name">أشعار شواهد ابن عقيل</span><span class="link-icon telegram">PDF</span></a>
             <a href="https://t.me/almakthabathulihsaniyya/1763" target="_blank" class="link-card"><span class="link-name">توضيح المقاصد للمرادي</span><span class="link-icon telegram">PDF</span></a>
             <a href="https://t.me/almakthabathulihsaniyya/1764" target="_blank" class="link-card"><span class="link-name">دراسة مقارنة الخ</span><span class="link-icon telegram">PDF</span></a>
-            <a href="https://t.me/almakthabathulihsaniyya/1765" target="_blank" class="link-card"><span class="link-name">شروح الألفية مناهجها الخ</span><span class="link-icon telegram">PDF</span></a>
+            <a href="https://t.me/almakthabathulihsaniyya/1765" target="_blank" class="link-card"><span class="link-name">شрующих الألفية مناهجها الخ</span><span class="link-icon telegram">PDF</span></a>
             <a href="https://t.me/almakthabathulihsaniyya/1766" target="_blank" class="link-card"><span class="link-name">السجع في نظم الألفية</span><span class="link-icon telegram">PDF</span></a>
             <a href="https://t.me/almakthabathulihsaniyya/1769" target="_blank" class="link-card"><span class="link-name">الألفية تحليل ونقد</span><span class="link-icon telegram">PDF</span></a>
             <a href="https://t.me/almakthabathulihsaniyya/1773" target="_blank" class="link-card"><span class="link-name">الألفية شرح معاصر</span><span class="link-icon telegram">PDF</span></a>
@@ -284,12 +373,23 @@
         </div>
     </div>
 
-    <!-- BOARD 5: LIBRARY FILES (റാത്തീബ്, ഫത്ഹുൽ മുഈൻ PDF, സുന്നി ബ്ലോഗ്) -->
+    <!-- BOARD 5: LIBRARY FILES -->
     <div id="library-files-board" class="content-board">
-        <div class="board-title">✨ റാത്തീബ്, പ്രധാന കിതാബുകൾ & ബ്ലോഗ് അറിവുകൾ</div>
-        <div class="board-desc">പഴയ ലൈബ്രറിയിൽ ഉണ്ടായിരുന്ന പ്രധാനപ്പെട്ട ഡോക്യുമെന്റുകളും അറിവുകളും താഴെ നൽകുന്നു. ലിങ്കുകളിൽ ക്ലിക്ക് ചെയ്ത് നിങ്ങൾക്ക് ഇവ നേരിട്ട് ഉപയോഗിക്കാം.</div>
+        <div class="board-title">✨ റാത്തീബ്, മൂല കിതാബുകൾ & ബ്ലോഗ് അറിവുകൾ</div>
+        <div class="board-desc">പ്രധാനപ്പെട്ട കിതാബുകളും അറിവുകളും താഴെ നൽകുന്നു. ഇതിൽ സുന്നി നോളഡ്ജ് ബ്ലോഗ് സെക്ഷൻ പ്രത്യേകം ഹൈലൈറ്റ് ചെയ്തിട്ടുണ്ട്.</div>
         
         <div class="links-grid">
+            <!-- HIGHLIGHTED SUNNI KNOWLEDGE BLOG -->
+            <a href="https://sunniknowledge.blogspot.com/?m=0" target="_blank" class="link-card highlight-blog-card">
+                <div class="blog-header-group">
+                    <span class="link-name" style="font-size: 1.5rem; color: #92400e;"><i class="fa-solid fa-gopuram"></i> സുന്നി നോളഡ്ജ് ബ്ലോഗ് അറിവുകൾ</span>
+                    <span class="link-icon blog-btn" style="background: #b45309;"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open Blog</span>
+                </div>
+                <div class="blog-notice-text">
+                    "ആദർശപരമായ എല്ലാ സംശയങ്ങൾക്കും ഈ ലിങ്ക് ഓപ്പൺ ചെയ്ത് ആവശ്യമായ ഡോക്യുമെന്റുകൾ കണ്ടെത്തുക"
+                </div>
+            </a>
+
             <!-- RIFAE RATHEEB -->
             <a href="kitabs/rifai-ratheeb.pdf" target="_blank" class="link-card">
                 <span class="link-name">📿 രിഫാഈ റാത്തീബ് (Rifai Ratheeb) - PDF</span>
@@ -298,35 +398,40 @@
 
             <!-- SHARH FATHUL MUEEN -->
             <a href="kitabs/sharh-fathul-mueen.pdf" target="_blank" class="link-card">
-                <span class="link-name">📖 ഫത്ഹുൽ മുഈൻ കിതാബ് - PDF</span>
+                <span class="link-name">📖 ഫത്ഹുൽ മുഈൻ മൂല കിതാബ് - PDF</span>
                 <span class="link-icon pdf-btn"><i class="fa-solid fa-file-pdf"></i> Open PDF</span>
-            </a>
-
-            <!-- SUNNI KNOWLEDGE BLOG -->
-            <a href="https://sunniknowledge.blogspot.com/?m=0" target="_blank" class="link-card">
-                <span class="link-name">🌐 സുന്നി നോളഡ്ജ് ബ്ലോഗ് അറിവുകൾ</span>
-                <span class="link-icon blog-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> Visit Blog</span>
             </a>
         </div>
     </div>
+
+    <!-- COMPANY FOOTER SECTION -->
+    <footer>
+        <div class="footer-powered">Powered by</div>
+        <div class="footer-company">ATAVA DIGITAL SERVICES & TRADING</div>
+        <div class="footer-services">Data Entry, Typing Works, Poster & Badge Design And Digital Services</div>
+        
+        <div class="footer-line"></div>
+        
+        <div class="footer-owner">Abdul Salam Ahsani Vazhakkad</div>
+        <a href="https://wa.me/919947965744" target="_blank" class="whatsapp-contact-btn">
+            <i class="fa-brands fa-whatsapp" style="font-size: 1.4rem;"></i> Contact on WhatsApp
+        </a>
+    </footer>
 
 </div>
 
 <script>
     function openBoard(evt, boardId) {
-        // Hide all content boards
         const contentBoards = document.getElementsByClassName("content-board");
         for (let i = 0; i < contentBoards.length; i++) {
             contentBoards[i].classList.remove("active");
         }
 
-        // Remove active class from all buttons
         const boardBtns = document.getElementsByClassName("board-btn");
         for (let i = 0; i < boardBtns.length; i++) {
             boardBtns[i].classList.remove("active");
         }
 
-        // Show current board and mark button as active
         document.getElementById(boardId).classList.add("active");
         evt.currentTarget.classList.add("active");
     }
