@@ -19,7 +19,7 @@
             color: var(--text-dark); 
             padding: 40px 20px; 
             line-height: 1.8; 
-            font-size: 1.25rem; /* ആകെ ഫോണ്ട് വലിപ്പം കൂട്ടി */
+            font-size: 1.25rem;
         }
         
         .library-container { 
@@ -140,6 +140,37 @@
             transform: translateY(-2px);
         }
         h4 { font-size: 1.6rem !important; }
+        
+        @media (max-width: 768px) {
+            body { padding: 15px 10px; }
+            .library-container { padding: 15px; }
+            header { padding: 35px 15px; margin-bottom: 20px; }
+            header h1 { font-size: 2.2rem; }
+            header p { font-size: 1.2rem; }
+            .ai-banner { padding: 20px; gap: 15px; }
+            .ai-text h3 { font-size: 1.6rem; }
+            .ai-text p { font-size: 1.1rem; }
+            .ai-btn { padding: 12px 25px; font-size: 1.1rem; width: 100%; justify-content: center; }
+            .board-grid { grid-template-columns: 1fr; gap: 12px; }
+            .board-btn { padding: 18px 15px; font-size: 1.3rem; }
+            .content-board { padding: 20px 15px; }
+            .board-title { font-size: 1.6rem; }
+            .board-desc { font-size: 1.1rem; padding: 15px; }
+            .links-grid { grid-template-columns: 1fr; gap: 12px; }
+            .link-card { padding: 16px; flex-direction: column; align-items: flex-start; gap: 12px; }
+            .link-name { font-size: 1.15rem; }
+            .link-icon { width: 100%; min-width: unset; }
+            .quran-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .quran-card { font-size: 1.2rem; padding: 15px 10px; }
+            .blog-large-card { padding: 25px 15px; }
+            .blog-large-title { font-size: 1.8rem; }
+            .blog-large-desc { font-size: 1.15rem; }
+            .blog-large-btn { padding: 14px 30px; font-size: 1.15rem; width: 100%; justify-content: center; }
+            .footer-company { font-size: 1.5rem; }
+            .footer-services { font-size: 1.1rem; }
+            .footer-owner { font-size: 1.3rem; }
+            .whatsapp-contact-btn { font-size: 1.1rem; width: 100%; justify-content: center; }
+        }
     </style>
 </head>
 <body>
@@ -165,7 +196,7 @@
     <!-- BOARDS NAVIGATION -->
     <div class="board-grid">
         <button class="board-btn active" onclick="openBoard(event, 'meelad-board')">
-            🎵 ಮೀലാദ് ഗാനങ്ങൾ 
+            🎵 മീലാദ് ഗാനങ്ങൾ 
             <span>പ്രോഗ്രാംസ് ഗോഡൗൺ</span>
         </button>
         <button class="board-btn" onclick="openBoard(event, 'fathhul-board')">
@@ -258,49 +289,49 @@
             <a href="https://t.me/joinchat/AAAAAFC2hG_wCmbwlQTK1A" target="_blank" class="link-card"><span class="link-name">4. ഖസ്വീദത്തുൽ ബുർദ</span><span class="link-icon telegram">Listen</span></a>
         </div>
 
-        <h4 style="color:var(--primary-green); margin-bottom:15px;"><i class="fa-solid fa-book"></i> അൽഫിയ്യതുബ്നി മാലിക് ഗ്രന്ഥശേഖരം</h4>
+        <h4 style="color:var(--primary-green); margin-bottom:15px;"><i class="fa-solid fa-book"></i> അൽഫിയ്യതുബ്ни മാലിക് ഗ്രന്ഥശേഖരം</h4>
         <div class="links-grid">
             <a href="https://t.me/almakthabathulihsaniyya/4859" target="_blank" class="link-card"><span class="link-name">متن ألفية ابن مالك</span><span class="link-icon telegram">PDF</span></a>
             <a href="https://t.me/almakthabathulihsaniyya/3603" target="_blank" class="link-card"><span class="link-name">المكودي على ألفية ابن مالك</span><span class="link-icon telegram">PDF</span></a>
         </div>
     </div>
 
-    <!-- BOARD 4: QURAN 30 JUZ -->
+    <!-- BOARD 4: QURAN 30 JUZ (UPDATED HTTPS LINKS) -->
     <div id="quran-board" class="content-board">
         <div class="board-title">🕌 विशुद्ध ഖുർആൻ 30 ജുസ്ഹ് (ഡൗൺലോഡ് ചെയ്യാതെ കേൾക്കാം)</div>
         <div class="board-desc">ആവശ്യമായ ജുസ്ഹ് തിരഞ്ഞെടുത്ത് ക്ലിക്ക് ചെയ്താൽ നിങ്ങൾക്ക് നേരിട്ട് ഓഡിയോ കേൾക്കാവുന്നതാണ്.</div>
         
         <div class="quran-grid">
-            <a href="http://j.mp/2b8SiNO" target="_blank" class="quran-card">ജുസ്ഹ് 1 <span>Juz 1</span></a>
-            <a href="http://j.mp/2b8RJmQ" target="_blank" class="quran-card">ജുസ്ഹ് 2 <span>Juz 2</span></a>
-            <a href="http://j.mp/2bFSrtF" target="_blank" class="quran-card">ജുസ്ഹ് 3 <span>Juz 3</span></a>
-            <a href="http://j.mp/2b8SXi3" target="_blank" class="quran-card">ജുസ്ഹ് 4 <span>Juz 4</span></a>
-            <a href="http://j.mp/2b8RZm3" target="_blank" class="quran-card">ജുസ്ഹ് 5 <span>Juz 5</span></a>
-            <a href="http://j.mp/28MBohs" target="_blank" class="quran-card">ജുസ്ഹ് 6 <span>Juz 6</span></a>
-            <a href="http://j.mp/2bFSKTz" target="_blank" class="quran-card">ജുസ്ഹ് 7 <span>Juz 7</span></a>
-            <a href="http://j.mp/2b8T6p2" target="_blank" class="quran-card">ജുസ്ഹ് 8 <span>Juz 8</span></a>
-            <a href="http://j.mp/2bFStw0" target="_blank" class="quran-card">ജുസ്ഹ് 9 <span>Juz 9</span></a>
-            <a href="http://j.mp/2b8Sme7" target="_blank" class="quran-card">ജുസ്ഹ് 10 <span>Juz 10</span></a>
-            <a href="http://j.mp/2b8TnX9" target="_blank" class="quran-card">ജുസ്ഹ് 11 <span>Juz 11</span></a>
-            <a href="http://j.mp/2bFT7AL" target="_blank" class="quran-card">ജുസ്ഹ് 12 <span>Juz 12</span></a>
-            <a href="http://j.mp/2b8T0p6" target="_blank" class="quran-card">ജുസ്ഹ് 13 <span>Juz 13</span></a>
-            <a href="http://j.mp/2b8T7bS" target="_blank" class="quran-card">ജുസ്ഹ് 14 <span>Juz 14</span></a>
-            <a href="http://j.mp/2bFT7R9" target="_blank" class="quran-card">ജുസ്ഹ് 15 <span>Juz 15</span></a>
-            <a href="http://j.mp/2b8Sw0G" target="_blank" class="quran-card">ജുസ്ഹ് 16 <span>Juz 16</span></a>
-            <a href="http://j.mp/2b8T49R" target="_blank" class="quran-card">ജുസ്ഹ് 17 <span>Juz 17</span></a>
-            <a href="http://j.mp/2bFTpZ7" target="_blank" class="quran-card">ജുസ്ഹ് 18 <span>Juz 18</span></a>
-            <a href="http://j.mp/2b8SgYt" target="_blank" class="quran-card">ജുസ്ഹ് 19 <span>Juz 19</span></a>
-            <a href="http://j.mp/2b8T4gX" target="_blank" class="quran-card">ജുസ്ഹ് 20 <span>Juz 20</span></a>
-            <a href="http://j.mp/2bFToeh" target="_blank" class="quran-card">ജുസ്ഹ് 21 <span>Juz 21</span></a>
-            <a href="http://j.mp/2b8SOw8" target="_blank" class="quran-card">ജുസ്ഹ് 22 <span>Juz 22</span></a>
-            <a href="http://j.mp/2b8T8fm" target="_blank" class="quran-card">ജുസ്ഹ് 23 <span>Juz 23</span></a>
-            <a href="http://j.mp/2bFTpvt" target="_blank" class="quran-card">ജുസ്ഹ് 24 <span>Juz 24</span></a>
-            <a href="http://j.mp/2b8S1U0" target="_blank" class="quran-card">ജുസ്ഹ് 25 <span>Juz 25</span></a>
-            <a href="http://j.mp/2b8T0FV" target="_blank" class="quran-card">ജുസ്ഹ് 26 <span>Juz 26</span></a>
-            <a href="http://j.mp/2bFTmb0" target="_blank" class="quran-card">ജുസ്ഹ് 27 <span>Juz 27</span></a>
-            <a href="http://j.mp/2b8Tcl4" target="_blank" class="quran-card">ജുസ്ഹ് 28 <span>Juz 28</span></a>
-            <a href="http://j.mp/2b8T72I" target="_blank" class="quran-card">ജുസ്ഹ് 29 <span>Juz 29</span></a>
-            <a href="http://j.mp/2bFTgYf" target="_blank" class="quran-card">ജുസ്ഹ് 30 <span>Juz 30</span></a>
+            <a href="https://j.mp/2b8SiNO" target="_blank" class="quran-card">ജുസ്ഹ് 1 <span>Juz 1</span></a>
+            <a href="https://j.mp/2b8RJmQ" target="_blank" class="quran-card">ജുസ്ഹ് 2 <span>Juz 2</span></a>
+            <a href="https://j.mp/2bFSrtF" target="_blank" class="quran-card">ജുസ്ഹ് 3 <span>Juz 3</span></a>
+            <a href="https://j.mp/2b8SXi3" target="_blank" class="quran-card">ജുസ്ഹ് 4 <span>Juz 4</span></a>
+            <a href="https://j.mp/2b8RZm3" target="_blank" class="quran-card">ജുസ്ഹ് 5 <span>Juz 5</span></a>
+            <a href="https://j.mp/28MBohs" target="_blank" class="quran-card">ജുസ്ഹ് 6 <span>Juz 6</span></a>
+            <a href="https://j.mp/2bFSKTz" target="_blank" class="quran-card">ജുസ്ഹ് 7 <span>Juz 7</span></a>
+            <a href="https://j.mp/2b8T6p2" target="_blank" class="quran-card">ജുസ്ഹ് 8 <span>Juz 8</span></a>
+            <a href="https://j.mp/2bFStw0" target="_blank" class="quran-card">ജുസ്ഹ് 9 <span>Juz 9</span></a>
+            <a href="https://j.mp/2b8Sme7" target="_blank" class="quran-card">ജുസ്ഹ് 10 <span>Juz 10</span></a>
+            <a href="https://j.mp/2b8TnX9" target="_blank" class="quran-card">ജുസ്ഹ് 11 <span>Juz 11</span></a>
+            <a href="https://j.mp/2bFT7AL" target="_blank" class="quran-card">ജുസ്ഹ് 12 <span>Juz 12</span></a>
+            <a href="https://j.mp/2b8T0p6" target="_blank" class="quran-card">ജുസ്ഹ് 13 <span>Juz 13</span></a>
+            <a href="https://j.mp/2b8T7bS" target="_blank" class="quran-card">ജുസ്ഹ് 14 <span>Juz 14</span></a>
+            <a href="https://j.mp/2bFT7R9" target="_blank" class="quran-card">ജുസ്ഹ് 15 <span>Juz 15</span></a>
+            <a href="https://j.mp/2b8Sw0G" target="_blank" class="quran-card">ജുസ്ഹ് 16 <span>Juz 16</span></a>
+            <a href="https://j.mp/2b8T49R" target="_blank" class="quran-card">ജുസ്ഹ് 17 <span>Juz 17</span></a>
+            <a href="https://j.mp/2bFTpZ7" target="_blank" class="quran-card">ജുസ്ഹ് 18 <span>Juz 18</span></a>
+            <a href="https://j.mp/2b8SgYt" target="_blank" class="quran-card">ജുസ്ഹ് 19 <span>Juz 19</span></a>
+            <a href="https://j.mp/2b8T4gX" target="_blank" class="quran-card">ജുസ്ഹ് 20 <span>Juz 20</span></a>
+            <a href="https://j.mp/2bFToeh" target="_blank" class="quran-card">ജുസ്ഹ് 21 <span>Juz 21</span></a>
+            <a href="https://j.mp/2b8SOw8" target="_blank" class="quran-card">ജുസ്ഹ് 22 <span>Juz 22</span></a>
+            <a href="https://j.mp/2b8T8fm" target="_blank" class="quran-card">ജുസ്ഹ് 23 <span>Juz 23</span></a>
+            <a href="https://j.mp/2bFTpvt" target="_blank" class="quran-card">ജുസ്ഹ് 24 <span>Juz 24</span></a>
+            <a href="https://j.mp/2b8S1U0" target="_blank" class="quran-card">ജുസ്ഹ് 25 <span>Juz 25</span></a>
+            <a href="https://j.mp/2b8T0FV" target="_blank" class="quran-card">ജുസ്ഹ് 26 <span>Juz 26</span></a>
+            <a href="https://j.mp/2bFTmb0" target="_blank" class="quran-card">ജുസ്ഹ് 27 <span>Juz 27</span></a>
+            <a href="https://j.mp/2b8Tcl4" target="_blank" class="quran-card">ജുസ്ഹ് 28 <span>Juz 28</span></a>
+            <a href="https://j.mp/2b8T72I" target="_blank" class="quran-card">ജുസ്ഹ് 29 <span>Juz 29</span></a>
+            <a href="https://j.mp/2bFTgYf" target="_blank" class="quran-card">ജുസ്ഹ് 30 <span>Juz 30</span></a>
         </div>
     </div>
 
@@ -317,7 +348,7 @@
                 <span class="link-icon pdf-btn"><i class="fa-solid fa-file-pdf"></i> Open PDF</span>
             </a>
             <a href="Kithabs/adkiya .pdf" target="_blank" class="link-card">
-                <span class="link-name">📜 അദ്കിയാ (Adkiya)</span>
+                <span class="link-name">📜 അദ്kിയാ (Adkiya)</span>
                 <span class="link-icon pdf-btn"><i class="fa-solid fa-file-pdf"></i> Open PDF</span>
             </a>
             <a href="Kithabs/الخطب النباتية.pdf" target="_blank" class="link-card">
