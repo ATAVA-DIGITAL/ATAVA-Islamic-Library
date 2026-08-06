@@ -125,6 +125,7 @@
         .link-icon { color: white; padding: 2px 6px; border-radius: 3px; font-size: 0.65rem; font-weight: bold; }
         .link-icon.telegram { background: #229ED9; }
         .link-icon.pdf-btn { background: #dc3545; }
+        .link-icon.web-btn { background: #b45309; }
 
         /* Cards */
         .app-large-card, .blog-large-card {
@@ -137,6 +138,7 @@
         .app-large-title { font-size: 0.9rem; color: #15803d; font-weight: 800; margin-bottom: 4px; }
         .app-large-desc { font-size: 0.72rem; color: #334155; margin-bottom: 8px; }
         .playstore-btn { display: inline-flex; align-items: center; gap: 4px; background: #01875f; color: white; text-decoration: none; padding: 5px 12px; border-radius: 15px; font-size: 0.75rem; font-weight: bold; }
+        .web-visit-btn { display: inline-flex; align-items: center; gap: 4px; background: #b45309; color: white; text-decoration: none; padding: 5px 12px; border-radius: 15px; font-size: 0.75rem; font-weight: bold; }
 
         /* QURAN DUAL ACTION CARDS */
         .quran-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; }
@@ -186,32 +188,54 @@
         .btn-read:hover { background-color: #047857; }
         .btn-listen:hover { background-color: #0369a1; }
 
-        /* Compact Footer */
+        /* Custom Footer with Advertisement & Dual WhatsApp */
         footer {
             margin-top: 6px;
-            padding: 4px 8px;
+            padding: 6px 8px;
             background: #0f172a;
             color: #f8fafc;
             border-radius: 6px;
             flex-shrink: 0;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column;
+            gap: 4px;
+            text-align: center;
         }
-        .footer-company { font-size: 0.68rem; color: #ffc107; font-weight: 700; }
-        
-        .whatsapp-contact-btn {
+        .footer-powered {
+            font-size: 0.65rem;
+            color: #fbbf24;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+        .footer-services {
+            font-size: 0.58rem;
+            color: #94a3b8;
+            line-height: 1.2;
+        }
+        .footer-owner {
+            font-size: 0.6rem;
+            color: #e2e8f0;
+            font-weight: 600;
+        }
+        .footer-whatsapp-group {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 2px;
+        }
+        .wa-btn {
             display: inline-flex;
             align-items: center;
             gap: 4px;
-            background: #25d366;
             color: white;
             text-decoration: none;
             padding: 3px 8px;
-            border-radius: 12px;
-            font-size: 0.65rem;
+            border-radius: 10px;
+            font-size: 0.6rem;
             font-weight: bold;
         }
+        .wa-normal { background: #25d366; }
+        .wa-business { background: #128c7e; }
     </style>
 </head>
 <body>
@@ -253,6 +277,10 @@
         <button class="board-btn" onclick="openBoard(event, 'quran-board')">
             🕌 ഖുർആൻ
             <span>30 ജുസ്ഹ്</span>
+        </button>
+        <button class="board-btn" onclick="openBoard(event, 'sunni-knowledge-board')">
+            💡 ആശയങ്ങൾ
+            <span>സുന്നി നോളജ്</span>
         </button>
         <button class="board-btn" onclick="openBoard(event, 'library-files-board')">
             ✨ PDF ഫയലുകൾ
@@ -570,8 +598,22 @@
                 </div>
             </div>
         </div>
+
+        <!-- BOARD 5: SUNNI KNOWLEDGE BLOG -->
+        <div id="sunni-knowledge-board" class="content-board">
+            <div class="board-title">💡 സുന്നി നോളജ് - ആദർശ പഠനങ്ങൾ</div>
+            <div class="board-desc">ആദർശപരമായ വിഷയങ്ങളും സംശയനിവാരണങ്ങളും വായിച്ചു മനസ്സിലാക്കാം.</div>
+            
+            <div class="blog-large-card">
+                <div class="app-large-title"><i class="fa-solid fa-globe"></i> Sunni Knowledge Blog</div>
+                <div class="app-large-desc">അഹ്‌ലുസ്സുന്നത്തി വൽജമാഅത്തിന്റെ ആദർശപരമായ ലേഖനങ്ങളും വിശദീകരണങ്ങളും.</div>
+                <a href="https://sunniknowledge.blogspot.com/?m=0" target="_blank" class="web-visit-btn">
+                    <i class="fa-solid fa-arrow-right-to-bracket"></i> സന്ദർശിക്കുക
+                </a>
+            </div>
+        </div>
         
-        <!-- BOARD 5: LIBRARY FILES -->
+        <!-- BOARD 6: LIBRARY FILES -->
         <div id="library-files-board" class="content-board">
             <div class="board-title">✨ റാത്തീബ് & PDF കിതാബുകൾ</div>
             <div class="board-desc">പ്രധാനപ്പെട്ട കിതാബുകൾ PDF രൂപത്തിൽ.</div>
@@ -610,12 +652,20 @@
 
     </div>
 
-    <!-- FOOTER SECTION -->
+    <!-- FOOTER SECTION WITH BRANDING & DUAL WHATSAPP -->
     <footer>
-        <div class="footer-company">ATAVA DIGITAL SERVICES & TRADING</div>
-        <a href="https://wa.me/919947965744" target="_blank" class="whatsapp-contact-btn">
-            <i class="fa-brands fa-whatsapp"></i> Contact
-        </a>
+        <div class="footer-powered">Powered by : ATAVA DIGITAL SERVICES & TRADING</div>
+        <div class="footer-services">Data Entry, Typing Works, Poster & Badge Design And Digital Services</div>
+        <div class="footer-owner">Abdul salam ahsani vazhakkad</div>
+        
+        <div class="footer-whatsapp-group">
+            <a href="https://wa.me/919947965744" target="_blank" class="wa-btn wa-normal">
+                <i class="fa-brands fa-whatsapp"></i> WhatsApp
+            </a>
+            <a href="https://wa.me/919947965744" target="_blank" class="wa-btn wa-business">
+                <i class="fa-solid fa-briefcase"></i> Business WA
+            </a>
+        </div>
     </footer>
 
 </div>
