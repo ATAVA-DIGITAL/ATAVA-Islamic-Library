@@ -138,9 +138,53 @@
         .app-large-desc { font-size: 0.72rem; color: #334155; margin-bottom: 8px; }
         .playstore-btn { display: inline-flex; align-items: center; gap: 4px; background: #01875f; color: white; text-decoration: none; padding: 5px 12px; border-radius: 15px; font-size: 0.75rem; font-weight: bold; }
 
-        .quran-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
-        .quran-card { background: #ffffff; border: 1px solid #cbd5e1; border-radius: 4px; padding: 4px 2px; text-align: center; text-decoration: none; color: var(--primary-green); font-weight: bold; font-size: 0.72rem; }
-        .quran-card span { display: block; font-size: 0.58rem; color: #64748b; font-weight: normal; }
+        /* QURAN DUAL ACTION CARDS */
+        .quran-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; }
+        .quran-card-box {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            padding: 6px;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+        }
+        .quran-card-title {
+            font-weight: bold;
+            font-size: 0.75rem;
+            margin-bottom: 4px;
+            color: #1e293b;
+        }
+        .quran-card-title span {
+            font-size: 0.6rem;
+            color: #64748b;
+            font-weight: normal;
+            display: block;
+        }
+        .quran-actions {
+            display: flex;
+            gap: 4px;
+            justify-content: center;
+        }
+        .btn-read, .btn-listen {
+            flex: 1;
+            padding: 4px 2px;
+            font-size: 0.62rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            transition: 0.2s;
+        }
+        .btn-read {
+            background-color: #059669;
+            color: #ffffff;
+        }
+        .btn-listen {
+            background-color: #0284c7;
+            color: #ffffff;
+        }
+        .btn-read:hover { background-color: #047857; }
+        .btn-listen:hover { background-color: #0369a1; }
 
         /* Compact Footer */
         footer {
@@ -308,42 +352,222 @@
             </div>
         </div>
 
-       <!-- BOARD 4: QURAN 30 JUZ -->
+       <!-- BOARD 4: QURAN 30 JUZ (READ & LISTEN) -->
         <div id="quran-board" class="content-board">
             <div class="board-title">🕌 വിശുദ്ധ ഖുർആൻ 30 ജുസ്ഹ്</div>
-            <div class="board-desc">സൂറത്ത് കേൾക്കാനും വായിക്കാനും ക്ലിക്ക് ചെയ്യുക.</div>
+            <div class="board-desc">ഓതാനോ കേൾക്കാനോ അനുയോജ്യമായ ഓപ്ഷൻ തിരഞ്ഞെടുക്കുക.</div>
             
             <div class="quran-grid">
-                <a href="https://quran.com/juz/1" target="_blank" class="quran-card">ജുസ്ഹ് 1 <span>Juz 1</span></a>
-                <a href="https://quran.com/juz/2" target="_blank" class="quran-card">ജുസ്ഹ് 2 <span>Juz 2</span></a>
-                <a href="https://quran.com/juz/3" target="_blank" class="quran-card">ജുസ്ഹ് 3 <span>Juz 3</span></a>
-                <a href="https://quran.com/juz/4" target="_blank" class="quran-card">ജുസ്ഹ് 4 <span>Juz 4</span></a>
-                <a href="https://quran.com/juz/5" target="_blank" class="quran-card">ജുസ്ഹ് 5 <span>Juz 5</span></a>
-                <a href="https://quran.com/juz/6" target="_blank" class="quran-card">ജുസ്ഹ് 6 <span>Juz 6</span></a>
-                <a href="https://quran.com/juz/7" target="_blank" class="quran-card">ജുസ്ഹ് 7 <span>Juz 7</span></a>
-                <a href="https://quran.com/juz/8" target="_blank" class="quran-card">ജുസ്ഹ് 8 <span>Juz 8</span></a>
-                <a href="https://quran.com/juz/9" target="_blank" class="quran-card">ജുസ്ഹ് 9 <span>Juz 9</span></a>
-                <a href="https://quran.com/juz/10" target="_blank" class="quran-card">ജുസ്ഹ് 10 <span>Juz 10</span></a>
-                <a href="https://quran.com/juz/11" target="_blank" class="quran-card">ജുസ്ഹ് 11 <span>Juz 11</span></a>
-                <a href="https://quran.com/juz/12" target="_blank" class="quran-card">ജുസ്ഹ് 12 <span>Juz 12</span></a>
-                <a href="https://quran.com/juz/13" target="_blank" class="quran-card">ജുസ്ഹ് 13 <span>Juz 13</span></a>
-                <a href="https://quran.com/juz/14" target="_blank" class="quran-card">ജുസ്ഹ് 14 <span>Juz 14</span></a>
-                <a href="https://quran.com/juz/15" target="_blank" class="quran-card">ജുസ്ഹ് 15 <span>Juz 15</span></a>
-                <a href="https://quran.com/juz/16" target="_blank" class="quran-card">ജുസ്ഹ് 16 <span>Juz 16</span></a>
-                <a href="https://quran.com/juz/17" target="_blank" class="quran-card">ജുസ്ഹ് 17 <span>Juz 17</span></a>
-                <a href="https://quran.com/juz/18" target="_blank" class="quran-card">ജുസ്ഹ് 18 <span>Juz 18</span></a>
-                <a href="https://quran.com/juz/19" target="_blank" class="quran-card">ജുസ്ഹ് 19 <span>Juz 19</span></a>
-                <a href="https://quran.com/juz/20" target="_blank" class="quran-card">ജുസ്ഹ് 20 <span>Juz 20</span></a>
-                <a href="https://quran.com/juz/21" target="_blank" class="quran-card">ജുസ്ഹ് 21 <span>Juz 21</span></a>
-                <a href="https://quran.com/juz/22" target="_blank" class="quran-card">ജുസ്ഹ് 22 <span>Juz 22</span></a>
-                <a href="https://quran.com/juz/23" target="_blank" class="quran-card">ജുസ്ഹ് 23 <span>Juz 23</span></a>
-                <a href="https://quran.com/juz/24" target="_blank" class="quran-card">ജുസ്ഹ് 24 <span>Juz 24</span></a>
-                <a href="https://quran.com/juz/25" target="_blank" class="quran-card">ജുസ്ഹ് 25 <span>Juz 25</span></a>
-                <a href="https://quran.com/juz/26" target="_blank" class="quran-card">ജുസ്ഹ് 26 <span>Juz 26</span></a>
-                <a href="https://quran.com/juz/27" target="_blank" class="quran-card">ജുസ്ഹ് 27 <span>Juz 27</span></a>
-                <a href="https://quran.com/juz/28" target="_blank" class="quran-card">ജുസ്ഹ് 28 <span>Juz 28</span></a>
-                <a href="https://quran.com/juz/29" target="_blank" class="quran-card">ജുസ്ഹ് 29 <span>Juz 29</span></a>
-                <a href="https://quran.com/juz/30" target="_blank" class="quran-card">ജുസ്ഹ് 30 <span>Juz 30</span></a>
+                <div class="quran-card-box">
+                    <div class="quran-card-title">ജുസ്ഹ് 1 <span>Juz 1</span></div>
+                    <div class="quran-actions">
+                        <a href="https://quran.com/juz/1" target="_blank" class="btn-read">📖 ഓതുക</a>
+                        <a href="https://server8.mp3quran.net/afs/001.mp3" target="_blank" class="btn-listen">🎧 കേൾക്കുക</a>
+                    </div>
+                </div>
+                <div class="quran-card-box">
+                    <div class="quran-card-title">ജുസ്ഹ് 2 <span>Juz 2</span></div>
+                    <div class="quran-actions">
+                        <a href="https://quran.com/juz/2" target="_blank" class="btn-read">📖 ഓതുക</a>
+                        <a href="https://server8.mp3quran.net/afs/002.mp3" target="_blank" class="btn-listen">🎧 കേൾക്കുക</a>
+                    </div>
+                </div>
+                <div class="quran-card-box">
+                    <div class="quran-card-title">ജുസ്ഹ് 3 <span>Juz 3</span></div>
+                    <div class="quran-actions">
+                        <a href="https://quran.com/juz/3" target="_blank" class="btn-read">📖 ഓതുക</a>
+                        <a href="https://server8.mp3quran.net/afs/003.mp3" target="_blank" class="btn-listen">🎧 കേൾക്കുക</a>
+                    </div>
+                </div>
+                <div class="quran-card-box">
+                    <div class="quran-card-title">ജുസ്ഹ് 4 <span>Juz 4</span></div>
+                    <div class="quran-actions">
+                        <a href="https://quran.com/juz/4" target="_blank" class="btn-read">📖 ഓതുക</a>
+                        <a href="https://server8.mp3quran.net/afs/004.mp3" target="_blank" class="btn-listen">🎧 കേൾക്കുക</a>
+                    </div>
+                </div>
+                <div class="quran-card-box">
+                    <div class="quran-card-title">ജുസ്ഹ് 5 <span>Juz 5</span></div>
+                    <div class="quran-actions">
+                        <a href="https://quran.com/juz/5" target="_blank" class="btn-read">📖 ഓതുക</a>
+                        <a href="https://server8.mp3quran.net/afs/005.mp3" target="_blank" class="btn-listen">🎧 കേൾക്കുക</a>
+                    </div>
+                </div>
+                <div class="quran-card-box">
+                    <div class="quran-card-title">ജുസ്ഹ് 6 <span>Juz 6</span></div>
+                    <div class="quran-actions">
+                        <a href="https://quran.com/juz/6" target="_blank" class="btn-read">📖 ഓതുക</a>
+                        <a href="https://server8.mp3quran.net/afs/006.mp3" target="_blank" class="btn-listen">🎧 കേൾക്കുക</a>
+                    </div>
+                </div>
+                <div class="quran-card-box">
+                    <div class="quran-card-title">ജുസ്ഹ് 7 <span>Juz 7</span></div>
+                    <div class="quran-actions">
+                        <a href="https://quran.com/juz/7" target="_blank" class="btn-read">📖 ഓതുക</a>
+                        <a href="https://server8.mp3quran.net/afs/007.mp3" target="_blank" class="btn-listen">🎧 കേൾക്കുക</a>
+                    </div>
+                </div>
+                <div class="quran-card-box">
+                    <div class="quran-card-title">ജുസ്ഹ് 8 <span>Juz 8</span></div>
+                    <div class="quran-actions">
+                        <a href="https://quran.com/juz/8" target="_blank" class="btn-read">📖 ഓതുക</a>
+                        <a href="https://server8.mp3quran.net/afs/008.mp3" target="_blank" class="btn-listen">🎧 കേൾക്കുക</a>
+                    </div>
+                </div>
+                <div class="quran-card-box">
+                    <div class="quran-card-title">ജുസ്ഹ് 9 <span>Juz 9</span></div>
+                    <div class="quran-actions">
+                        <a href="https://quran.com/juz/9" target="_blank" class="btn-read">📖 ഓതുക</a>
+                        <a href="https://server8.mp3quran.net/afs/009.mp3" target="_blank" class="btn-listen">🎧 കേൾക്കുക</a>
+                    </div>
+                </div>
+                <div class="quran-card-box">
+                    <div class="quran-card-title">ജുസ്ഹ് 10 <span>Juz 10</span></div>
+                    <div class="quran-actions">
+                        <a href="https://quran.com/juz/10" target="_blank" class="btn-read">📖 ഓതുക</a>
+                        <a href="https://server8.mp3quran.net/afs/010.mp3" target="_blank" class="btn-listen">🎧 കേൾക്കുക</a>
+                    </div>
+                </div>
+                <div class="quran-card-box">
+                    <div class="quran-card-title">ജുസ്ഹ് 11 <span>Juz 11</span></div>
+                    <div class="quran-actions">
+                        <a href="https://quran.com/juz/11" target="_blank" class="btn-read">📖 ഓതുക</a>
+                        <a href="https://server8.mp3quran.net/afs/011.mp3" target="_blank" class="btn-listen">🎧 കേൾക്കുക</a>
+                    </div>
+                </div>
+                <div class="quran-card-box">
+                    <div class="quran-card-title">ജുസ്ഹ് 12 <span>Juz 12</span></div>
+                    <div class="quran-actions">
+                        <a href="https://quran.com/juz/12" target="_blank" class="btn-read">📖 ഓതുക</a>
+                        <a href="https://server8.mp3quran.net/afs/012.mp3" target="_blank" class="btn-listen">🎧 കേൾക്കുക</a>
+                    </div>
+                </div>
+                <div class="quran-card-box">
+                    <div class="quran-card-title">ജുസ്ഹ് 13 <span>Juz 13</span></div>
+                    <div class="quran-actions">
+                        <a href="https://quran.com/juz/13" target="_blank" class="btn-read">📖 ഓതുക</a>
+                        <a href="https://server8.mp3quran.net/afs/013.mp3" target="_blank" class="btn-listen">🎧 കേൾക്കുക</a>
+                    </div>
+                </div>
+                <div class="quran-card-box">
+                    <div class="quran-card-title">ജുസ്ഹ് 14 <span>Juz 14</span></div>
+                    <div class="quran-actions">
+                        <a href="https://quran.com/juz/14" target="_blank" class="btn-read">📖 ഓതുക</a>
+                        <a href="https://server8.mp3quran.net/afs/014.mp3" target="_blank" class="btn-listen">🎧 കേൾക്കുക</a>
+                    </div>
+                </div>
+                <div class="quran-card-box">
+                    <div class="quran-card-title">ജുസ്ഹ് 15 <span>Juz 15</span></div>
+                    <div class="quran-actions">
+                        <a href="https://quran.com/juz/15" target="_blank" class="btn-read">📖 ഓതുക</a>
+                        <a href="https://server8.mp3quran.net/afs/015.mp3" target="_blank" class="btn-listen">🎧 കേൾക്കുക</a>
+                    </div>
+                </div>
+                <div class="quran-card-box">
+                    <div class="quran-card-title">ജുസ്ഹ് 16 <span>Juz 16</span></div>
+                    <div class="quran-actions">
+                        <a href="https://quran.com/juz/16" target="_blank" class="btn-read">📖 ഓതുക</a>
+                        <a href="https://server8.mp3quran.net/afs/016.mp3" target="_blank" class="btn-listen">🎧 കേൾക്കുക</a>
+                    </div>
+                </div>
+                <div class="quran-card-box">
+                    <div class="quran-card-title">ജുസ്ഹ് 17 <span>Juz 17</span></div>
+                    <div class="quran-actions">
+                        <a href="https://quran.com/juz/17" target="_blank" class="btn-read">📖 ഓതുക</a>
+                        <a href="https://server8.mp3quran.net/afs/017.mp3" target="_blank" class="btn-listen">🎧 കേൾക്കുക</a>
+                    </div>
+                </div>
+                <div class="quran-card-box">
+                    <div class="quran-card-title">ജുസ്ഹ് 18 <span>Juz 18</span></div>
+                    <div class="quran-actions">
+                        <a href="https://quran.com/juz/18" target="_blank" class="btn-read">📖 ഓതുക</a>
+                        <a href="https://server8.mp3quran.net/afs/018.mp3" target="_blank" class="btn-listen">🎧 കേൾക്കുക</a>
+                    </div>
+                </div>
+                <div class="quran-card-box">
+                    <div class="quran-card-title">ജുസ്ഹ് 19 <span>Juz 19</span></div>
+                    <div class="quran-actions">
+                        <a href="https://quran.com/juz/19" target="_blank" class="btn-read">📖 ഓതുക</a>
+                        <a href="https://server8.mp3quran.net/afs/019.mp3" target="_blank" class="btn-listen">🎧 കേൾക്കുക</a>
+                    </div>
+                </div>
+                <div class="quran-card-box">
+                    <div class="quran-card-title">ജുസ്ഹ് 20 <span>Juz 20</span></div>
+                    <div class="quran-actions">
+                        <a href="https://quran.com/juz/20" target="_blank" class="btn-read">📖 ഓതുക</a>
+                        <a href="https://server8.mp3quran.net/afs/020.mp3" target="_blank" class="btn-listen">🎧 കേൾക്കുക</a>
+                    </div>
+                </div>
+                <div class="quran-card-box">
+                    <div class="quran-card-title">ജുസ്ഹ് 21 <span>Juz 21</span></div>
+                    <div class="quran-actions">
+                        <a href="https://quran.com/juz/21" target="_blank" class="btn-read">📖 ഓതുക</a>
+                        <a href="https://server8.mp3quran.net/afs/021.mp3" target="_blank" class="btn-listen">🎧 കേൾക്കുക</a>
+                    </div>
+                </div>
+                <div class="quran-card-box">
+                    <div class="quran-card-title">ജുസ്ഹ് 22 <span>Juz 22</span></div>
+                    <div class="quran-actions">
+                        <a href="https://quran.com/juz/22" target="_blank" class="btn-read">📖 ഓതുക</a>
+                        <a href="https://server8.mp3quran.net/afs/022.mp3" target="_blank" class="btn-listen">🎧 കേൾക്കുക</a>
+                    </div>
+                </div>
+                <div class="quran-card-box">
+                    <div class="quran-card-title">ജുസ്ഹ് 23 <span>Juz 23</span></div>
+                    <div class="quran-actions">
+                        <a href="https://quran.com/juz/23" target="_blank" class="btn-read">📖 ഓതുക</a>
+                        <a href="https://server8.mp3quran.net/afs/023.mp3" target="_blank" class="btn-listen">🎧 കേൾക്കുക</a>
+                    </div>
+                </div>
+                <div class="quran-card-box">
+                    <div class="quran-card-title">ജുസ്ഹ് 24 <span>Juz 24</span></div>
+                    <div class="quran-actions">
+                        <a href="https://quran.com/juz/24" target="_blank" class="btn-read">📖 ഓതുക</a>
+                        <a href="https://server8.mp3quran.net/afs/024.mp3" target="_blank" class="btn-listen">🎧 കേൾക്കുക</a>
+                    </div>
+                </div>
+                <div class="quran-card-box">
+                    <div class="quran-card-title">ജുസ്ഹ് 25 <span>Juz 25</span></div>
+                    <div class="quran-actions">
+                        <a href="https://quran.com/juz/25" target="_blank" class="btn-read">📖 ഓതുക</a>
+                        <a href="https://server8.mp3quran.net/afs/025.mp3" target="_blank" class="btn-listen">🎧 കേൾക്കുക</a>
+                    </div>
+                </div>
+                <div class="quran-card-box">
+                    <div class="quran-card-title">ജുസ്ഹ് 26 <span>Juz 26</span></div>
+                    <div class="quran-actions">
+                        <a href="https://quran.com/juz/26" target="_blank" class="btn-read">📖 ഓതുക</a>
+                        <a href="https://server8.mp3quran.net/afs/026.mp3" target="_blank" class="btn-listen">🎧 കേൾക്കുക</a>
+                    </div>
+                </div>
+                <div class="quran-card-box">
+                    <div class="quran-card-title">ജുസ്ഹ് 27 <span>Juz 27</span></div>
+                    <div class="quran-actions">
+                        <a href="https://quran.com/juz/27" target="_blank" class="btn-read">📖 ഓതുക</a>
+                        <a href="https://server8.mp3quran.net/afs/027.mp3" target="_blank" class="btn-listen">🎧 കേൾക്കുക</a>
+                    </div>
+                </div>
+                <div class="quran-card-box">
+                    <div class="quran-card-title">ജുസ്ഹ് 28 <span>Juz 28</span></div>
+                    <div class="quran-actions">
+                        <a href="https://quran.com/juz/28" target="_blank" class="btn-read">📖 ഓതുക</a>
+                        <a href="https://server8.mp3quran.net/afs/028.mp3" target="_blank" class="btn-listen">🎧 കേൾക്കുക</a>
+                    </div>
+                </div>
+                <div class="quran-card-box">
+                    <div class="quran-card-title">ജുസ്ഹ് 29 <span>Juz 29</span></div>
+                    <div class="quran-actions">
+                        <a href="https://quran.com/juz/29" target="_blank" class="btn-read">📖 ഓതുക</a>
+                        <a href="https://server8.mp3quran.net/afs/029.mp3" target="_blank" class="btn-listen">🎧 കേൾക്കുക</a>
+                    </div>
+                </div>
+                <div class="quran-card-box">
+                    <div class="quran-card-title">ജുസ്ഹ് 30 <span>Juz 30</span></div>
+                    <div class="quran-actions">
+                        <a href="https://quran.com/juz/30" target="_blank" class="btn-read">📖 ഓതുക</a>
+                        <a href="https://server8.mp3quran.net/afs/030.mp3" target="_blank" class="btn-listen">🎧 കേൾക്കുക</a>
+                    </div>
+                </div>
             </div>
         </div>
         
