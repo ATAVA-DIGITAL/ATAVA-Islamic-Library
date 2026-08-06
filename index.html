@@ -2,651 +2,434 @@
 <html lang="ml">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>CM CENTER CHERUVATTOOR</title>
-    
-    <!-- PWA Application Icons & Embedded Manifest -->
-    <link rel="icon" type="image/png" sizes="192x192" href="logo.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="logo.png">
-    <link rel="shortcut icon" href="logo.png">
-    
-    <!-- PWA Manifest for Home Screen Logo -->
-    <link rel="manifest" href='data:application/json,{"name":"CM CENTER CHERUVATTOOR","short_name":"CM CENTER","start_url":"./","display":"standalone","background_color":"#1e3a8a","theme_color":"#1e3a8a","icons":[{"src":"logo.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},{"src":"logo.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}]}'>
-    <meta name="theme-color" content="#1e3a8a">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="CM CENTER">
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATAVA Islamic Digital Library</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-        
-        html, body { 
-            height: 100%; 
-            width: 100%; 
-            overflow: hidden; /* Screen Scroll ബ്ലോക്ക് ചെയ്തു */
-            background-color: #f8fafc; 
+        :root {
+            --primary-green: #064e3b;
+            --light-green: #f0fdf4;
+            --accent-gold: #b45309;
+            --text-dark: #1f2937;
         }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
+        
         body { 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: space-between;
-            padding: 4px;
+            background-color: #e5e7eb; 
+            color: var(--text-dark); 
+            padding: 40px 20px; 
+            line-height: 1.8; 
+            font-size: 1.25rem;
         }
-
-        /* Top Announcement Ticker - Bigger Font & Bold */
-        .news-ticker {
-            background: #dc2626; 
-            color: white; 
-            font-size: 11px; 
-            font-weight: 900; 
-            padding: 4px 6px; 
-            border-radius: 4px; 
-            overflow: hidden; 
-            white-space: nowrap; 
-            flex-shrink: 0;
-            letter-spacing: 0.3px;
-        }
-
-        /* Header */
-        .top-app-bar {
-            background: #1e3a8a; color: white; text-align: center; padding: 4px 2px; border-radius: 5px; flex-shrink: 0;
-        }
-        .top-app-bar h1 { font-size: 12px; font-weight: 900; letter-spacing: 0.3px; }
-        .top-app-bar p { font-size: 8px; opacity: 0.9; color: #93c5fd; }
-
-        /* Hadith Bar */
-        .daily-hadith-bar {
-            background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 4px; padding: 3px 5px;
-            text-align: center; color: #1e3a8a; font-size: 8.5px; font-weight: 700; flex-shrink: 0;
-        }
-
-        /* Prayer Box & Blinking Effect */
-        .prayer-container {
-            background: #ffffff; border: 1px solid #cbd5e1; border-radius: 5px; padding: 3px 4px; flex-shrink: 0;
-        }
-        .prayer-title-row { display: flex; justify-content: space-between; align-items: center; font-size: 8.5px; font-weight: 800; color: #1e3a8a; margin-bottom: 2px; }
         
-        @keyframes blinker {
-            50% { opacity: 0.3; background-color: #15803d; }
-        }
-        .next-prayer-badge { 
-            background: #16a34a; color: white; padding: 2px 5px; border-radius: 3px; font-size: 8px; font-weight: 900;
-            animation: blinker 1.2s linear infinite; 
-        }
-
-        .prayer-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; text-align: center; }
-        .prayer-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 3px; padding: 2px 1px; }
-        .prayer-card.active { background: #dcfce7; border-color: #16a34a; }
-        .p-name { font-size: 7.5px; font-weight: 800; color: #475569; }
-        .p-time { font-size: 8px; font-weight: 900; color: #0f172a; }
-
-        /* Action Buttons */
-        .action-bar { display: flex; gap: 3px; flex-shrink: 0; }
-        .act-btn { flex: 1; padding: 4px; border: none; border-radius: 4px; font-size: 8.5px; font-weight: 800; cursor: pointer; color: white; text-align: center; }
-        .btn-wa { background: #25d366; }
-        .btn-pwa { background: #0284c7; }
-
-        /* Calendar */
-        .calendar-container { 
-            background: #ffffff; border-radius: 6px; padding: 2px; border: 1.5px solid #1e3a8a; display: flex; flex-direction: column; flex: 1; justify-content: space-between;
-        }
-        .calendar-nav { display: flex; justify-content: space-between; align-items: center; padding: 1px 4px; }
-        .nav-btn { background-color: #1e3a8a; color: white; border: none; padding: 2px 8px; font-weight: bold; border-radius: 3px; cursor: pointer; font-size: 10px; }
-        #month-year-display { font-size: 12px; font-weight: 900; color: #1e3a8a; }
-
-        .hijri-month-strip {
-            background: #1e3a8a; color: #fef08a; text-align: center; font-size: 9px; font-weight: 800; padding: 2px; border-radius: 2px;
-        }
-
-        .weekdays-grid { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; font-weight: bold; background: #f0f9ff; padding: 2px 0; font-size: 9px; color: #1e3a8a; }
-        .days-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 1px; flex: 1; }
-        
-        /* Cell Layout */
-        .day-cell { 
-            background: #ffffff; border: 1px solid #cbd5e1; border-radius: 3px; padding: 2px 3px;
-            display: flex; flex-direction: column; justify-content: space-between; align-items: center; cursor: pointer; position: relative; overflow: hidden;
-        }
-        .day-cell.sunday { background: #fff5f5; }
-        .day-cell.friday { background: #f0fdf4; }
-        .day-cell.today-cell { border: 2px solid #f59e0b !important; background: #fffbe2 !important; }
-        
-        .today-badge-label { 
-            position: absolute; top: 0; left: 50%; transform: translateX(-50%); 
-            background: #f59e0b; color: white; font-size: 6px; font-weight: 900; padding: 0px 4px; border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; z-index: 2;
-        }
-
-        /* Centered English Date */
-        .eng-num-center { 
-            font-size: 18px; 
-            font-weight: 900; 
-            color: #0f172a; 
-            text-align: center; 
-            line-height: 1; 
-            margin: auto 0; 
-        }
-        .sunday .eng-num-center { color: #dc2626; }
-        .friday .eng-num-center { color: #16a34a; }
-
-        /* Bottom Alternate Dates */
-        .alt-date-row { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            width: 100%; 
-            font-size: 9px; 
-            font-weight: 800; 
-            margin-top: auto; 
-        }
-        .hijri-txt { color: #16a34a; }
-        .mal-txt { color: #c2410c; }
-
-        .event-badge { font-size: 6px; background-color: #7c3aed; color: white; padding: 1px 2px; border-radius: 2px; font-weight: 800; text-align: center; width: 100%; }
-        .saved-note-badge { font-size: 6px; background-color: #0284c7; color: white; padding: 1px 2px; border-radius: 2px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; font-weight: 700; text-align: center; width: 100%; }
-
-        /* Upcoming Events Box */
-        .events-box { background: #fffbe2; border: 1px solid #fde68a; border-radius: 4px; padding: 2px 4px; font-size: 8.5px; color: #92400e; flex-shrink: 0; margin-top: 2px; }
-        
-        /* Bottom Ticker - Bigger Font & Bold */
-        .bottom-ticker {
-            background: #15803d; 
-            color: white; 
-            font-size: 11px; 
-            font-weight: 900; 
-            padding: 4px 6px; 
-            border-radius: 4px; 
-            overflow: hidden; 
-            white-space: nowrap; 
-            flex-shrink: 0; 
-            margin-top: 2px;
-            letter-spacing: 0.3px;
-        }
-
-        /* Branding Footer - Prominent & Big Font */
-        .brand-footer { 
-            text-align: center; 
-            padding: 8px 4px; 
-            background-color: #0f172a; 
-            color: white; 
-            border-radius: 6px; 
-            flex-shrink: 0; 
-            margin-top: 3px;
-            border-top: 2px solid #38bdf8;
-        }
-        .brand-footer h2 { 
-            color: #38bdf8; 
-            font-size: 11px; 
-            font-weight: 900; 
-            letter-spacing: 0.5px;
-            margin-bottom: 2px;
-        }
-        .brand-footer p { 
-            color: #cbd5e1; 
-            font-size: 8.5px; 
-            font-weight: 700;
-            line-height: 1.3;
-        }
-
-        /* Modal */
-        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(2px); justify-content: center; align-items: center; z-index: 1000; padding: 10px; }
-        .modal-content { background: white; padding: 12px; border-radius: 10px; width: 100%; max-width: 320px; }
-        .modal-header { font-size: 13px; font-weight: 800; color: #1e3a8a; margin-bottom: 6px; border-bottom: 1px solid #e2e8f0; padding-bottom: 3px; }
-        .modal-body textarea { width: 100%; height: 50px; padding: 4px; border: 1px solid #cbd5e1; border-radius: 4px; resize: none; font-size: 11px; margin: 4px 0; }
-        .modal-buttons { display: flex; gap: 4px; }
-        .btn { padding: 5px 8px; border: none; border-radius: 4px; font-weight: 700; cursor: pointer; font-size: 10px; flex-grow: 1; text-align: center; }
-        .btn-save { background-color: #0284c7; color: white; }
-        .btn-download { background-color: #16a34a; color: white; }
-        .btn-close { background-color: #64748b; color: white; flex-grow: 0; }
-
-        /* Offscreen Poster Canvas - BIGGER FONT DESIGN */
-        #poster-canvas { 
-            position: absolute; 
-            left: -9999px; 
-            width: 800px; 
-            height: 800px; 
-            background: linear-gradient(135deg, #ffffff, #f1f5f9); 
-            padding: 28px; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: space-between; 
-            border: 12px solid #1e3a8a; 
-        }
-        .poster-top-header { 
+        .library-container { 
+            max-width: 1400px; 
+            margin: 0 auto; 
             background: #ffffff; 
-            border: 3px solid #1e3a8a; 
-            border-radius: 20px; 
-            padding: 14px 22px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-        }
-        .header-left-part { display: flex; align-items: center; gap: 16px; }
-        .poster-photo-container { 
-            width: 65px; 
-            height: 65px; 
-            border-radius: 14px; 
-            border: 3px solid #1e3a8a; 
-            overflow: hidden; 
-            background: #eff6ff; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-        }
-        .poster-photo-container img { width: 100%; height: 100%; object-fit: cover; }
-        .poster-header-title { font-size: 24px; font-weight: 900; color: #1e3a8a; letter-spacing: 0.5px; }
-        .poster-header-sub { background: #1e3a8a; color: #ffffff; padding: 8px 18px; border-radius: 20px; font-weight: 900; font-size: 16px; letter-spacing: 0.5px; }
-        
-        .poster-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 15px 0; }
-        .p-card { 
-            background: #ffffff; 
-            border-radius: 20px; 
-            padding: 20px 12px; 
-            text-align: center; 
-            border: 2px solid #e2e8f0; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: space-between; 
-        }
-        .p-card-title { font-size: 16px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px; }
-        .p-card-num { font-size: 68px; font-weight: 900; line-height: 1; margin: 10px 0; }
-        .p-card-sub { font-size: 16px; font-weight: 900; }
-        
-        .card-eng { border-top: 8px solid #2563eb; background: #eff6ff; } .card-eng .p-card-title { color: #1d4ed8; } .card-eng .p-card-num { color: #1e3a8a; }
-        .card-mal { border-top: 8px solid #f59e0b; background: #fffbe2; } .card-mal .p-card-title { color: #d97706; } .card-mal .p-card-num { color: #b45309; }
-        .card-hij { border-top: 8px solid #10b981; background: #f0fdf4; } .card-hij .p-card-title { color: #059669; } .card-hij .p-card-num { color: #065f46; }
-        
-        .poster-hadith-box { 
-            background: #ffffff; 
-            border: 3px dashed #1e3a8a; 
-            border-radius: 22px; 
-            padding: 24px 20px; 
-            text-align: center; 
-            min-height: 180px; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center; 
-        }
-        .hadith-ara { font-size: 32px; font-weight: 900; color: #0f172a; direction: rtl; margin-bottom: 12px; line-height: 1.3; }
-        .hadith-mal { font-size: 20px; font-weight: 800; color: #1e293b; line-height: 1.4; }
-        
-        .poster-footer-bar { 
-            background: #0f172a; 
             border-radius: 16px; 
-            padding: 14px; 
-            text-align: center; 
-            border-top: 4px solid #38bdf8; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+            padding: 40px; 
         }
-        .poster-footer-bar h3 { color: #38bdf8; font-size: 20px; font-weight: 900; letter-spacing: 0.5px; margin-bottom: 4px; }
-        .poster-footer-bar p { color: #cbd5e1; font-size: 14px; font-weight: 700; line-height: 1.4; }
+
+        header { 
+            text-align: center; 
+            padding: 55px 20px; 
+            background: linear-gradient(135deg, #064e3b, #0f5132); 
+            border-radius: 20px; 
+            margin-bottom: 35px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+            color: white; 
+        }
+        header h1 { font-size: 3.5rem; margin-bottom: 15px; font-weight: 800; letter-spacing: 1px; }
+        header p { font-size: 1.6rem; font-weight: 500; color: #d1e7dd; }
+        .gold-line { width: 180px; height: 6px; background: #ffc107; margin: 25px auto 0; border-radius: 3px; }
+
+        .ai-banner { 
+            margin-bottom: 35px; 
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6); 
+            color: white; 
+            padding: 40px; 
+            border-radius: 20px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            flex-wrap: wrap; 
+            gap: 25px; 
+            box-shadow: 0 10px 20px rgba(59,130,246,0.2); 
+        }
+        .ai-text h3 { font-size: 2.2rem; margin-bottom: 10px; font-weight: 800; display: flex; align-items: center; gap: 12px; }
+        .ai-text p { color: #dbeafe; font-size: 1.4rem; font-weight: 500; }
+        .ai-btn { background: #ffc107; color: #1e293b; padding: 18px 40px; border-radius: 35px; font-size: 1.4rem; font-weight: 800; text-decoration: none; display: flex; align-items: center; gap: 10px; transition: 0.2s; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .ai-btn:hover { background: #ffffff; transform: translateY(-2px); }
+        
+        .board-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 40px; }
+        .board-btn { background: var(--light-green); border: 3px solid var(--primary-green); color: var(--primary-green); padding: 25px 20px; border-radius: 12px; font-size: 1.5rem; font-weight: bold; cursor: pointer; text-align: center; transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
+        .board-btn:hover, .board-btn.active { background: var(--primary-green); color: #ffffff; transform: translateY(-3px); box-shadow: 0 6px 15px rgba(6, 78, 59, 0.2); }
+        .board-btn span { font-size: 1.15rem; font-weight: normal; opacity: 0.95; }
+
+        .content-board { display: none; background: #fafafa; border: 1px solid #e5e7eb; border-radius: 12px; padding: 35px; animation: fadeIn 0.4s ease; }
+        .content-board.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+        .board-title { color: var(--accent-gold); font-size: 2.2rem; font-weight: bold; margin-top: 0; margin-bottom: 25px; border-bottom: 2px dashed #cbd5e1; padding-bottom: 15px; }
+        .board-desc { font-size: 1.4rem; color: #4b5563; margin-bottom: 35px; background: #ffffff; padding: 22px; border-left: 6px solid var(--accent-gold); border-radius: 6px; font-weight: 500; }
+
+        .links-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 20px; }
+        .link-card { background: #ffffff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 22px 24px; display: flex; justify-content: space-between; align-items: center; transition: all 0.2s ease; text-decoration: none; color: inherit; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
+        .link-card:hover { border-color: var(--primary-green); background: var(--light-green); transform: translateX(5px); }
+        .link-name { font-size: 1.35rem; font-weight: bold; color: #111827; }
+        
+        .link-icon { color: white; padding: 10px 20px; border-radius: 6px; font-size: 1.1rem; font-weight: bold; text-align: center; min-width: 110px; }
+        .link-icon.telegram { background: #229ED9; }
+        .link-icon.pdf-btn { background: #dc3545; }
+        .link-icon.blog-btn { background: #b45309; }
+
+        .blog-large-card {
+            background: linear-gradient(135deg, #fffbeb, #fef3c7);
+            border: 3px solid #d97706;
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            max-width: 800px;
+            margin: 20px auto;
+            box-shadow: 0 8px 20px rgba(217,119,6,0.15);
+        }
+        .blog-large-title { font-size: 2.4rem; color: #92400e; font-weight: 800; margin-bottom: 15px; }
+        .blog-large-desc { font-size: 1.45rem; color: #b45309; font-weight: bold; margin-bottom: 25px; line-height: 1.7; }
+        .blog-large-btn { display: inline-flex; align-items: center; gap: 10px; background: #b45309; color: white; text-decoration: none; padding: 18px 45px; border-radius: 50px; font-size: 1.4rem; font-weight: bold; transition: 0.3s; box-shadow: 0 4px 10px rgba(180,83,9,0.3); }
+        .blog-large-btn:hover { background: #92400e; transform: translateY(-2px); }
+
+        .quran-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 15px; }
+        .quran-card { background: #ffffff; border: 1px solid #d1d5db; border-radius: 10px; padding: 22px 15px; text-align: center; text-decoration: none; color: var(--primary-green); font-weight: bold; font-size: 1.4rem; transition: all 0.2s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+        .quran-card:hover { background: var(--primary-green); color: white; border-color: var(--primary-green); transform: scale(1.05); }
+        .quran-card span { display: block; font-size: 1rem; color: #6b7280; margin-top: 6px; font-weight: normal; }
+        .quran-card:hover span { color: #f0fdf4; }
+
+        footer {
+            margin-top: 50px;
+            padding: 35px 20px;
+            background: #1f2937;
+            color: #f3f4f6;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.05);
+        }
+        .footer-powered { font-size: 1.2rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-company { font-size: 2rem; color: #ffc107; font-weight: 800; margin: 5px 0 12px; }
+        .footer-services { font-size: 1.3rem; color: #d1d5db; max-width: 800px; margin: 0 auto 25px; font-weight: 500; }
+        .footer-line { width: 100px; height: 3px; background: #4b5563; margin: 20px auto; }
+        .footer-owner { font-size: 1.5rem; font-weight: bold; color: #ffffff; margin-bottom: 15px; }
+        
+        .whatsapp-contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #25d366;
+            color: white;
+            text-decoration: none;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(37,211,102,0.3);
+        }
+        .whatsapp-contact-btn:hover {
+            background: #20ba5a;
+            transform: translateY(-2px);
+        }
+        h4 { font-size: 1.6rem !important; }
+        
+        @media (max-width: 768px) {
+            body { padding: 15px 10px; }
+            .library-container { padding: 15px; }
+            header { padding: 35px 15px; margin-bottom: 20px; }
+            header h1 { font-size: 2.2rem; }
+            header p { font-size: 1.2rem; }
+            .ai-banner { padding: 20px; gap: 15px; }
+            .ai-text h3 { font-size: 1.6rem; }
+            .ai-text p { font-size: 1.1rem; }
+            .ai-btn { padding: 12px 25px; font-size: 1.1rem; width: 100%; justify-content: center; }
+            .board-grid { grid-template-columns: 1fr; gap: 12px; }
+            .board-btn { padding: 18px 15px; font-size: 1.3rem; }
+            .content-board { padding: 20px 15px; }
+            .board-title { font-size: 1.6rem; }
+            .board-desc { font-size: 1.1rem; padding: 15px; }
+            .links-grid { grid-template-columns: 1fr; gap: 12px; }
+            .link-card { padding: 16px; flex-direction: column; align-items: flex-start; gap: 12px; }
+            .link-name { font-size: 1.15rem; }
+            .link-icon { width: 100%; min-width: unset; }
+            .quran-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .quran-card { font-size: 1.2rem; padding: 15px 10px; }
+            .blog-large-card { padding: 25px 15px; }
+            .blog-large-title { font-size: 1.8rem; }
+            .blog-large-desc { font-size: 1.15rem; }
+            .blog-large-btn { padding: 14px 30px; font-size: 1.15rem; width: 100%; justify-content: center; }
+            .footer-company { font-size: 1.5rem; }
+            .footer-services { font-size: 1.1rem; }
+            .footer-owner { font-size: 1.3rem; }
+            .whatsapp-contact-btn { font-size: 1.1rem; width: 100%; justify-content: center; }
+        }
     </style>
 </head>
 <body>
 
-    <!-- Header News Ticker -->
-    <div class="news-ticker">
-        <marquee scrollamount="2">📢 CM CENTER CHERUVATTOOR: എല്ലാ വ്യാഴാഴ്ചയും മഗ്രിബിന് ശേഷം സ്വലാത്ത് മജ്‌ലിസ്  | നാട്ടുദർസ് പുരുഷന്മാർ : ബുധൻ മഗ്രിബിന് ശേഷം | നാട്ടുദർസ് സഹോദരിമാർ : വ്യാഴം ഉച്ചക്ക് 2.30 To 3.30 വരെ .</marquee>
-    </div>
+<div class="library-container">
 
-    <!-- Main Header -->
-    <div class="top-app-bar">
-        <h1>CM CENTER CHERUVATTOOR, VAZHAKKAD</h1>
-        <p>തീയതിയിൽ ക്ലിക്ക് ചെയ്ത് നോട്സ് എഴുതാം & Status ഡൗൺലോഡ് ചെയ്യാം</p>
-    </div>
+    <!-- Header Section -->
+    <header>
+        <h1>ഇസ്‌ലാമിക് ഡിജിറ്റൽ ലൈബ്രറി</h1>
+        <p>ഉസ്താദുമാർക്കും മുത്തഅല്ലിമീങ്ങൾക്കും വേണ്ടിയുള്ള കിതാബുകളും ഔറാദുകളും</p>
+        <div class="gold-line"></div>
+    </header>
 
-    <!-- Daily Hadith Banner -->
-    <div class="daily-hadith-bar" id="daily-quote-text">
-        📖 "തീർച്ചയായും എല്ലാ പ്രവൃത്തികളും ഉദ്ദേശ്യങ്ങളെ (നിയ്യത്ത്) അടിസ്ഥാനമാക്കിയുള്ളതാണ്."
-    </div>
-
-    <!-- Prayer Times Box -->
-    <div class="prayer-container">
-        <div class="prayer-title-row">
-            <span>🕌 നിസ്കാര സമയങ്ങൾ (വാഴക്കാട്)</span>
-            <span class="next-prayer-badge" id="next-prayer-txt">അടുത്തത്: --</span>
+    <!-- AI CHATBOT -->
+    <div class="ai-banner">
+        <div class="ai-text">
+            <h3><i class="fa-solid fa-robot"></i> അഹ്‌لوസ്സുന്ന AI ചാറ്റ് ബോട്ട്</h3>
+            <p>സുന്നത്തി ജമാഅത്തുമായി ബന്ധപ്പെട്ട നിങ്ങളുടെ എല്ലാ സംശയങ്ങൾക്കും പ്രമാണബദ്ധമായ മറുപടികൾ ഇവിടെ ചോദിക്കാം.</p>
         </div>
-        <div class="prayer-grid">
-            <div class="prayer-card" id="p-subah"><div class="p-name">സുബഹി</div><div class="p-time">04:56 AM</div></div>
-            <div class="prayer-card" id="p-luhar"><div class="p-name">ളുഹർ</div><div class="p-time">12:30 PM</div></div>
-            <div class="prayer-card" id="p-asar"><div class="p-name">അസർ</div><div class="p-time">03:52 PM</div></div>
-            <div class="prayer-card" id="p-magrib"><div class="p-name">മഗ്‌രിബ്</div><div class="p-time">06:48 PM</div></div>
-            <div class="prayer-card" id="p-isha"><div class="p-name">ഇശാഅ്</div><div class="p-time">08:02 PM</div></div>
-        </div>
+        <a href="https://ahlus-sunnah-ai.lovable.app" target="_blank" class="ai-btn">സംശയങ്ങൾ ചോദിക്കുക <i class="fa-solid fa-arrow-right"></i></a>
     </div>
 
-    <!-- Action Bar -->
-    <div class="action-bar">
-        <button class="act-btn btn-wa" onclick="shareToWhatsApp()">📲 WhatsApp Share</button>
-        <button class="act-btn btn-pwa" onclick="installApp()">📲 Mobile App ലോഗോയായി ഇൻസ്റ്റാൾ ചെയ്യാം</button>
+    <!-- BOARDS NAVIGATION -->
+    <div class="board-grid">
+        <button class="board-btn active" onclick="openBoard(event, 'meelad-board')">
+            🎵 മീലാദ് ഗാനങ്ങൾ 
+            <span>പ്രോഗ്രാംസ് ഗോഡൗൺ</span>
+        </button>
+        <button class="board-btn" onclick="openBoard(event, 'fathhul-board')">
+            📖 ഫത്‌ഹുൽ മുഈൻ
+            <span>ഓഡിയോ ക്ലാസുകൾ</span>
+        </button>
+        <button class="board-btn" onclick="openBoard(event, 'kithab-board')">
+            📚 കിതാബുകൾ & അൽഫിയ്യ
+            <span>ഗ്രന്ഥശേഖരങ്ങൾ</span>
+        </button>
+        <button class="board-btn" onclick="openBoard(event, 'quran-board')">
+            🕌 വിശുദ്ധ ഖുർആൻ
+            <span>30 ജുസ്ഹ് ഓഡിയോ</span>
+        </button>
+        <button class="board-btn" onclick="openBoard(event, 'library-files-board')">
+            ✨ പ്രധാന ഫയലുകൾ
+            <span>റാത്തീബ് & കിതാബ് PDF</span>
+        </button>
+        <button class="board-btn" onclick="openBoard(event, 'sunni-blog-board')" style="border-color: #d97706; background: #fffbeb; color: #b45309;">
+            🌐 സുന്നി ബ്ലോഗ്
+            <span>പ്രത്യേക അറിവുകൾ</span>
+        </button>
     </div>
 
-    <!-- Calendar Container -->
-    <div class="calendar-container">
-        <div class="calendar-nav">
-            <button class="nav-btn" onclick="changeMonth(-1)">◀ Prev</button>
-            <div id="month-year-display">August 2026</div>
-            <button class="nav-btn" onclick="changeMonth(1)">Next ▶</button>
-        </div>
-
-        <div class="hijri-month-strip" id="hijri-month-strip-display">1448 AH | صفر - ربيع الأول</div>
-
-        <div class="weekdays-grid">
-            <div style="color:#dc2626;">SUN</div><div>MON</div><div>TUE</div><div>WED</div><div>THU</div><div style="color:#16a34a;">FRI</div><div>SAT</div>
-        </div>
-        <div class="days-grid" id="calendar-days"></div>
-    </div>
-
-    <!-- Upcoming Events -->
-    <div class="events-box">
-        <b>✨ വരുന്ന വിശേഷ ദിവസങ്ങൾ:</b> അവസാന ഞായർ: മഹ്‌ളറത്തുൽ ബദ്‌രിയ്യ മജ്‌ലിസ് | വ്യാഴം: സ്വലാത്ത് മജ്‌ലിസ് മഗ്‌രിബിന് ശേഷം 
-    </div>
-
-    <!-- Bottom Event Announcements Marquee -->
-    <div class="bottom-ticker" id="bottom-event-ticker">
-        <marquee scrollamount="2" id="bottom-marquee-text">🕌 സമസ്ത: 100 പ്രകാശ വർഷങ്ങൾ - സമസ്ത സെന്ററിനറി കോൺഫറൻസ് - 2027 ജനുവരി 28, 29, 30, 31 - വാദീ ഹറമൈൻ, മലപ്പുറം</marquee>
-    </div>
-
-    <!-- Footer -->
-    <div class="brand-footer">
-        <h2>Powered by : ATAVA DIGITAL SERVICES & TRADING</h2>
-        <p>Data Entry, Typing Works, Poster & Badge Design And Digital Services</p>
-        <p>Abdul salam ahsani vazhakkad</p>
-    </div>
-
-    <!-- Modal Dialog -->
-    <div class="modal-overlay" id="date-modal">
-        <div class="modal-content">
-            <div class="modal-header" id="modal-date-title">Date Details</div>
-            <div class="modal-body">
-                <label style="font-size: 10px; font-weight: 700; color: #475569;">വ്യക്തിഗത നോട്സ് / റിമൈൻഡറുകൾ:</label>
-                <textarea id="modal-notes-input" placeholder="ഓർമ്മപ്പെടുത്തലുകൾ എഴുതാം..."></textarea>
-                
-                <label style="font-size: 10px; font-weight: 700; color: #475569; display:block;">📸 സ്ഥാപനത്തിന്റെ ലോഗോ / ഫോട്ടോ:</label>
-                <input type="file" id="photo-upload-input" accept="image/*" style="margin-top:2px; margin-bottom:8px; font-size:9px;">
-            </div>
-            <div class="modal-buttons">
-                <button class="btn btn-save" onclick="saveDayNotes()">Save</button>
-                <button class="btn btn-download" onclick="generatePosterFromModal()">Status Image</button>
-                <button class="btn btn-close" onclick="closeModal()">Close</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Offscreen Canvas Poster -->
-    <div id="poster-canvas">
-        <div class="poster-top-header">
-            <div class="header-left-part">
-                <div class="poster-photo-container">
-                    <img id="poster-institution-img" src="logo.png" alt="Logo">
-                </div>
-                <div class="poster-header-title">CM CENTER CHERUVATTOOR</div>
-            </div>
-            <div class="poster-header-sub">DAILY BULLETIN</div>
-        </div>
-
-        <div class="poster-grid-3">
-            <div class="p-card card-eng">
-                <div class="p-card-title" id="p-eng-day">DAY</div>
-                <div class="p-card-num" id="p-eng-num">1</div>
-                <div class="p-card-sub" id="p-eng-month">AUGUST 2026</div>
-            </div>
-
-            <div class="p-card card-mal">
-                <div class="p-card-title">മലയാളം</div>
-                <div class="p-card-num" id="p-mal-num">1</div>
-                <div class="p-card-sub" id="p-mal-month">ചിങ്ങം 1201</div>
-            </div>
-
-            <div class="p-card card-hij">
-                <div class="p-card-title" id="p-hij-day">اليوم</div>
-                <div class="p-card-num" id="p-hij-num">1</div>
-                <div class="p-card-sub" id="p-hij-month">صفر 1448</div>
-            </div>
-        </div>
-
-        <div class="poster-hadith-box">
-            <div class="hadith-ara" id="p-hadith-ara"></div>
-            <div class="hadith-mal" id="p-hadith-mal"></div>
-        </div>
-
-        <div class="poster-footer-bar">
-            <h3>Powered by : ATAVA DIGITAL SERVICES & TRADING</h3>
-            <p>Data Entry, Typing Works, Poster & Badge Design And Digital Services</p>
+    <!-- BOARD 1: MEELAD -->
+    <div id="meelad-board" class="content-board active">
+        <div class="board-title">🌹 മീലാദ് ഗാനങ്ങൾ വാട്സാപ്പ് ഗ്രൂപ്പിന്റെ ഗോഡൗൺ</div>
+        <div class="board-desc">നിങ്ങൾക്ക് ആവശ്യമുള്ള എല്ലാ പ്രോഗ്രാമുകളും ഓരോന്നായി താഴെ നിന്നും തിരഞ്ഞെടുക്കാം.</div>
+        
+        <div class="links-grid">
+            <a href="https://t.me/meladganangal/4159" target="_blank" class="link-card"><span class="link-name">ഇംഗ്ലീഷ് സംഭാഷണം</span><span class="link-icon telegram">Telegram</span></a>
+            <a href="https://t.me/meladganangal/4099" target="_blank" class="link-card"><span class="link-name">ഇംഗ്ലീഷ് മദ്ഹ് ഗാനങ്ങൾ</span><span class="link-icon telegram">Telegram</span></a>
+            <a href="https://t.me/meladganangal/4056" target="_blank" class="link-card"><span class="link-name">പടപ്പാട്ടുകൾ (പാർട്ട് 1)</span><span class="link-icon telegram">Telegram</span></a>
+            <a href="https://t.me/meladganangal/3680" target="_blank" class="link-card"><span class="link-name">പടപ്പാട്ടുകൾ (പാർട്ട് 2)</span><span class="link-icon telegram">Telegram</span></a>
+            <a href="https://t.me/meladganangal/4296" target="_blank" class="link-card"><span class="link-name">അനൗൺസ്‌മെന്റുകൾ</span><span class="link-icon telegram">Telegram</span></a>
+            <a href="https://t.me/meladganangal/4344" target="_blank" class="link-card"><span class="link-name">കഥാപ്രസംഗം (വേർഷൻ 1)</span><span class="link-icon telegram">Telegram</span></a>
+            <a href="https://t.me/meladganangal/3693" target="_blank" class="link-card"><span class="link-name">കഥാപ്രസംഗം (വേർഷൻ 2)</span><span class="link-icon telegram">Telegram</span></a>
+            <a href="https://t.me/meladganangal/12070?സിംഗിൾ" target="_blank" class="link-card"><span class="link-name">കഥപ്രസംഗം സിംഗിൾ ലിങ്ക് 1</span><span class="link-icon telegram">Telegram</span></a>
+            <a href="https://t.me/meladganangal/12059?സിംഗ" target="_blank" class="link-card"><span class="link-name">കഥപ്രസംഗം സിംഗിൾ ലിങ്ക് 2</span><span class="link-icon telegram">Telegram</span></a>
+            <a href="https://t.me/meladganangal/4212" target="_blank" class="link-card"><span class="link-name">ഗ്രൂപ്പുകൾക്കുള്ള പേരുകൾ</span><span class="link-icon telegram">Telegram</span></a>
+            <a href="https://t.me/meladganangal/4024" target="_blank" class="link-card"><span class="link-name">ഇംഗ്ലീഷ് പ്രസംഗം</span><span class="link-icon telegram">Telegram</span></a>
+            <a href="https://t.me/meladganangal/4013" target="_blank" class="link-card"><span class="link-name">പ്രോഗ്രാം പോസ്റ്ററുകൾ 1</span><span class="link-icon telegram">Telegram</span></a>
+            <a href="https://t.me/meladganangal/3903" target="_blank" class="link-card"><span class="link-name">പ്രോഗ്രാം പോസ്റ്ററുകൾ 2</span><span class="link-icon telegram">Telegram</span></a>
+            <a href="https://t.me/meladganangal/3972" target="_blank" class="link-card"><span class="link-name">അറബിക് ഗാനങ്ങൾ</span><span class="link-icon telegram">Telegram</span></a>
+            <a href="https://t.me/meladganangal/3954" target="_blank" class="link-card"><span class="link-name">സംഘഗാനം / Group Song</span><span class="link-icon telegram">Telegram</span></a>
+            <a href="https://t.me/meladganangal/3920" target="_blank" class="link-card"><span class="link-name">മലയാളം സംഭാഷണം (Conversations)</span><span class="link-icon telegram">Telegram</span></a>
+            <a href="https://t.me/meladganangal/3883" target="_blank" class="link-card"><span class="link-name">മലയാള പ്രസംഗങ്ങൾ (വിഷയധിഷ്ഠിതം)</span><span class="link-icon telegram">Telegram</span></a>
+            <a href="https://t.me/meladganangal/3865" target="_blank" class="link-card"><span class="link-name">നൂറുകണക്കിന് മദ്ഹ് ഗാനങ്ങൾ 1</span><span class="link-icon telegram">Telegram</span></a>
+            <a href="https://t.me/meladganangal/51" target="_blank" class="link-card"><span class="link-name">നൂറുകണക്കിന് മദ്ഹ് ഗാനങ്ങൾ 2</span><span class="link-icon telegram">Telegram</span></a>
+            <a href="https://t.me/meladganangal/3855" target="_blank" class="link-card"><span class="link-name">ദഫ് ഗാനങ്ങൾ ഓഡിയോ</span><span class="link-icon telegram">Telegram</span></a>
+            <a href="https://t.me/meladganangal/12049?single" target="_blank" class="link-card"><span class="link-name">ദഫ് ഗാനങ്ങൾ സ്പെഷ്യൽ സിംഗിൾ</span><span class="link-icon telegram">Telegram</span></a>
+            <a href="https://t.me/meladganangal/12034?single" target="_blank" class="link-card"><span class="link-name">ദഫ് പ്രാർത്ഥന ഗാനങ്ങൾ</span><span class="link-icon telegram">Telegram</span></a>
+            <a href="https://t.me/meladganangal/3842" target="_blank" class="link-card"><span class="link-name">കുട്ടിപ്പാട്ടുകൾ ഓഡിയോ 1</span><span class="link-icon telegram">Telegram</span></a>
+            <a href="https://t.me/meladganangal/3738" target="_blank" class="link-card"><span class="link-name">കുട്ടിപ്പാട്ടുകൾ ഓഡിയോ 2</span><span class="link-icon telegram">Telegram</span></a>
+            <a href="https://t.me/meladganangal/2431" target="_blank" class="link-card"><span class="link-name">തമിഴ് ഇസ്‌ലാമിക് ഗാനങ്ങൾ</span><span class="link-icon telegram">Telegram</span></a>
+            <a href="https://t.me/meladganangal/1440" target="_blank" class="link-card"><span class="link-name">ഗാനങ്ങളുടെ ലിറിക്സ് വരികൾ</span><span class="link-icon telegram">Telegram</span></a>
+            <a href="https://t.me/meladganangal/3833" target="_blank" class="link-card"><span class="link-name">അറബന മുട്ട് ഗാനങ്ങൾ</span><span class="link-icon telegram">Telegram</span></a>
+            <a href="https://t.me/meladganangal/3774" target="_blank" class="link-card"><span class="link-name">വിവിധ തരം PDF ഫയലുകൾ 1</span><span class="link-icon telegram">Telegram</span></a>
+            <a href="https://t.me/meladganangal/3746" target="_blank" class="link-card"><span class="link-name">വിവിധ തരം PDF ഫയലുകൾ 2</span><span class="link-icon telegram">Telegram</span></a>
+            <a href="https://t.me/meladganangal/3564" target="_blank" class="link-card"><span class="link-name">വിവിധ തരം PDF ഫയലുകൾ 3</span><span class="link-icon telegram">Telegram</span></a>
+            <a href="https://t.me/meladganangal/3711" target="_blank" class="link-card"><span class="link-name">ഇസ്‌ലാമിക് റിങ്‌ടോണുകൾ</span><span class="link-icon telegram">Telegram</span></a>
+            <a href="https://t.me/meladganangal/3702" target="_blank" class="link-card"><span class="link-name">ദഫ് മുട്ട് വീഡിയോകൾ</span><span class="link-icon telegram">Telegram</span></a>
+            <a href="https://t.me/meladganangal/3671" target="_blank" class="link-card"><span class="link-name">കന്നഡ ഇസ്‌ലാമിക് ഗാനങ്ങൾ</span><span class="link-icon telegram">Telegram</span></a>
         </div>
     </div>
 
-    <script>
-        const dailyQuotes = [
-            { ara: "إِنَّمَا الأَعْمَالُ بِالنِّيَّاتِ", mal: "\"തീർച്ചയായും എല്ലാ പ്രവൃത്തികളും ഉദ്ദേശ്യങ്ങളെ (നിയ്യത്ത്) അടിസ്ഥാനമാക്കിയുള്ളതാണ്.\"" },
-            { ara: "الدِّينُ النَّصِيحَةُ", mal: "\"മതം എന്നാൽ ഗുണകാംക്ഷയാകുന്നു.\"" },
-            { ara: "الْكَلِمَةُ الطَّيِّبَةُ صَدَقَةٌ", mal: "\"നല്ല വാക്ക് പറയുക എന്നത് ഒരു ദാനധർമ്മമാണ് (സ്വദഖ).\"" },
-            { ara: "الطهُورُ شَطْرُ الإِيمَانِ", mal: "\"ശുദ്ധി എന്നത് സത്യവിശ്വാസത്തിന്റെ പകുതിയാകുന്നു.\"" },
-            { ara: "مَنْ لاَ يَرْحَمِ النَّاسَ لاَ يَرْحَمْهُ اللَّهُ", mal: "\"മനുഷ്യരോട് കരുണ കാണിക്കാത്തവനോട് അല്ലാഹുവും കരുണ കാണിക്കുകയില്ല.\"" }
-        ];
+    <!-- BOARD 2: FATHHUL MUEEN -->
+    <div id="fathhul-board" class="content-board">
+        <div class="board-title">📖 ഫത്‌ഹുൽ മുഈൻ മുഴുവൻ ക്ലാസുകൾ</div>
+        <div class="board-desc"><b>അവതരണം: അബൂശാക്കിർ സുലൈമാൻ ഫൈസി കിഴിശ്ശേരി.</b></div>
+        
+        <div class="links-grid">
+            <a href="https://t.me/+Sy7XKphvdvux8-dm" target="_blank" class="link-card"><span class="link-name">🛒 മുആമലാത്ത് ക്ലാസുകൾ</span><span class="link-icon telegram">Join Group</span></a>
+            <a href="https://t.me/+UaviHo2aSnkmpmR6" target="_blank" class="link-card"><span class="link-name">💍 മുനാകഹാത്ത് ക്ലാസുകൾ</span><span class="link-icon telegram">Join Group</span></a>
+            <a href="https://t.me/+4HQuN8HkFYY2Yzdl" target="_blank" class="link-card"><span class="link-name">⚖️ ജിനായാത്ത് ക്ലാസുകൾ</span><span class="link-icon telegram">Join Group</span></a>
+        </div>
+    </div>
 
-        const dayNamesEng = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
-        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-        const hijriMonthsAra = ["محرم", "صفر", "ربيع الأول", "ربيع الثاني", "جمادى الأولى", "جمادى الآخرة", "رجب", "شعبان", "رمضان", "شوال", "ذو القعدة", "ذو الحجة"];
-        const malMonths = ["ചിങ്ങം", "കന്നി", "തുലാം", "വൃശ്ചികം", "ധനു", "മകരം", "കുംഭം", "മീനം", "മേടം", "ഇടവം", "മിഥുനം", "കർക്കടകം"];
+    <!-- BOARD 3: KITHAB & ALFIYYA -->
+    <div id="kithab-board" class="content-board">
+        <div class="board-title">📚 പ്രമുഖ കിതാബുകൾ & അൽഫിയ്യ പഠന ഗ്രന്ഥശേഖരം</div>
+        <div class="board-desc">കിതാബുകളുടെ ഓഡിയോ ക്ലാസ് ലിങ്കുകളും, വിപുലമായ PDF ഗ്രന്ഥങ്ങളും ഇവിടെ ക്രോഡീകരിച്ചിരിക്കുന്നു.</div>
+        
+        <h4 style="color:var(--primary-green); margin-top:5px; margin-bottom:15px;"><i class="fa-solid fa-microphone-lines"></i> ദർസ് ക്ലാസുകൾ</h4>
+        <div class="links-grid" style="margin-bottom: 30px;">
+            <a href="https://t.me/joinchat/AAAAAEyxwW3kQLkTl3BhIg" target="_blank" class="link-card"><span class="link-name">✨ പ്രധാന ചാനൽ ലിങ്ക്</span><span class="link-icon telegram">Channel</span></a>
+            <a href="https://t.me/joinchat/AAAAAElkMRYMBPOw_uuSPw" target="_blank" class="link-card"><span class="link-name">1. ഹിദായത്തുൽ അദ്kിയാ</span><span class="link-icon telegram">Listen</span></a>
+            <a href="https://t.me/joinchat/AAAAAFfIcS484Uzmf0Nr3Q" target="_blank" class="link-card"><span class="link-name">2. മുരിഖാത്തുൽ ഖുലൂബ്</span><span class="link-icon telegram">Listen</span></a>
+            <a href="https://t.me/joinchat/AAAAAE8SFBTiAfFqwhttig" target="_blank" class="link-card"><span class="link-name">3. റസാനത്ത്</span><span class="link-icon telegram">Listen</span></a>
+            <a href="https://t.me/joinchat/AAAAAFC2hG_wCmbwlQTK1A" target="_blank" class="link-card"><span class="link-name">4. ഖസ്വീദത്തുൽ ബുർദ</span><span class="link-icon telegram">Listen</span></a>
+        </div>
 
-        const prayerSchedule = [
-            { name: "സുബഹി", time: "04:56 AM", rawTime: "04:56", id: "p-subah" },
-            { name: "ളുഹർ", time: "12:30 PM", rawTime: "12:30", id: "p-luhar" },
-            { name: "അസർ", time: "03:52 PM", rawTime: "15:52", id: "p-asar" },
-            { name: "മഗ്‌രിബ്", time: "06:48 PM", rawTime: "18:48", id: "p-magrib" },
-            { name: "ഇശാഅ്", time: "08:02 PM", rawTime: "20:02", id: "p-isha" }
-        ];
+        <h4 style="color:var(--primary-green); margin-bottom:15px;"><i class="fa-solid fa-book"></i> അൽഫിയ്യതുബ്ни മാലിക് ഗ്രന്ഥശേഖരം</h4>
+        <div class="links-grid">
+            <a href="https://t.me/almakthabathulihsaniyya/4859" target="_blank" class="link-card"><span class="link-name">متن ألفية ابن مالك</span><span class="link-icon telegram">PDF</span></a>
+            <a href="https://t.me/almakthabathulihsaniyya/3603" target="_blank" class="link-card"><span class="link-name">المكودي على ألفية ابن مالك</span><span class="link-icon telegram">PDF</span></a>
+        </div>
+    </div>
 
-        let currentDate = new Date();
-        let selectedDayInfo = null;
-        let deferredPrompt = null;
-        const notesRegistry = JSON.parse(localStorage.getItem('cm_notes_registry') || '{}');
+    <!-- BOARD 4: QURAN 30 JUZ (UPDATED HTTPS LINKS) -->
+    <div id="quran-board" class="content-board">
+        <div class="board-title">🕌 विशुद्ध ഖുർആൻ 30 ജുസ്ഹ് (ഡൗൺലോഡ് ചെയ്യാതെ കേൾക്കാം)</div>
+        <div class="board-desc">ആവശ്യമായ ജുസ്ഹ് തിരഞ്ഞെടുത്ത് ക്ലിക്ക് ചെയ്താൽ നിങ്ങൾക്ക് നേരിട്ട് ഓഡിയോ കേൾക്കാവുന്നതാണ്.</div>
+        
+        <div class="quran-grid">
+            <a href="https://j.mp/2b8SiNO" target="_blank" class="quran-card">ജുസ്ഹ് 1 <span>Juz 1</span></a>
+            <a href="https://j.mp/2b8RJmQ" target="_blank" class="quran-card">ജുസ്ഹ് 2 <span>Juz 2</span></a>
+            <a href="https://j.mp/2bFSrtF" target="_blank" class="quran-card">ജുസ്ഹ് 3 <span>Juz 3</span></a>
+            <a href="https://j.mp/2b8SXi3" target="_blank" class="quran-card">ജുസ്ഹ് 4 <span>Juz 4</span></a>
+            <a href="https://j.mp/2b8RZm3" target="_blank" class="quran-card">ജുസ്ഹ് 5 <span>Juz 5</span></a>
+            <a href="https://j.mp/28MBohs" target="_blank" class="quran-card">ജുസ്ഹ് 6 <span>Juz 6</span></a>
+            <a href="https://j.mp/2bFSKTz" target="_blank" class="quran-card">ജുസ്ഹ് 7 <span>Juz 7</span></a>
+            <a href="https://j.mp/2b8T6p2" target="_blank" class="quran-card">ജുസ്ഹ് 8 <span>Juz 8</span></a>
+            <a href="https://j.mp/2bFStw0" target="_blank" class="quran-card">ജുസ്ഹ് 9 <span>Juz 9</span></a>
+            <a href="https://j.mp/2b8Sme7" target="_blank" class="quran-card">ജുസ്ഹ് 10 <span>Juz 10</span></a>
+            <a href="https://j.mp/2b8TnX9" target="_blank" class="quran-card">ജുസ്ഹ് 11 <span>Juz 11</span></a>
+            <a href="https://j.mp/2bFT7AL" target="_blank" class="quran-card">ജുസ്ഹ് 12 <span>Juz 12</span></a>
+            <a href="https://j.mp/2b8T0p6" target="_blank" class="quran-card">ജുസ്ഹ് 13 <span>Juz 13</span></a>
+            <a href="https://j.mp/2b8T7bS" target="_blank" class="quran-card">ജുസ്ഹ് 14 <span>Juz 14</span></a>
+            <a href="https://j.mp/2bFT7R9" target="_blank" class="quran-card">ജുസ്ഹ് 15 <span>Juz 15</span></a>
+            <a href="https://j.mp/2b8Sw0G" target="_blank" class="quran-card">ജുസ്ഹ് 16 <span>Juz 16</span></a>
+            <a href="https://j.mp/2b8T49R" target="_blank" class="quran-card">ജുസ്ഹ് 17 <span>Juz 17</span></a>
+            <a href="https://j.mp/2bFTpZ7" target="_blank" class="quran-card">ജുസ്ഹ് 18 <span>Juz 18</span></a>
+            <a href="https://j.mp/2b8SgYt" target="_blank" class="quran-card">ജുസ്ഹ് 19 <span>Juz 19</span></a>
+            <a href="https://j.mp/2b8T4gX" target="_blank" class="quran-card">ജുസ്ഹ് 20 <span>Juz 20</span></a>
+            <a href="https://j.mp/2bFToeh" target="_blank" class="quran-card">ജുസ്ഹ് 21 <span>Juz 21</span></a>
+            <a href="https://j.mp/2b8SOw8" target="_blank" class="quran-card">ജുസ്ഹ് 22 <span>Juz 22</span></a>
+            <a href="https://j.mp/2b8T8fm" target="_blank" class="quran-card">ജുസ്ഹ് 23 <span>Juz 23</span></a>
+            <a href="https://j.mp/2bFTpvt" target="_blank" class="quran-card">ജുസ്ഹ് 24 <span>Juz 24</span></a>
+            <a href="https://j.mp/2b8S1U0" target="_blank" class="quran-card">ജുസ്ഹ് 25 <span>Juz 25</span></a>
+            <a href="https://j.mp/2b8T0FV" target="_blank" class="quran-card">ജുസ്ഹ് 26 <span>Juz 26</span></a>
+            <a href="https://j.mp/2bFTmb0" target="_blank" class="quran-card">ജുസ്ഹ് 27 <span>Juz 27</span></a>
+            <a href="https://j.mp/2b8Tcl4" target="_blank" class="quran-card">ജുസ്ഹ് 28 <span>Juz 28</span></a>
+            <a href="https://j.mp/2b8T72I" target="_blank" class="quran-card">ജുസ്ഹ് 29 <span>Juz 29</span></a>
+            <a href="https://j.mp/2bFTgYf" target="_blank" class="quran-card">ജുസ്ഹ് 30 <span>Juz 30</span></a>
+        </div>
+    </div>
 
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-        });
+    <!-- BOARD 5: LIBRARY FILES -->
+    <div id="library-files-board" class="content-board">
+        <div class="board-title">✨ റാത്തീബ് & മൂല കിതാബുകൾ (PDF)</div>
+        <div class="board-desc">നമ്മൾ അപ്‌ലോഡ് ചെയ്ത പ്രധാനപ്പെട്ട കിതാബുകൾ താഴെ നൽകുന്നു.</div>
 
-        function installApp() {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                deferredPrompt.userChoice.then((result) => { deferredPrompt = null; });
-            } else {
-                alert("മുകളിൽ വലതു ഭാഗത്ത് മൂന്ന് ഡോട്ട് എടുത്ത് അതിൽ 'Add to Home Screen' എന്നത് ക്ലിക്ക് ചെയ്‌താൽ CM Center ആപ്പ് ഐക്കണായി നിങ്ങളുടെ സ്ക്രീനിൽ ലഭിക്കും. അത് എപ്പോഴും ഓപ്പൺ ആക്കാൻ പറ്റും.");
-            }
+        <!-- ഔറാദുകളും റാത്തീബുകളും -->
+        <h4 style="color:var(--accent-gold); margin-top:10px; margin-bottom:15px;"><i class="fa-solid fa-book-open"></i> ഔറാദുകളും റാത്തീബുകളും</h4>
+        <div class="links-grid" style="margin-bottom: 30px;">
+            <a href="Kithabs/rifaee ratheeb pdf.pdf" target="_blank" class="link-card">
+                <span class="link-name">📿 രിഫാഈ റാത്തീബ് (Rifae Ratheeb)</span>
+                <span class="link-icon pdf-btn"><i class="fa-solid fa-file-pdf"></i> Open PDF</span>
+            </a>
+            <a href="Kithabs/adkiya .pdf" target="_blank" class="link-card">
+                <span class="link-name">📜 അദ്kിയാ (Adkiya)</span>
+                <span class="link-icon pdf-btn"><i class="fa-solid fa-file-pdf"></i> Open PDF</span>
+            </a>
+            <a href="Kithabs/الخطب النباتية.pdf" target="_blank" class="link-card">
+                <span class="link-name">🕌 ഖുതുബത്തുൻ നബാത്തിയ്യ (الخطب النباتية)</span>
+                <span class="link-icon pdf-btn"><i class="fa-solid fa-file-pdf"></i> Open PDF</span>
+            </a>
+        </div>
+
+        <!-- ചരിത്രങ്ങളും വിവർത്തനങ്ങളും -->
+        <h4 style="color:var(--accent-gold); margin-bottom:15px;"><i class="fa-solid fa-landmark"></i> ചരിത്രങ്ങളും വിവർത്തനങ്ങളും</h4>
+        <div class="links-grid" style="margin-bottom: 30px;">
+            <a href="Kithabs/تعجيل الفتوح________.pdf" target="_blank" class="link-card">
+                <span class="link-name">📚 തഅ്ജീലുൽ ഫുതൂഹ് (تعجيل الفتوح)</span>
+                <span class="link-icon pdf-btn"><i class="fa-solid fa-file-pdf"></i> Open PDF</span>
+            </a>
+            <a href="Kithabs/രസാന വിവര്ത്തനം.pdf" target="_blank" class="link-card">
+                <span class="link-name">📖 റസാന വിവർത്തനം (Razana Vivarthanam)</span>
+                <span class="link-icon pdf-btn"><i class="fa-solid fa-file-pdf"></i> Open PDF</span>
+            </a>
+        </div>
+
+        <!-- മസ്അല & ഫിഖ്ഹ് പഠനങ്ങൾ -->
+        <h4 style="color:var(--accent-gold); margin-bottom:15px;"><i class="fa-solid fa-scale-balanced"></i> മസ്അല & ഫിഖ്ഹ് പഠനങ്ങൾ</h4>
+        <div class="links-grid">
+            <a href="Kithabs/إرشاد العباد إلى سبيل الرشاد للمليباري.pdf" target="_blank" class="link-card">
+                <span class="link-name">💎 ഇർഷാദുൽ ഇബാദ് (إرشاد العباد)</span>
+                <span class="link-icon pdf-btn"><i class="fa-solid fa-file-pdf"></i> Open PDF</span>
+            </a>
+            <a href="Kithabs/خлаصة الفقه الاسلامي ..كامل qulasa.pdf" target="_blank" class="link-card">
+                <span class="link-name">📙 ഖുലാസത്തുൽ ഫിഖ്ഹ് (خلاصة الفقه)</span>
+                <span class="link-icon pdf-btn"><i class="fa-solid fa-file-pdf"></i> Open PDF</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- NEW BOARD 6: SUNNI BLOG -->
+    <div id="sunni-blog-board" class="content-board">
+        <div class="board-title">🌐 സുന്നി നോളഡ്ജ് ബ്ലോഗ് അറിവുകൾ</div>
+        <div class="board-desc">ആദർശപരമായ എല്ലാ സംശയങ്ങൾക്കും താഴെ കാണുന്ന ലിങ്ക് ഓപ്പൺ ചെയ്ത് ആവശ്യമായ ഡോക്യുമെന്റുകൾ കണ്ടെത്തുക.</div>
+        
+        <div class="blog-large-card">
+            <div class="blog-large-title"><i class="fa-solid fa-gopuram"></i> Sunni Knowledge Blog</div>
+            <div class="blog-large-desc">"വിനിമയങ്ങളും ആദർശ പഠനങ്ങളും അടങ്ങിയ സുന്നി നോളഡ്ജ് ഒഫീഷ്യൽ ബ്ലോഗ് പേജ് സന്ദർശിക്കാൻ താഴെ ക്ലിക്ക് ചെയ്യുക"</div>
+            <a href="https://sunniknowledge.blogspot.com/?m=0" target="_blank" class="blog-large-btn">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> ഓപ്പൺ ബ്ലോഗ് (Open Blog)
+            </a>
+        </div>
+    </div>
+
+    <!-- COMPANY FOOTER SECTION -->
+    <footer>
+        <div class="footer-powered">Powered by</div>
+        <div class="footer-company">ATAVA DIGITAL SERVICES & TRADING</div>
+        <div class="footer-services">Data Entry, Typing Works, Poster & Badge Design And Digital Services</div>
+        
+        <div class="footer-line"></div>
+        
+        <div class="footer-owner">Abdul Salam Ahsani Vazhakkad</div>
+        <a href="https://wa.me/919947965744" target="_blank" class="whatsapp-contact-btn">
+            <i class="fa-brands fa-whatsapp" style="font-size: 1.6rem;"></i> Contact on WhatsApp
+        </a>
+    </footer>
+
+</div>
+
+<script>
+    function openBoard(evt, boardId) {
+        const contentBoards = document.getElementsByClassName("content-board");
+        for (let i = 0; i < contentBoards.length; i++) {
+            contentBoards[i].classList.remove("active");
         }
 
-        function shareToWhatsApp() {
-            const today = new Date();
-            const text = `📌 *CM Center Cheruvattoor Calendar*\nതീയതി: ${today.getDate()} ${monthNames[today.getMonth()]} ${today.getFullYear()}\nനിസ്കാര സമയങ്ങളും സന്ദേശങ്ങളും കാണാൻ സന്ദർശിക്കൂ: ${window.location.href}`;
-            window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank');
+        const boardBtns = document.getElementsByClassName("board-btn");
+        for (let i = 0; i < boardBtns.length; i++) {
+            boardBtns[i].classList.remove("active");
         }
 
-        function updatePrayerCountdown() {
-            const now = new Date();
-            const currentTimeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
-            
-            let nextP = null;
-            prayerSchedule.forEach(p => {
-                document.getElementById(p.id).classList.remove('active');
-                if (currentTimeStr < p.rawTime && !nextP) {
-                    nextP = p;
-                }
-            });
+        document.getElementById(boardId).classList.add("active");
+        evt.currentTarget.classList.add("active");
+    }
+</script>
 
-            if (!nextP) nextP = prayerSchedule[0];
-            document.getElementById(nextP.id).classList.add('active');
-            document.getElementById('next-prayer-txt').innerText = `അടുത്തത്: ${nextP.name} (${nextP.time})`;
-        }
-
-        function getHijriDetails(targetDate) {
-            const baseDate = new Date(2026, 6, 31);
-            const diffDays = Math.round((new Date(targetDate.getFullYear(), targetDate.getMonth(), targetDate.getDate()).getTime() - new Date(baseDate.getFullYear(), baseDate.getMonth(), baseDate.getDate()).getTime()) / (1000 * 60 * 60 * 24));
-
-            let day = 17 + diffDays;
-            let monthIdx = 1;
-            let year = 1448;
-
-            while (day > 30) { day -= 30; monthIdx = (monthIdx + 1) % 12; if (monthIdx === 0) year++; }
-            while (day < 1) { day += 30; monthIdx = (monthIdx - 1 + 12) % 12; if (monthIdx === 11) year--; }
-
-            return { day, monthName: hijriMonthsAra[monthIdx], year };
-        }
-
-        function getMalayalamDetails(targetDate) {
-            const baseDate = new Date(2026, 6, 31);
-            const diffDays = Math.round((new Date(targetDate.getFullYear(), targetDate.getMonth(), targetDate.getDate()).getTime() - new Date(baseDate.getFullYear(), baseDate.getMonth(), baseDate.getDate()).getTime()) / (1000 * 60 * 60 * 24));
-
-            let day = 15 + diffDays;
-            let monthIdx = 11;
-            let year = 1201;
-
-            while (day > 30) { day -= 30; monthIdx = (monthIdx + 1) % 12; if (monthIdx === 0) year++; }
-            while (day < 1) { day += 30; monthIdx = (monthIdx - 1 + 12) % 12; if (monthIdx === 11) year--; }
-
-            return { day, monthName: malMonths[monthIdx], year };
-        }
-
-        function renderCalendar() {
-            const year = currentDate.getFullYear();
-            const month = currentDate.getMonth();
-
-            document.getElementById('month-year-display').innerText = `${monthNames[month]} ${year}`;
-
-            const firstDayDate = new Date(year, month, 1);
-            const lastDayDate = new Date(year, month + 1, 0);
-            
-            const startHij = getHijriDetails(firstDayDate);
-            const endHij = getHijriDetails(lastDayDate);
-            
-            document.getElementById('hijri-month-strip-display').innerText = `${startHij.year} AH  |  ${startHij.monthName} - ${endHij.monthName}`;
-
-            const daysGrid = document.getElementById('calendar-days');
-            daysGrid.innerHTML = '';
-
-            const firstDay = firstDayDate.getDay();
-            const totalDays = lastDayDate.getDate();
-
-            let lastSundayDay = -1;
-            for (let d = totalDays; d >= 1; d--) {
-                if (new Date(year, month, d).getDay() === 0) {
-                    lastSundayDay = d;
-                    break;
-                }
-            }
-
-            for (let i = 0; i < firstDay; i++) {
-                const empty = document.createElement('div');
-                empty.style.border = 'none';
-                daysGrid.appendChild(empty);
-            }
-
-            const today = new Date();
-
-            for (let day = 1; day <= totalDays; day++) {
-                const cell = document.createElement('div');
-                cell.className = 'day-cell';
-
-                const cellDate = new Date(year, month, day);
-                const dayOfWeek = cellDate.getDay();
-                if (dayOfWeek === 0) cell.classList.add('sunday');
-                if (dayOfWeek === 5) cell.classList.add('friday');
-
-                const isToday = (day === today.getDate() && month === today.getMonth() && year === today.getFullYear());
-                if (isToday) {
-                    cell.classList.add('today-cell');
-                }
-
-                const hijri = getHijriDetails(cellDate);
-                const mal = getMalayalamDetails(cellDate);
-
-                let hijriDisplay = (hijri.day === 1 || day === 1) ? `${hijri.day} ${hijri.monthName}` : `${hijri.day}`;
-                let malDisplay = (mal.day === 1 || day === 1) ? `${mal.day} ${mal.monthName}` : `${mal.day}`;
-
-                const key = `${year}-${month}-${day}`;
-                const noteText = notesRegistry[key] || "";
-                const isLastSunday = (day === lastSundayDay);
-
-                cell.innerHTML = `
-                    ${isToday ? `<div class="today-badge-label">TODAY</div>` : ''}
-                    <div class="eng-num-center">${day}</div>
-                    ${isLastSunday ? `<div class="event-badge">✨ മഹ്‌ളറത്തുൽ ബദ്‌രിയ്യ</div>` : ''}
-                    ${noteText ? `<div class="saved-note-badge">📌 ${noteText}</div>` : ''}
-                    <div class="alt-date-row">
-                        <span class="hijri-txt">🌙${hijriDisplay}</span>
-                        <span class="mal-txt">🌾${malDisplay}</span>
-                    </div>
-                `;
-
-                cell.onclick = () => openModal(day, dayNamesEng[dayOfWeek], hijri, mal, monthNames[month], year);
-                daysGrid.appendChild(cell);
-            }
-        }
-
-        function openModal(day, engDayName, hijri, mal, engMonthName, year) {
-            selectedDayInfo = { day, engDayName, hijri, mal, engMonthName, year };
-            const key = `${year}-${currentDate.getMonth()}-${day}`;
-            
-            document.getElementById('modal-date-title').innerText = `${day} ${engMonthName} ${year}`;
-            document.getElementById('modal-notes-input').value = notesRegistry[key] || "";
-            document.getElementById('date-modal').style.display = 'flex';
-        }
-
-        function saveDayNotes() {
-            if(!selectedDayInfo) return;
-            const key = `${selectedDayInfo.year}-${currentDate.getMonth()}-${selectedDayInfo.day}`;
-            notesRegistry[key] = document.getElementById('modal-notes-input').value;
-            localStorage.setItem('cm_notes_registry', JSON.stringify(notesRegistry));
-            closeModal();
-            renderCalendar();
-        }
-
-        function generatePosterFromModal() {
-            if(!selectedDayInfo) return;
-            const { day, engDayName, hijri, mal, engMonthName, year } = selectedDayInfo;
-            const quote = dailyQuotes[(day - 1) % dailyQuotes.length];
-
-            document.getElementById('p-eng-num').innerText = day;
-            document.getElementById('p-eng-day').innerText = engDayName;
-            document.getElementById('p-eng-month').innerText = `${engMonthName.toUpperCase()} ${year}`;
-
-            document.getElementById('p-mal-num').innerText = mal.day;
-            document.getElementById('p-mal-month').innerText = `${mal.monthName} ${mal.year}`;
-
-            document.getElementById('p-hij-num').innerText = hijri.day;
-            document.getElementById('p-hij-day').innerText = "اليوم";
-            document.getElementById('p-hij-month').innerText = `${hijri.monthName} ${hijri.year}`;
-            
-            document.getElementById('p-hadith-ara').innerText = quote.ara;
-            document.getElementById('p-hadith-mal').innerText = quote.mal;
-
-            const poster = document.getElementById('poster-canvas');
-            html2canvas(poster, { scale: 2 }).then(canvas => {
-                const link = document.createElement('a');
-                link.download = `Status_${engMonthName}_${day}.png`;
-                link.href = canvas.toDataURL();
-                link.click();
-            });
-        }
-
-        function closeModal() {
-            document.getElementById('date-modal').style.display = 'none';
-            selectedDayInfo = null;
-        }
-
-        function changeMonth(dir) {
-            currentDate.setMonth(currentDate.getMonth() + dir);
-            renderCalendar();
-        }
-
-        const today = new Date();
-        const quoteObj = dailyQuotes[(today.getDate() - 1) % dailyQuotes.length];
-        document.getElementById('daily-quote-text').innerText = `📖 ${quoteObj.mal}`;
-
-        updatePrayerCountdown();
-        renderCalendar();
-    </script>
 </body>
 </html>
