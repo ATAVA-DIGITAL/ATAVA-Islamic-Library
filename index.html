@@ -85,6 +85,22 @@
         .link-icon.pdf-btn { background: #dc3545; }
         .link-icon.blog-btn { background: #b45309; }
 
+        /* Custom App Card Style */
+        .app-large-card {
+            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+            border: 3px solid #16a34a;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            max-width: 850px;
+            margin: 20px auto;
+            box-shadow: 0 10px 25px rgba(22,163,74,0.15);
+        }
+        .app-large-title { font-size: 2.5rem; color: #15803d; font-weight: 800; margin-bottom: 15px; }
+        .app-large-desc { font-size: 1.45rem; color: #166534; font-weight: 600; margin-bottom: 25px; line-height: 1.7; }
+        .playstore-btn { display: inline-flex; align-items: center; gap: 12px; background: #01875f; color: white; text-decoration: none; padding: 18px 45px; border-radius: 50px; font-size: 1.5rem; font-weight: bold; transition: 0.3s; box-shadow: 0 6px 15px rgba(1,135,95,0.3); }
+        .playstore-btn:hover { background: #006648; transform: translateY(-3px); }
+
         .blog-large-card {
             background: linear-gradient(135deg, #fffbeb, #fef3c7);
             border: 3px solid #d97706;
@@ -162,10 +178,10 @@
             .link-icon { width: 100%; min-width: unset; }
             .quran-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
             .quran-card { font-size: 1.2rem; padding: 15px 10px; }
-            .blog-large-card { padding: 25px 15px; }
-            .blog-large-title { font-size: 1.8rem; }
-            .blog-large-desc { font-size: 1.15rem; }
-            .blog-large-btn { padding: 14px 30px; font-size: 1.15rem; width: 100%; justify-content: center; }
+            .app-large-card, .blog-large-card { padding: 25px 15px; }
+            .app-large-title, .blog-large-title { font-size: 1.8rem; }
+            .app-large-desc, .blog-large-desc { font-size: 1.15rem; }
+            .playstore-btn, .blog-large-btn { padding: 14px 30px; font-size: 1.15rem; width: 100%; justify-content: center; }
             .footer-company { font-size: 1.5rem; }
             .footer-services { font-size: 1.1rem; }
             .footer-owner { font-size: 1.3rem; }
@@ -187,15 +203,19 @@
     <!-- AI CHATBOT -->
     <div class="ai-banner">
         <div class="ai-text">
-            <h3><i class="fa-solid fa-robot"></i> അഹ്‌لوസ്സുന്ന AI ചാറ്റ് ബോട്ട്</h3>
-            <p>സുന്നത്തി ജമാഅത്തുമായി ബന്ധപ്പെട്ട നിങ്ങളുടെ എല്ലാ സംശയങ്ങൾക്കും പ്രമാണബദ്ധമായ മറുപടികൾ ഇവിടെ ചോദിക്കാം.</p>
+            <h3><i class="fa-solid fa-robot"></i> അഹ്ലുസ്സുന്ന AI ചാറ്റ് ബോട്ട്</h3>
+            <p>സുന്നത്ത് ജമാഅത്തുമായി ബന്ധപ്പെട്ട നിങ്ങളുടെ എല്ലാ സംശയങ്ങൾക്കും പ്രമാണബദ്ധമായ മറുപടികൾ ഇവിടെ ചോദിക്കാം.സംശയം ഉള്ളത് ഉസ്താദുമാരോട് ചോദിച്ചു ഉറപ്പ് വരുത്തുക</p>
         </div>
         <a href="https://ahlus-sunnah-ai.lovable.app" target="_blank" class="ai-btn">സംശയങ്ങൾ ചോദിക്കുക <i class="fa-solid fa-arrow-right"></i></a>
     </div>
 
     <!-- BOARDS NAVIGATION -->
     <div class="board-grid">
-        <button class="board-btn active" onclick="openBoard(event, 'meelad-board')">
+        <button class="board-btn active" onclick="openBoard(event, 'madh-app-board')" style="border-color: #16a34a; background: #f0fdf4; color: #15803d;">
+            📱 തിരുനബി മദ്ഹ് ഗാനങ്ങൾ
+            <span>Play Store Android App</span>
+        </button>
+        <button class="board-btn" onclick="openBoard(event, 'meelad-board')">
             🎵 മീലാദ് ഗാനങ്ങൾ 
             <span>പ്രോഗ്രാംസ് ഗോഡൗൺ</span>
         </button>
@@ -221,8 +241,22 @@
         </button>
     </div>
 
+    <!-- NEW BOARD: THIRUNABI MADH APP BOARD -->
+    <div id="madh-app-board" class="content-board active">
+        <div class="board-title">✨ തിരുനബി മദ്ഹ് ഗാനങ്ങൾ Mobile App</div>
+        <div class="board-desc">മദ്ഹ് പാട്ടുകളും വരികളും വേഗത്തിൽ കണ്ടെത്തുന്നതിനായി പ്ലേസ്റ്റോറിൽ ലഭ്യമായ ഒഫീഷ്യൽ ആപ്പ് താഴെ കാണുന്ന ബട്ടൺ വഴി ഇൻസ്റ്റാൾ ചെയ്യാം.</div>
+        
+        <div class="app-large-card">
+            <div class="app-large-title"><i class="fa-brands fa-google-play"></i> തിരുനബി മദ്ഹ് ഗാനങ്ങൾ (Android App)</div>
+            <div class="app-large-desc">"ആളുകൾക്ക് മദ്ഹ് പാട്ടുകളുടെ വരികളും ഓഡിയോകളും വളരെ പെട്ടെന്ന് ലഭ്യമാകുന്ന സുപ്രധാന ആൻഡ്രോയിഡ് ആപ്ലിക്കേഷൻ ഇൻസ്റ്റാൾ ചെയ്യാൻ താഴെ ക്ലിക്ക് ചെയ്യുക"</div>
+            <a href="https://play.google.com/store/apps/details?id=com.ThirunabiMadh" target="_blank" class="playstore-btn">
+                <i class="fa-brands fa-google-play"></i> Download from Play Store
+            </a>
+        </div>
+    </div>
+
     <!-- BOARD 1: MEELAD -->
-    <div id="meelad-board" class="content-board active">
+    <div id="meelad-board" class="content-board">
         <div class="board-title">🌹 മീലാദ് ഗാനങ്ങൾ വാട്സാപ്പ് ഗ്രൂപ്പിന്റെ ഗോഡൗൺ</div>
         <div class="board-desc">നിങ്ങൾക്ക് ആവശ്യമുള്ള എല്ലാ പ്രോഗ്രാമുകളും ഓരോന്നായി താഴെ നിന്നും തിരഞ്ഞെടുക്കാം.</div>
         
@@ -296,9 +330,9 @@
         </div>
     </div>
 
-    <!-- BOARD 4: QURAN 30 JUZ (UPDATED HTTPS LINKS) -->
+    <!-- BOARD 4: QURAN 30 JUZ -->
     <div id="quran-board" class="content-board">
-        <div class="board-title">🕌 विशुद्ध ഖുർആൻ 30 ജുസ്ഹ് (ഡൗൺലോഡ് ചെയ്യാതെ കേൾക്കാം)</div>
+        <div class="board-title">🕌 വിശുദ്ധ ഖുർആൻ 30 ജുസ്ഹ് (ഡൗൺലോഡ് ചെയ്യാതെ കേൾക്കാം)</div>
         <div class="board-desc">ആവശ്യമായ ജുസ്ഹ് തിരഞ്ഞെടുത്ത് ക്ലിക്ക് ചെയ്താൽ നിങ്ങൾക്ക് നേരിട്ട് ഓഡിയോ കേൾക്കാവുന്നതാണ്.</div>
         
         <div class="quran-grid">
@@ -337,10 +371,9 @@
 
     <!-- BOARD 5: LIBRARY FILES -->
     <div id="library-files-board" class="content-board">
-        <div class="board-title">✨ റാത്തീബ് & മൂല കിതാബുകൾ (PDF)</div>
+        <div class="board-title">✨ റാത്തീബ് &  കിതാബുകൾ (PDF)</div>
         <div class="board-desc">നമ്മൾ അപ്‌ലോഡ് ചെയ്ത പ്രധാനപ്പെട്ട കിതാബുകൾ താഴെ നൽകുന്നു.</div>
 
-        <!-- ഔറാദുകളും റാത്തീബുകളും -->
         <h4 style="color:var(--accent-gold); margin-top:10px; margin-bottom:15px;"><i class="fa-solid fa-book-open"></i> ഔറാദുകളും റാത്തീബുകളും</h4>
         <div class="links-grid" style="margin-bottom: 30px;">
             <a href="Kithabs/rifaee ratheeb pdf.pdf" target="_blank" class="link-card">
@@ -357,7 +390,6 @@
             </a>
         </div>
 
-        <!-- ചരിത്രങ്ങളും വിവർത്തനങ്ങളും -->
         <h4 style="color:var(--accent-gold); margin-bottom:15px;"><i class="fa-solid fa-landmark"></i> ചരിത്രങ്ങളും വിവർത്തനങ്ങളും</h4>
         <div class="links-grid" style="margin-bottom: 30px;">
             <a href="Kithabs/تعجيل الفتوح________.pdf" target="_blank" class="link-card">
@@ -370,21 +402,20 @@
             </a>
         </div>
 
-        <!-- മസ്അല & ഫിഖ്ഹ് പഠനങ്ങൾ -->
         <h4 style="color:var(--accent-gold); margin-bottom:15px;"><i class="fa-solid fa-scale-balanced"></i> മസ്അല & ഫിഖ്ഹ് പഠനങ്ങൾ</h4>
         <div class="links-grid">
             <a href="Kithabs/إرشاد العباد إلى سبيل الرشاد للمليباري.pdf" target="_blank" class="link-card">
                 <span class="link-name">💎 ഇർഷാദുൽ ഇബാദ് (إرشاد العباد)</span>
                 <span class="link-icon pdf-btn"><i class="fa-solid fa-file-pdf"></i> Open PDF</span>
             </a>
-            <a href="Kithabs/خлаصة الفقه الاسلامي ..كامل qulasa.pdf" target="_blank" class="link-card">
+            <a href="Kithabs/خلاصة الفقه الاسلامي ..كامل qulasa.pdf" target="_blank" class="link-card">
                 <span class="link-name">📙 ഖുലാസത്തുൽ ഫിഖ്ഹ് (خلاصة الفقه)</span>
                 <span class="link-icon pdf-btn"><i class="fa-solid fa-file-pdf"></i> Open PDF</span>
             </a>
         </div>
     </div>
 
-    <!-- NEW BOARD 6: SUNNI BLOG -->
+    <!-- BOARD 6: SUNNI BLOG -->
     <div id="sunni-blog-board" class="content-board">
         <div class="board-title">🌐 സുന്നി നോളഡ്ജ് ബ്ലോഗ് അറിവുകൾ</div>
         <div class="board-desc">ആദർശപരമായ എല്ലാ സംശയങ്ങൾക്കും താഴെ കാണുന്ന ലിങ്ക് ഓപ്പൺ ചെയ്ത് ആവശ്യമായ ഡോക്യുമെന്റുകൾ കണ്ടെത്തുക.</div>
