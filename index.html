@@ -23,7 +23,7 @@
         html, body { 
             height: 100vh; 
             width: 100vw;
-            overflow: hidden; /* മൊബൈൽ മെയിൻ സ്ക്രീൻ സ്ക്രോൾ ആവാതിരിക്കാൻ */
+            overflow: hidden;
             background-color: #0f172a; 
         }
         
@@ -59,20 +59,43 @@
         header h1 { font-size: 1rem; font-weight: 700; }
         header p { font-size: 0.65rem; color: #d1e7dd; margin-top: 1px; }
 
-        /* Compact AI Banner */
+        /* Compact AI Banner - Updated for long text */
         .ai-banner { 
             margin-bottom: 6px; 
             background: linear-gradient(135deg, #1e3a8a, #2563eb); 
             color: white; 
-            padding: 6px 10px; 
+            padding: 6px 8px; 
             border-radius: 8px; 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
+            gap: 6px;
             flex-shrink: 0;
         }
-        .ai-text h3 { font-size: 0.75rem; font-weight: 700; display: flex; align-items: center; gap: 4px; }
-        .ai-btn { background: #ffc107; color: #0f172a; padding: 4px 10px; border-radius: 12px; font-size: 0.68rem; font-weight: 800; text-decoration: none; white-space: nowrap; }
+        .ai-text {
+            flex: 1;
+        }
+        .ai-text h3 { 
+            font-size: 0.63rem; 
+            font-weight: 600; 
+            line-height: 1.25; 
+            display: block;
+        }
+        .ai-text h3 i {
+            margin-right: 3px;
+            color: #60a5fa;
+        }
+        .ai-btn { 
+            background: #ffc107; 
+            color: #0f172a; 
+            padding: 5px 8px; 
+            border-radius: 8px; 
+            font-size: 0.65rem; 
+            font-weight: 800; 
+            text-decoration: none; 
+            white-space: nowrap; 
+            flex-shrink: 0;
+        }
         
         /* Compact Grid Buttons */
         .board-grid { 
