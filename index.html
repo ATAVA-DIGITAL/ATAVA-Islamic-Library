@@ -2,7 +2,7 @@
 <html lang="ml">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ATAVA Islamic Digital Library</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -21,29 +21,29 @@
         }
         
         html, body { 
-            height: 100vh; 
+            min-height: 100vh;
             width: 100vw;
-            overflow: hidden;
             background-color: #0f172a; 
+            overflow-x: hidden;
+            overflow-y: auto;
         }
         
         body {
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             padding: 6px;
         }
         
         .library-container { 
             width: 100%;
-            height: 100%;
             max-width: 600px; 
+            min-height: calc(100vh - 12px);
             background: #ffffff; 
             border-radius: 12px; 
             padding: 8px; 
             display: flex;
             flex-direction: column;
-            overflow: hidden;
         }
 
         /* Compact Header */
@@ -59,7 +59,7 @@
         header h1 { font-size: 1rem; font-weight: 700; }
         header p { font-size: 0.65rem; color: #d1e7dd; margin-top: 1px; }
 
-        /* Compact AI Banner - Updated for long text */
+        /* Compact AI Banner */
         .ai-banner { 
             margin-bottom: 6px; 
             background: linear-gradient(135deg, #1e3a8a, #2563eb); 
@@ -124,14 +124,14 @@
         .board-btn:hover, .board-btn.active { background: var(--primary-green); color: #ffffff; border-color: var(--primary-green); }
         .board-btn span { font-size: 0.58rem; font-weight: normal; opacity: 0.85; margin-top: 1px; }
 
-        /* Scrollable Dynamic Content Area */
+        /* Dynamic Content Area */
         .content-area {
             flex: 1;
-            overflow-y: auto;
             background: #f8fafc;
             border: 1px solid #e2e8f0;
             border-radius: 8px;
             padding: 8px;
+            margin-bottom: 6px;
         }
 
         .content-board { display: none; }
@@ -211,10 +211,10 @@
         .btn-read:hover { background-color: #047857; }
         .btn-listen:hover { background-color: #0369a1; }
 
-        /* Custom Footer with Advertisement & Dual WhatsApp */
+        /* Responsive Footer */
         footer {
-            margin-top: 6px;
-            padding: 6px 8px;
+            margin-top: auto;
+            padding: 8px;
             background: #0f172a;
             color: #f8fafc;
             border-radius: 6px;
@@ -235,16 +235,11 @@
             color: #94a3b8;
             line-height: 1.2;
         }
-        .footer-owner {
-            font-size: 0.6rem;
-            color: #e2e8f0;
-            font-weight: 600;
-        }
         .footer-whatsapp-group {
             display: flex;
             justify-content: center;
             gap: 6px;
-            margin-top: 2px;
+            margin-top: 4px;
         }
         .wa-btn {
             display: inline-flex;
@@ -252,9 +247,9 @@
             gap: 4px;
             color: white;
             text-decoration: none;
-            padding: 3px 8px;
+            padding: 4px 10px;
             border-radius: 10px;
-            font-size: 0.6rem;
+            font-size: 0.62rem;
             font-weight: bold;
         }
         .wa-normal { background: #25d366; }
@@ -268,7 +263,7 @@
     <!-- Header Section -->
     <header>
         <h1>ഇസ്‌ലാമിക് ഡിജിറ്റൽ ലൈബ്രറി</h1>
-        <p>ഉസ്താദുമാർക്കും മുത്തഅല്ലിമീങ്ങൾക്കും വേണ്ടിയുള്ള കിതാബുകളും ഔറാദുകളും</p>
+        <p>ഉസ്താദുമാർക്കും മുത്തഅല്ലിമീങ്ങൾക്കും വേണ്ടിയുള്ള കിതാബുകളും ഔറാദുകളും മദ്ഹ്പാട്ടുകളും</p>
     </header>
 
     <!-- AI CHATBOT BANNER -->
@@ -311,7 +306,7 @@
         </button>
     </div>
 
-    <!-- MAIN INNER SCROLLABLE CONTENT AREA -->
+    <!-- MAIN CONTENT AREA -->
     <div class="content-area">
 
         <!-- BOARD: THIRUNABI MADH APP -->
@@ -658,7 +653,7 @@
                     <span class="link-name">📚 തഅ്ജീലുൽ ഫുതൂഹ്</span>
                     <span class="link-icon pdf-btn">PDF</span>
                 </a>
-                <a href="Kithabs/രസാന വിവര്ത്തനം.pdf" target="_blank" class="link-card">
+                <a href="Kithabs/രസാനത്ത്  വിവര്ത്തനം.pdf" target="_blank" class="link-card">
                     <span class="link-name">📖 റസാനത്ത് വിവർത്തനം</span>
                     <span class="link-icon pdf-btn">PDF</span>
                 </a>
@@ -675,11 +670,11 @@
 
     </div>
 
-    <!-- FOOTER SECTION WITH BRANDING & DUAL WHATSAPP -->
+    <!-- FOOTER SECTION -->
     <footer>
         <div class="footer-powered">Powered by : ATAVA DIGITAL SERVICES & TRADING</div>
         <div class="footer-services">Data Entry, Typing Works, Poster & Badge Design And Digital Services</div>
-        <div class="footer-owner">Abdul salam ahsani vazhakkad</div>
+        <div class="footer-services">Abdul salam ahsani vazhakkad</div>
         
         <div class="footer-whatsapp-group">
             <a href="https://wa.me/919947965744" target="_blank" class="wa-btn wa-normal">
