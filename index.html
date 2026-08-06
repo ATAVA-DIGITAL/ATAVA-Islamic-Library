@@ -12,194 +12,161 @@
             --accent-gold: #b45309;
             --text-dark: #1f2937;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
         
-        body { 
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
+        }
+        
+        html, body { 
+            height: 100vh; 
+            width: 100vw;
+            overflow: hidden; /* മൊബൈൽ മെയിൻ സ്ക്രീൻ സ്ക്രോൾ ആവാതിരിക്കാൻ */
             background-color: #0f172a; 
-            color: var(--text-dark); 
-            min-height: 100vh;
+        }
+        
+        body {
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 10px;
+            padding: 6px;
         }
         
         .library-container { 
             width: 100%;
-            max-width: 1200px; 
-            height: 96vh;
+            height: 100%;
+            max-width: 600px; 
             background: #ffffff; 
-            border-radius: 16px; 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3); 
-            padding: 15px; 
+            border-radius: 12px; 
+            padding: 8px; 
             display: flex;
             flex-direction: column;
             overflow: hidden;
         }
 
+        /* Compact Header */
         header { 
             text-align: center; 
-            padding: 12px 10px; 
+            padding: 6px 8px; 
             background: linear-gradient(135deg, #064e3b, #0f5132); 
-            border-radius: 12px; 
-            margin-bottom: 10px; 
+            border-radius: 8px; 
+            margin-bottom: 6px; 
             color: white; 
             flex-shrink: 0;
         }
-        header h1 { font-size: 1.5rem; font-weight: 800; letter-spacing: 0.5px; }
-        header p { font-size: 0.85rem; font-weight: 500; color: #d1e7dd; margin-top: 2px; }
+        header h1 { font-size: 1rem; font-weight: 700; }
+        header p { font-size: 0.65rem; color: #d1e7dd; margin-top: 1px; }
 
+        /* Compact AI Banner */
         .ai-banner { 
-            margin-bottom: 10px; 
-            background: linear-gradient(135deg, #1e3a8a, #3b82f6); 
+            margin-bottom: 6px; 
+            background: linear-gradient(135deg, #1e3a8a, #2563eb); 
             color: white; 
-            padding: 10px 15px; 
-            border-radius: 10px; 
+            padding: 6px 10px; 
+            border-radius: 8px; 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            gap: 10px; 
             flex-shrink: 0;
         }
-        .ai-text h3 { font-size: 1rem; font-weight: 800; display: flex; align-items: center; gap: 8px; }
-        .ai-text p { color: #dbeafe; font-size: 0.75rem; font-weight: 500; }
-        .ai-btn { background: #ffc107; color: #1e293b; padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 800; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+        .ai-text h3 { font-size: 0.75rem; font-weight: 700; display: flex; align-items: center; gap: 4px; }
+        .ai-btn { background: #ffc107; color: #0f172a; padding: 4px 10px; border-radius: 12px; font-size: 0.68rem; font-weight: 800; text-decoration: none; white-space: nowrap; }
         
+        /* Compact Grid Buttons */
         .board-grid { 
             display: grid; 
-            grid-template-columns: repeat(4, 1fr); 
-            gap: 8px; 
-            margin-bottom: 10px; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 4px; 
+            margin-bottom: 6px; 
             flex-shrink: 0;
         }
         .board-btn { 
-            background: var(--light-green); 
-            border: 2px solid var(--primary-green); 
-            color: var(--primary-green); 
-            padding: 8px 5px; 
-            border-radius: 8px; 
-            font-size: 0.85rem; 
+            background: #f8fafc; 
+            border: 1px solid #cbd5e1; 
+            color: #334155; 
+            padding: 5px 2px; 
+            border-radius: 6px; 
+            font-size: 0.68rem; 
             font-weight: bold; 
             cursor: pointer; 
             text-align: center; 
-            transition: all 0.2s ease; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: center; 
-            line-height: 1.2;
+            line-height: 1.1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
-        .board-btn:hover, .board-btn.active { background: var(--primary-green); color: #ffffff; }
-        .board-btn span { font-size: 0.68rem; font-weight: normal; opacity: 0.9; margin-top: 2px; display: block; }
+        .board-btn:hover, .board-btn.active { background: var(--primary-green); color: #ffffff; border-color: var(--primary-green); }
+        .board-btn span { font-size: 0.58rem; font-weight: normal; opacity: 0.85; margin-top: 1px; }
 
+        /* Scrollable Dynamic Content Area */
         .content-area {
             flex: 1;
             overflow-y: auto;
-            background: #fafafa;
-            border: 1px solid #e5e7eb;
-            border-radius: 10px;
-            padding: 12px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 8px;
         }
 
-        .content-board { display: none; animation: fadeIn 0.3s ease; }
+        .content-board { display: none; }
         .content-board.active { display: block; }
 
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .board-title { color: var(--accent-gold); font-size: 0.85rem; font-weight: bold; margin-bottom: 4px; border-bottom: 1px dashed #cbd5e1; padding-bottom: 2px; }
+        .board-desc { font-size: 0.7rem; color: #475569; margin-bottom: 8px; background: #ffffff; padding: 4px 8px; border-left: 3px solid var(--accent-gold); border-radius: 4px; }
 
-        .board-title { color: var(--accent-gold); font-size: 1.2rem; font-weight: bold; margin-bottom: 6px; border-bottom: 1px dashed #cbd5e1; padding-bottom: 4px; }
-        .board-desc { font-size: 0.85rem; color: #4b5563; margin-bottom: 12px; background: #ffffff; padding: 8px 12px; border-left: 4px solid var(--accent-gold); border-radius: 4px; font-weight: 500; }
-
-        .links-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; }
-        .link-card { background: #ffffff; border: 1px solid #e5e7eb; border-radius: 6px; padding: 8px 12px; display: flex; justify-content: space-between; align-items: center; text-decoration: none; color: inherit; }
+        .links-grid { display: grid; grid-template-columns: 1fr; gap: 4px; }
+        .link-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 5px; padding: 6px 10px; display: flex; justify-content: space-between; align-items: center; text-decoration: none; color: inherit; }
         .link-card:hover { border-color: var(--primary-green); background: var(--light-green); }
-        .link-name { font-size: 0.85rem; font-weight: bold; color: #111827; }
+        .link-name { font-size: 0.75rem; font-weight: 600; color: #1e293b; }
         
-        .link-icon { color: white; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; }
+        .link-icon { color: white; padding: 2px 6px; border-radius: 3px; font-size: 0.65rem; font-weight: bold; }
         .link-icon.telegram { background: #229ED9; }
         .link-icon.pdf-btn { background: #dc3545; }
 
-        /* App Showcase Card */
-        .app-large-card {
-            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
-            border: 2px solid #16a34a;
-            border-radius: 12px;
-            padding: 15px;
-            text-align: center;
-        }
-        .app-large-title { font-size: 1.2rem; color: #15803d; font-weight: 800; margin-bottom: 6px; }
-        .app-large-desc { font-size: 0.85rem; color: #166534; font-weight: 600; margin-bottom: 12px; }
-        .playstore-btn { display: inline-flex; align-items: center; gap: 8px; background: #01875f; color: white; text-decoration: none; padding: 8px 20px; border-radius: 25px; font-size: 0.9rem; font-weight: bold; }
-
-        /* Blog Showcase Card */
-        .blog-large-card {
-            background: linear-gradient(135deg, #fffbeb, #fef3c7);
-            border: 2px solid #d97706;
-            border-radius: 12px;
-            padding: 15px;
-            text-align: center;
-        }
-        .blog-large-title { font-size: 1.2rem; color: #92400e; font-weight: 800; margin-bottom: 6px; }
-        .blog-large-desc { font-size: 0.85rem; color: #b45309; font-weight: bold; margin-bottom: 12px; }
-        .blog-large-btn { display: inline-flex; align-items: center; gap: 8px; background: #b45309; color: white; text-decoration: none; padding: 8px 20px; border-radius: 25px; font-size: 0.9rem; font-weight: bold; }
-
-        .quran-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 6px; }
-        .quran-card { background: #ffffff; border: 1px solid #d1d5db; border-radius: 6px; padding: 6px; text-align: center; text-decoration: none; color: var(--primary-green); font-weight: bold; font-size: 0.85rem; }
-        .quran-card span { display: block; font-size: 0.65rem; color: #6b7280; font-weight: normal; }
-
-        footer {
-            margin-top: 10px;
+        /* Cards */
+        .app-large-card, .blog-large-card {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
             padding: 10px;
-            background: #1f2937;
-            color: #f3f4f6;
-            border-radius: 10px;
             text-align: center;
+        }
+        .app-large-title { font-size: 0.9rem; color: #15803d; font-weight: 800; margin-bottom: 4px; }
+        .app-large-desc { font-size: 0.72rem; color: #334155; margin-bottom: 8px; }
+        .playstore-btn { display: inline-flex; align-items: center; gap: 4px; background: #01875f; color: white; text-decoration: none; padding: 5px 12px; border-radius: 15px; font-size: 0.75rem; font-weight: bold; }
+
+        .quran-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
+        .quran-card { background: #ffffff; border: 1px solid #cbd5e1; border-radius: 4px; padding: 4px 2px; text-align: center; text-decoration: none; color: var(--primary-green); font-weight: bold; font-size: 0.72rem; }
+        .quran-card span { display: block; font-size: 0.58rem; color: #64748b; font-weight: normal; }
+
+        /* Compact Footer */
+        footer {
+            margin-top: 6px;
+            padding: 4px 8px;
+            background: #0f172a;
+            color: #f8fafc;
+            border-radius: 6px;
             flex-shrink: 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 5px;
         }
-        .footer-company { font-size: 0.85rem; color: #ffc107; font-weight: 800; }
-        .footer-owner { font-size: 0.75rem; color: #ffffff; }
+        .footer-company { font-size: 0.68rem; color: #ffc107; font-weight: 700; }
         
         .whatsapp-contact-btn {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
             background: #25d366;
             color: white;
             text-decoration: none;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.65rem;
             font-weight: bold;
-        }
-        
-        @media (max-width: 768px) {
-            .library-container { height: 98vh; padding: 8px; }
-            header { padding: 8px; margin-bottom: 6px; }
-            header h1 { font-size: 1.15rem; }
-            header p { font-size: 0.7rem; }
-            .ai-banner { padding: 6px 10px; margin-bottom: 6px; }
-            .ai-text h3 { font-size: 0.8rem; }
-            .ai-text p { display: none; } /* സ്പേസ് ലാഭിക്കാൻ ഫോണിൽ സബ്‌ടെക്സ്റ്റ് മറയ്ക്കുന്നു */
-            .ai-btn { padding: 4px 10px; font-size: 0.7rem; }
-            .board-grid { grid-template-columns: repeat(2, 1fr); gap: 5px; margin-bottom: 6px; }
-            .board-btn { padding: 6px 4px; font-size: 0.75rem; }
-            .board-btn span { font-size: 0.6rem; }
-            .content-area { padding: 8px; }
-            .board-title { font-size: 0.95rem; }
-            .board-desc { font-size: 0.75rem; padding: 6px; margin-bottom: 8px; }
-            .links-grid { grid-template-columns: 1fr; gap: 5px; }
-            .link-card { padding: 6px 10px; }
-            .link-name { font-size: 0.78rem; }
-            .quran-grid { grid-template-columns: repeat(3, 1fr); gap: 4px; }
-            .quran-card { padding: 5px 2px; font-size: 0.75rem; }
-            footer { padding: 6px 10px; flex-direction: column; text-align: center; gap: 4px; }
-            .footer-company { font-size: 0.75rem; }
-            .footer-owner { font-size: 0.7rem; }
-            .whatsapp-contact-btn { padding: 3px 10px; font-size: 0.7rem; }
         }
     </style>
 </head>
@@ -216,41 +183,36 @@
     <!-- AI CHATBOT BANNER -->
     <div class="ai-banner">
         <div class="ai-text">
-            <h3><i class="fa-solid fa-robot"></i> അഹ്‌لوസ്സുന്ന AI ചാറ്റ് ബോട്ട്</h3>
-            <p>സംശയങ്ങൾക്ക് പ്രമാണബദ്ധമായ മറുപടികൾ ചോദിക്കാം.</p>
+            <h3><i class="fa-solid fa-robot"></i> അഹ്‌ലുസ്സുന്ന AI ബോട്ട്</h3>
         </div>
         <a href="https://ahlus-sunnah-ai.lovable.app" target="_blank" class="ai-btn">ചോദിക്കുക <i class="fa-solid fa-arrow-right"></i></a>
     </div>
 
     <!-- BOARDS NAVIGATION GRID -->
     <div class="board-grid">
-        <button class="board-btn active" onclick="openBoard(event, 'madh-app-board')" style="border-color: #16a34a; background: #f0fdf4; color: #15803d;">
-            📱 തിരുനബി മദ്ഹ് App
-            <span>Android App</span>
+        <button class="board-btn active" onclick="openBoard(event, 'madh-app-board')">
+            📱 മദ്ഹ് App
+            <span>Android</span>
         </button>
         <button class="board-btn" onclick="openBoard(event, 'meelad-board')">
-            🎵 മീലാദ് ഗാനങ്ങൾ 
-            <span>പ്രോഗ്രാംസ് ഗോഡൗൺ</span>
+            🎵 മീലാദ് 
+            <span>ഗാനങ്ങൾ</span>
         </button>
         <button class="board-btn" onclick="openBoard(event, 'fathhul-board')">
             📖 ഫത്‌ഹുൽ മുഈൻ
-            <span>ഓഡിയോ ക്ലാസുകൾ</span>
+            <span>ക്ലാസുകൾ</span>
         </button>
         <button class="board-btn" onclick="openBoard(event, 'kithab-board')">
-            📚 കിതാബുകൾ & അൽഫിയ്യ
-            <span>ഗ്രന്ഥശേഖരം</span>
+            📚 കിതാബുകൾ
+            <span>അൽഫിയ്യ</span>
         </button>
         <button class="board-btn" onclick="openBoard(event, 'quran-board')">
-            🕌 വിശുദ്ധ ഖുർആൻ
-            <span>30 ജുസ്ഹ് ഓഡിയോ</span>
+            🕌 ഖുർആൻ
+            <span>30 ജുസ്ഹ്</span>
         </button>
         <button class="board-btn" onclick="openBoard(event, 'library-files-board')">
-            ✨ പ്രധാന ഫയലുകൾ
-            <span>റാത്തീബ് & PDF</span>
-        </button>
-        <button class="board-btn" onclick="openBoard(event, 'sunni-blog-board')" style="border-color: #d97706; background: #fffbeb; color: #b45309;">
-            🌐 സുന്നി ബ്ലോഗ്
-            <span>പ്രത്യേക അറിവുകൾ</span>
+            ✨ PDF ഫയലുകൾ
+            <span>റാത്തീബ്</span>
         </button>
     </div>
 
@@ -260,11 +222,11 @@
         <!-- BOARD: THIRUNABI MADH APP -->
         <div id="madh-app-board" class="content-board active">
             <div class="board-title">📱 തിരുനബി മദ്ഹ് ഗാനങ്ങൾ Android App</div>
-            <div class="board-desc">മദ്ഹ് പാട്ടുകളും വരികളും വേഗത്തിൽ ലഭിക്കാൻ പ്ലേസ്റ്റോർ ആപ്പ് ഇൻസ്റ്റാൾ ചെയ്യാം.</div>
+            <div class="board-desc">മദ്ഹ് പാട്ടുകളും വരികളും വേഗത്തിൽ ലഭിക്കാൻ ആപ്പ് ഇൻസ്റ്റാൾ ചെയ്യാം.</div>
             
             <div class="app-large-card">
-                <div class="app-large-title"><i class="fa-brands fa-google-play"></i> തിരുനabi Madh App</div>
-                <div class="app-large-desc">പാട്ടുകളുടെ വരികളും ഓഡിയോയും വേഗത്തിൽ ലഭിക്കുന്ന ആപ്പ് ഡൗൺലോഡ് ചെയ്യുക.</div>
+                <div class="app-large-title"><i class="fa-brands fa-google-play"></i> Thirunabi Madh App</div>
+                <div class="app-large-desc">പാട്ടുകളുടെ വരികളും ഓഡിയോയും വേഗത്തിൽ ലഭിക്കുന്ന ആപ്പ്.</div>
                 <a href="https://play.google.com/store/apps/details?id=com.ThirunabiMadh" target="_blank" class="playstore-btn">
                     <i class="fa-brands fa-google-play"></i> Install App
                 </a>
@@ -316,7 +278,7 @@
         <!-- BOARD 2: FATHHUL MUEEN -->
         <div id="fathhul-board" class="content-board">
             <div class="board-title">📖 ഫത്‌ഹുൽ മുഈൻ ക്ലാസുകൾ</div>
-            <div class="board-desc"><b>അവതരണം: അബൂശാക്കിർ സുലൈമാൻ ഫൈസി കിഴിശ്ശേരി.</b></div>
+            <div class="board-desc"><b>അവതരണം: അബൂശാക്കിർ സുലൈമാൻ ഫൈസി.</b></div>
             
             <div class="links-grid">
                 <a href="https://t.me/+Sy7XKphvdvux8-dm" target="_blank" class="link-card"><span class="link-name">🛒 മുആമലാത്ത് ക്ലാസുകൾ</span><span class="link-icon telegram">Join</span></a>
@@ -327,11 +289,11 @@
 
         <!-- BOARD 3: KITHAB & ALFIYYA -->
         <div id="kithab-board" class="content-board">
-            <div class="board-title">📚 കിതാബുകൾ & അൽഫിയ്യ പഠനങ്ങൾ</div>
+            <div class="board-title">📚 കിതാബുകൾ & അൽഫിയ്യ</div>
             <div class="board-desc">ക്ലാസുകളും PDF ഗ്രന്ഥങ്ങളും.</div>
             
-            <h4 style="color:var(--primary-green); margin-bottom:8px; font-size:0.9rem;"><i class="fa-solid fa-microphone-lines"></i> ദർസ് ക്ലാസുകൾ</h4>
-            <div class="links-grid" style="margin-bottom: 12px;">
+            <h4 style="color:var(--primary-green); margin-bottom:4px; font-size:0.75rem;"><i class="fa-solid fa-microphone-lines"></i> ദർസ് ക്ലാസുകൾ</h4>
+            <div class="links-grid" style="margin-bottom: 8px;">
                 <a href="https://t.me/joinchat/AAAAAEyxwW3kQLkTl3BhIg" target="_blank" class="link-card"><span class="link-name">✨ പ്രധാന ചാനൽ</span><span class="link-icon telegram">Channel</span></a>
                 <a href="https://t.me/joinchat/AAAAAElkMRYMBPOw_uuSPw" target="_blank" class="link-card"><span class="link-name">1. ഹിദായത്തുൽ അദ്kിയാ</span><span class="link-icon telegram">Listen</span></a>
                 <a href="https://t.me/joinchat/AAAAAFfIcS484Uzmf0Nr3Q" target="_blank" class="link-card"><span class="link-name">2. മുരിഖാത്തുൽ ഖുലൂബ്</span><span class="link-icon telegram">Listen</span></a>
@@ -339,7 +301,7 @@
                 <a href="https://t.me/joinchat/AAAAAFC2hG_wCmbwlQTK1A" target="_blank" class="link-card"><span class="link-name">4. ഖസ്വീദത്തുൽ ബുർദ</span><span class="link-icon telegram">Listen</span></a>
             </div>
 
-            <h4 style="color:var(--primary-green); margin-bottom:8px; font-size:0.9rem;"><i class="fa-solid fa-book"></i> അൽഫിയ്യ ഗ്രന്ഥങ്ങൾ</h4>
+            <h4 style="color:var(--primary-green); margin-bottom:4px; font-size:0.75rem;"><i class="fa-solid fa-book"></i> അൽഫിയ്യ ഗ്രന്ഥങ്ങൾ</h4>
             <div class="links-grid">
                 <a href="https://t.me/almakthabathulihsaniyya/4859" target="_blank" class="link-card"><span class="link-name">متن ألفية ابن مالك</span><span class="link-icon telegram">PDF</span></a>
                 <a href="https://t.me/almakthabathulihsaniyya/3603" target="_blank" class="link-card"><span class="link-name">المكودي على ألفية ابن مالك</span><span class="link-icon telegram">PDF</span></a>
@@ -422,30 +384,13 @@
             </div>
         </div>
 
-        <!-- BOARD 6: SUNNI BLOG -->
-        <div id="sunni-blog-board" class="content-board">
-            <div class="board-title">🌐 സുന്നി നോളഡ്ജ് ബ്ലോഗ്</div>
-            <div class="board-desc">ആദർശപരമായ സംശയങ്ങൾക്ക് ബ്ലോഗ് സന്ദർശിക്കുക.</div>
-            
-            <div class="blog-large-card">
-                <div class="blog-large-title"><i class="fa-solid fa-gopuram"></i> Sunni Knowledge Blog</div>
-                <div class="blog-large-desc">സുന്നി നോളഡ്ജ് ഒഫീഷ്യൽ ബ്ലോഗ് പേജ് സന്ദർശിക്കാം.</div>
-                <a href="https://sunniknowledge.blogspot.com/?m=0" target="_blank" class="blog-large-btn">
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Blog
-                </a>
-            </div>
-        </div>
-
     </div>
 
     <!-- FOOTER SECTION -->
     <footer>
-        <div>
-            <div class="footer-company">ATAVA DIGITAL SERVICES & TRADING</div>
-            <div class="footer-owner">Abdul Salam Ahsani Vazhakkad</div>
-        </div>
+        <div class="footer-company">ATAVA DIGITAL SERVICES & TRADING</div>
         <a href="https://wa.me/919947965744" target="_blank" class="whatsapp-contact-btn">
-            <i class="fa-brands fa-whatsapp"></i> WhatsApp
+            <i class="fa-brands fa-whatsapp"></i> Contact
         </a>
     </footer>
 
